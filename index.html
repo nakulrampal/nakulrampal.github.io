@@ -114,6 +114,15 @@ function googleTranslateElementInit() {
 
 </p>
 
+<!--    <p>-->
+<!--        <br>-->
+<!--        &#128165 JACS cover of a recent article from our group:-->
+<!--        <br>-->
+<!--        <br>-->
+<!--        <img class="img-responsive" style="max-height:400px;" src="./images/jacs-cover.jpg"/>-->
+
+<!--    </p>-->
+
 <h2 id="publications">Publications</h2>
     <p>
         (Note: <sup><b>&sect</b></sup> denotes equal contribution, <b>*</b> denotes corresponding author)
@@ -122,7 +131,7 @@ function googleTranslateElementInit() {
     <script>
         paper_count = 0
 
-        function addpaper(title, authors, conference, link, abstract, arxiv_link, invited, errata_link) {
+        function addpaper(title, authors, conference, link, abstract, arxiv_link, invited, errata_link, cover) {
             list_entry = "<li style=\"font-size:17px\">"
             if (link != null)
                 list_entry += "<a href=\"" + link + "\">"
@@ -140,7 +149,9 @@ function googleTranslateElementInit() {
             if (arxiv_link != null)
                 list_entry += "<a href=\"" + arxiv_link + "\"><span class=\"badge badge-warning\">Link</span></a> "
             if (errata_link != null)
-                list_entry += "<a href=\"" + errata_link + "\"><span class=\"badge badge-info\">errata</span></a>"
+                list_entry += "<a href=\"" + errata_link + "\"><span class=\"badge badge-danger\">C&EN</span></a> "
+            if (cover != null)
+                list_entry += "<a href=\"" + cover + "\"><span class=\"badge badge-info\">Cover</span></a>"
             list_entry += "<br>"
             if (abstract != null)
                 list_entry += "<div id=\"abstract" + paper_count + "\" style=\"display:none;padding:10px;border:2px dotted gray;margin:10px;font-size:small;background:#F5F5F5;border-radius:5px;\">" + abstract + "</div>"
@@ -174,12 +185,20 @@ function googleTranslateElementInit() {
             return "the International Colloquium on Automata, Languages and Programming (ICALP " + year + ")"
         }
 
+        addpaper("The development of a comprehensive toolbox based on multi-level, high-throughput screening of MOFs for CO/N<sub>2</sub> separations",
+            "<b>Nakul Rampal</b><sup><b>&sect</b></sup>, Abdulmalik Ajenifuja<sup><b>&sect</b></sup>, Andi Tao<sup><b>&sect</b></sup>, Christopher Balzer, Matthew S Cummings, Arwyn Evans, Rocio Bueno-Perez, David J Law, Leslie W Bolton, Camille Petit, Flor Siperstein, Martin P Attfield, Megan Jobson, Peyman Z Moghadam, David Fairen-Jimenez<b>*</b>",
+            "Chemical Science 12 (36), 12068-12081, 2021",
+            "",
+            "The separation of CO/N<sub>2</sub> mixtures is a challenging problem in the petrochemical sector due to the very similar physical properties of these two molecules, such as size, molecular weight and boiling point. To solve this and other challenging gas separations, one requires a holistic approach. The complexity of a screening exercise for adsorption-based separations arises from the multitude of existing porous materials, including metal–organic frameworks. Besides, the multivariate nature of the performance criteria that needs to be considered when designing an optimal adsorbent and a separation process – i.e. an optimal material requires fulfillment of several criteria simultaneously – makes the screening challenging. To address this, we have developed a multi-scale approach combining high-throughput molecular simulation screening, data mining and advanced visualization, as well as process system modelling, backed up by experimental validation. We have applied our recent advances in the engineering of porous materials' morphology to develop advanced monolithic structures. These conformed, shaped monoliths can be used readily in industrial applications, bringing a valuable strategy for the development of advanced materials. This toolbox is flexible enough to be applied to multiple adsorption-based gas separation applications.",
+            "https://pubs.rsc.org/en/content/articlelanding/2021/SC/D1SC01588E")
+
         addpaper("Formulation of Metal–Organic Framework-Based Drug Carriers by Controlled Coordination of Methoxy PEG Phosphate: Boosting Colloidal Stability and Redispersibility",
             "Xu Chen, Yunhui Zhuang, <b>Nakul Rampal</b>, Rachel Hewitt, Giorgio Divitini, Christopher A O’Keefe, Xiewen Liu, Daniel J Whitaker, John W Wills, Ravin Jugdaohsingh, Jonathan J Powell, Han Yu<b>*</b>, Clare P Grey, Oren A Scherman, David Fairen-Jimenez<b>*</b>",
-            "Journal of the American Chemical Society, 2021",
+            "Journal of the American Chemical Society, 143 (34), 12557-13572, 2021",
             "",
             "Metal–organic framework nanoparticles (nanoMOFs) have been widely studied in biomedical applications. Although substantial efforts have been devoted to the development of biocompatible approaches, the requirement of tedious synthetic steps, toxic reagents, and limitations on the shelf life of nanoparticles in solution are still significant barriers to their translation to clinical use. In this work, we propose a new postsynthetic modification of nanoMOFs with phosphate-functionalized methoxy polyethylene glycol (mPEG–PO3) groups which, when combined with lyophilization, leads to the formation of redispersible solid materials. This approach can serve as a facile and general formulation method for the storage of bare or drug-loaded nanoMOFs. The obtained PEGylated nanoMOFs show stable hydrodynamic diameters, improved colloidal stability, and delayed drug-release kinetics compared to their parent nanoMOFs. Ex situ characterization and computational studies reveal that PEGylation of PCN-222 proceeds in a two-step fashion. Most importantly, the lyophilized, PEGylated nanoMOFs can be completely redispersed in water, avoiding common aggregation issues that have limited the use of MOFs in the biomedical field to the wet form—a critical limitation for their translation to clinical use as these materials can now be stored as dried samples. The in vitro performance of the addition of mPEG–PO<sub>3</sub> was confirmed by the improved intracellular stability and delayed drug-release capability, including lower cytotoxicity compared with that of the bare nanoMOFs. Furthermore, z-stack confocal microscopy images reveal the colocalization of bare and PEGylated nanoMOFs. This research highlights a facile PEGylation method with mPEG–PO<sub>3</sub>, providing new insights into the design of promising nanocarriers for drug delivery.",
-            "https://pubs.acs.org/doi/10.1021/jacs.1c03943", "Featured on the cover of JACS (Volume 143 Issue 34) and in the c&en magazine")
+            "https://pubs.acs.org/doi/10.1021/jacs.1c03943", "Featured on the cover of JACS (Volume 143 Issue 34) and in C&EN", "https://cen.acs.org/materials/metal-organic-frameworks/New-coating-technique-protects-MOF/99/web/2021/09", "https://pubs.acs.org/toc/jacsat/143/34")
+
 
         addpaper("Monolithic metal-organic frameworks for carbon dioxide separation",
             "David Madden, Robin Babu, Ceren Camur, <b>Nakul Rampal</b>, Joaquin Silvestre-Albero, Teresa Curtin, and David Fairen-Jimenez<b>*</b>",
