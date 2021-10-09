@@ -113,6 +113,7 @@ function googleTranslateElementInit() {
     </iframe>
 
 </p>
+<hr/>
 
 <!--    <p>-->
 <!--        <br>-->
@@ -122,6 +123,88 @@ function googleTranslateElementInit() {
 <!--        <img class="img-responsive" style="max-height:400px;" src="./images/jacs-cover.jpg"/>-->
 
 <!--    </p>-->
+
+    <h2 id="preprints">Preprints</h2>
+    <p>
+        (Note: <sup><b>&sect</b></sup> denotes equal contribution, <b>*</b> denotes corresponding author)
+    </p>
+<ul>
+    <script>
+        paper_count = 0
+
+        function addpaper(title, authors, conference, link, abstract, arxiv_link, invited, errata_link, cover) {
+            list_entry = "<li style=\"font-size:17px\">"
+            if (link != null)
+                list_entry += "<a href=\"" + link + "\">"
+            list_entry += "<b>" + title + "</b>"
+            if (link != null)
+                list_entry += "</a>"
+            list_entry += "<br>" + authors + ".<br>" + conference + "."
+            if (invited != null)
+                list_entry += "<br><b><font color=\"red\">" + invited + ".</b></font>"
+            list_entry += "</li>"
+
+            if (abstract != null) {
+                list_entry += "<a href=\"javascript:display_abstract(" + paper_count + ")\"><span class=\"badge badge-success\">abstract</span></a> "
+            }
+            if (arxiv_link != null)
+                list_entry += "<a href=\"" + arxiv_link + "\"><span class=\"badge badge-dark\">ChemRxiv</span></a> "
+            if (errata_link != null)
+                list_entry += "<a href=\"" + errata_link + "\"><span class=\"badge badge-danger\">C&EN</span></a> "
+            if (cover != null)
+                list_entry += "<a href=\"" + cover + "\"><span class=\"badge badge-info\">Cover</span></a>"
+            list_entry += "<br>"
+            if (abstract != null)
+                list_entry += "<div id=\"abstract" + paper_count + "\" style=\"display:none;padding:10px;border:2px dotted gray;margin:10px;font-size:small;background:#F5F5F5;border-radius:5px;\">" + abstract + "</div>"
+            list_entry += "<br>"
+
+            document.write(list_entry)
+            paper_count += 1
+        }
+
+        function in_conf(conf, year) {
+            return "In " + conf(year)
+        }
+
+        function to_appear(conf, year) {
+            return "To appear in " + conf(year)
+        }
+
+        function STOC(year) {
+            return "the ACM Symposium on Theory of Computing (STOC " + year + ")"
+        }
+
+        function FOCS(year) {
+            return "the IEEE Symposium on Foundations of Computer Science (FOCS " + year + ")"
+        }
+
+        function SODA(year) {
+            return "the ACM-SIAM Symposium on Discrete Algorithms (SODA " + year + ")"
+        }
+
+        function ICALP(year) {
+            return "the International Colloquium on Automata, Languages and Programming (ICALP " + year + ")"
+        }
+
+        addpaper("How Reproducible Are Surface Areas Calculated from the BET Equation?",
+            "Johannes Osterrieth, James Rampersad, David G Madden, <b>Nakul Rampal</b>, Luka Skoric, Bethany Connolly, Mark Allendorf, Vitalie Stavila, JONATHAN SNIDER, Rob Ameloot, Joao Marreiros, Conchi O Ania, Diana CS Azevedo, Enrique Vilarrasa-García, Bianca F Santos, Xian-He Bu, Xe Zang, Hana Bunzen, Neil Champness, Sarah L Griffin, Banglin Chen, Rui-Biao Lin, Benoit Coasne, Seth M Cohen, Jessica C Moreton, Yamil J Colon, Linjiang Chen, Rob Clowes, François-Xavier Coudert, Yong Cui, Bang Hou, Deanna D’Alessandro, Patrick W Doheny, Mircea Dinca, Chenyue Sun, Christian Doonan, Michael Huxley, Jack D Evans, Raffaele Ricco, Omar K Farha, Karam B Idrees, Timur Islamoglu, Pingyun Feng, Huajun Yang, Ross Forgan, Dominic Bara, Shuhei Furukawa, Elisabeth Sanchez, Jorge Gascon, Selvedin Telalovic, Sujit K Ghosha, Soumya Mukherjee, Matthew R Hill, Muhammad Munir Sadiq, Patricia Horcajada, Pablo Salcedo-Abraira, Katsumi Kaneko, Radovan Kukobat, Jeffrey Kenvin, Seda Keskin, Susumu Kitagawa, Kenichi Otake, Ryan P Lively, Stephen JA DeWitt, Philip L Llewellyn, Bettina Lotsch, Sebastian T Emmerling, Alexander Pütz, Carlos Martí-Gastaldo, Natalia Muñoz, Javier Garcia-Martinez, Noemi Linares, Daniel Maspoch, Jose Antonio Suarez, Peyman Moghadam, Rama Oktavian, Russell Morris, Paul Wheatley, Jorge Navarro, Camille Petit, David Danaci, Matthew Rosseinsky, Alexandros Katsoulidis, Martin Schroder, Xue Han, Sihai Yang, Christian Serre, Georges Mouchaham, David Sholl, Raghuram Thyagarajan, Daniel Siderius, Randall Q Snurr, Rebecca B Goncalves, Shane G Telfer, Seok J Lee, Valeska Ting, Jemma Rowlandson, Takeshi Uemura, Tomoya Iiyuka, Monique van der Veen, Davide Rega, Veronique Vanspeybroeck, Aran Lamaire, Sven Rogge, Krista Walton, Lukas W Bingel, Stefan Wuttke, Jacopo Andreo, Omar Yaghi, Bing Zhang, Cafer Yavuz, Thien Nguyen, Felix Zamora, Carmen Montoro, Hong-Cai Zhou, Kirchon Angelo, David Fairen-Jimenez<b>*</b>",
+            "2021",
+            "Porosity and surface area analysis play a prominent role in modern materials science, where their determination spans the fields of natural sciences, engineering, geology and medical research. At the heart of this sits the Brunauer-Emmett-Teller (BET) theory, which has been a remarkably successful contribution to the field of materials science. The BET method was developed in the 1930s and is now the most widely used metric for the estimation of surface areas of porous materials. Since the BET method was first developed, there has been an explosion in the field of nanoporous materials with the discovery of synthetic zeolites, nanostructured silicas, metal-organic frameworks (MOFs),and others. Despite its widespread use, the manual calculation of BET surface areas causes a significant spread in reported areas, resulting in reproducibility problems in both academia and industry. To probe this, we have brought together 60 labs with strong track records in the study of nanoporous materials. We provided eighteen adsorption isotherms and asked these researchers to calculate the corresponding BET areas, resulting in a wide range of values for each one. We show here that the reproducibility of BET area determination from identical isotherms is a largely ignored issue, raising critical concerns over the reliability of reported BET areas in the literature. To solve this major issue, we have developed a new computational approach to accurately and systematically determine the BET area of nanoporous materials. Our software, called BET Surface Identification (BETSI), expands on the well-known Rouquerol criteria and makes, for the first time, an unambiguous BET area assignment possible.",
+            "",
+            "https://chemrxiv.org/engage/chemrxiv/article-details/60c759380f50db32cb3985c0")
+
+
+        addpaper("Sol-Gel Processing of a Covalent Organic Framework for the Generation of Hierarchically Porous Monolithic Adsorbents",
+            "Mark Carrington</b><sup><b>&sect</b></sup>, <b>Nakul Rampal</b></b><sup><b>&sect</b></sup>, David G Madden, Daniel O'Nolan, Nicola Pietro Maria Casati, Giorgio Divitini, Ritums Cepitis, Jesus A Martin Ilan, Ceren Camur, Joaquin Silvestre-Albero, Felix Zamora, Sergei Taraskin, Karena W Chapman, David Fairen-Jimenez<b>*</b>",
+            "2021",
+            "",
+            "Covalent organic frameworks (COFs) have emerged as a versatile materials platform for applications including chemical separations, water purification, chemical reaction engineering and energy storage. Their inherently low mechanical stability, however, frequently renders existing methods of pelletisation ineffective contributing to pore collapse, pore blockage or insufficient densification of crystallites. Here, we present a general process for the shaping and densifying of COFs into centimetre-scale porous monolithic pellets without the need for templates, additives or binders. This process minimises mechanical damage from shear-induced plastic deformation and further provides a network of interparticle mesopores that we exploit in accessing analyte capacities above those achievable from the intrinsic porosity of the COF framework. Using a lattice-gas model, we accurately capture the monolithic structure across the mesoporous range and tie pore architecture to performance characteristics in both gas storage and separation applications. Collectively, these findings represent a substantial step in the practical applicability of COFs and other mechanically weak porous materials.",
+            "https://chemrxiv.org/engage/chemrxiv/article-details/60c75734ee301ccefac7b4cb")
+    </script>
+</ul>
+    <hr/>
+
+
 
 <h2 id="publications">Publications</h2>
     <p>
