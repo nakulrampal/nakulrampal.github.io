@@ -42,6 +42,7 @@ ul li{
 //    font-variant: normal;
     font-weight: 400;
     line-height: 24px;
+    text-align: justify;
 }
 
 pre {
