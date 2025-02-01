@@ -142,7 +142,7 @@ function googleTranslateElementInit() {
     </p>
 <ul>
     <script>
-        paper_count = 1
+        paper_count = 2
 
         function addpaper(title, authors, conference, link, abstract, arxiv_link, invited, errata_link, cover) {
             list_entry = "<li style=\"font-size:17px\">"
@@ -198,6 +198,13 @@ function googleTranslateElementInit() {
             return "the International Colloquium on Automata, Languages and Programming (ICALP " + year + ")"
         }
 
+        addpaper("Comparison of LLMs in Extracting Synthesis Conditions and Generating Q&A Datasets for Metal-Organic Frameworks",
+            "Yuang Shi<sup><b>&sect</b></sup>, <b>Nakul Rampal</>b><sup><b>&sect</b></sup>, Chengbin Zhao, Joe Fu, Christian Borgs Jennifer T. Chayes, Omar Yaghi<b>*</b>",
+            "ChemRxiv, <u>2024</u>",
+            "",
+            "Artificial intelligence, represented by large language models (LLMs), has demonstrated tremendous capabilities in natural language recognition and extraction. To further evaluate the performance of various LLMs in extracting information from academic papers, this study explores the application of LLMs in reticular chemistry, focusing on their effectiveness in generating Q&A datasets and extracting synthesis conditions from scientific literature. The models evaluated include OpenAI's GPT-4 Turbo, Anthropic’s Claude 3 Opus, and Google's Gemini 1.5 Pro. Key results indicate that Claude excelled in providing complete synthesis data, while Gemini outperformed others in accuracy, characterization-free compliance(obedience), and proactive structuring of responses. Although GPT-4 was less effective in quantitative metrics, it demonstrated strong logical reasoning and contextual inference capabilities. Overall, Gemini and Claude achieved the highest scores in accuracy, groundedness, and adherence to prompt requirements, making them suitable benchmarks for future studies. The findings reveal the potential of LLMs to aid in scientific research, particularly in the efficient construction of structured datasets, which can help train models, predict, and assist in the synthesis of new metal-organic frameworks (MOFs).",
+            "https://chemrxiv.org/engage/chemrxiv/article-details/67651f5a81d2151a02580020", null, null, null, null)
+
 
         addpaper("A Multi-Grained Symmetric Differential Equation Model for Learning Protein-Ligand Binding Dynamics",
             "Shengchao Liu<sup><b>&sect</b></sup>, Weitao Du<sup><b>&sect</b></sup>, Yanjing Li, Zhuoxinran Li, Vignesh Bhethanabotla, <b>Nakul Rampal</b>, Omar Yaghi, Christian Borgs, Anima Anandkumar, Hongyu Guo<b>*</b>, Jennifer Chayes<b>*</b>",
@@ -218,7 +225,7 @@ function googleTranslateElementInit() {
     </p>
 <ul>
     <script>
-        paper_count = 21
+        paper_count = 22
 
         function addpaper(title, authors, conference, link, abstract, arxiv_link, invited, errata_link, cover, magazine) {
             list_entry = "<li style=\"font-size:17px\">"
@@ -277,6 +284,13 @@ function googleTranslateElementInit() {
         function ICALP(year) {
             return "the International Colloquium on Automata, Languages and Programming (ICALP " + year + ")"
         }
+
+        addpaper("Large language models for reticular chemistry",
+            "Zhiling Zheng, <b>Nakul Rampal</b>, Theo Jaffrelot Inizan, Christian Borgs, Jennifer T. Chayes, Omar M. Yaghi<b>*</b>",
+            "Nature Reviews Materials, <u>2025</u>",
+            "",
+            "Reticular chemistry is the science of connecting molecular building units into crystalline extended structures such as metal–organic frameworks and covalent organic frameworks. Large language models (LLMs, a type of generative artifcial intelligence system, can augment laboratory research in reticular chemistry by helping scientists to extract knowledge from literature, design materials and collect and interpret experimental data — ultimately accelerating scientifc discovery. In this Perspective, we explore the concepts and methods used to apply LLMs in research, including prompt engineering, knowledge and tool augmentation and fne-tuning. We discuss how ‘chemistry-aware’ models can be tailored to specifc tasks and integrated into existing practices of reticular chemistry, transforming the traditional ‘make, characterize, use’ protocol driven by empirical knowledge into a discovery cycle based on fnding synthesis–structure–property–performance relationships. Furthermore, we explore how modular LLM agents can be integrated into multi-agent laboratory systems, such as self-driving robotic laboratories, to streamline labour-intensive tasks and collaborate with chemists and how LLMs can lower the barriers to applying generative artifcial intelligence and data-driven workfows to such challenging research questions as crystallization. This contribution equips both computational and experimental chemists with the insights necessary to harness LLMs for materials discovery in reticular chemistry and, more broadly, materials science.",
+            "https://www.nature.com/articles/s41578-025-00772-8", "MagazineTextNone", "MagazineLinkNone", "CoverLinkNone", "NameMagazineNone")
 
         addpaper("Single and Multi-Hop Question-Answering Datasets for Reticular Chemistry with GPT-4-Turbo",
             "<b>Nakul Rampal</b>, Kaiyu Wang, Matthew Burigana, Lingxiang Hou, Juri Al-Johani, Anna Sackmann, Hanan S. Murayshid, Walaa A. AlSumari, Arwa M. AlAbdulkarim, Nahla E. AlHazmi, Majed O. Alawad, Christian Borgs<b>*</b>, Jennifer Chayes<b>*</b>, Omar M. Yaghi<b>*</b>",
@@ -792,7 +806,7 @@ I am/was on the <a href="http://algo2021.tecnico.ulisboa.pt/ESA2021/">ESA 2021</
     <br>
     </div>
 
-    <p style="text-align:center">Last update: 10<sup>th</sup> October, 2024. Template adapted (with permission) from <a href=https://www.cs.princeton.edu/~hy2/>Huacheng Yu</a>'s.</p>
+    <p style="text-align:center">Last update: 31<sup>st</sup> January, 2025. Template adapted (with permission) from <a href=https://www.cs.princeton.edu/~hy2/>Huacheng Yu</a>'s.</p>
     <br>
 </div>
 </body>
