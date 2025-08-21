@@ -198,19 +198,20 @@ function googleTranslateElementInit() {
             return "the International Colloquium on Automata, Languages and Programming (ICALP " + year + ")"
         }
 
+
+        addpaper("An Automated Evaluation Agent for Q&A Pairs and Reticular Synthesis Conditions",
+            "Nakul Rampal<sup><b>&sect</b></sup>, Dongrong Joe Fu<sup><b>&sect</b></sup>, Chengbin Zhao, Hanan S. Murayshid, Albatool A. Abaalkhail, Nahla E. Alhazmi, Majed O. Alawad, Christian Borgs<b>*</b>, Jennifer T. Chayes<b>*</b>, Omar M. Yaghi<b>*</b>",
+            "ChemRxiv, <u>2025</u>",
+            "https://chemrxiv.org/engage/chemrxiv/article-details/686d46e9728bf9025e658164",
+            "We report an automated evaluation agent that can reliably assign classification labels to different Q&A pairs of both single-hop and multi-hop types, as well as to synthesis conditions datasets. Our agent is built around a suite of large language models (LLMs) and is designed to eliminate human involvement in the evaluation process. Through extensive testing of various approaches such as DSPy and finetuning, among others, we found that the performance of a given LLM on these Q&A and synthesis conditions classification tasks is determined primarily by the architecture of the agent where it makes a significant difference how the different inputs are parsed and processed, and how the LLMs are called. We also found that the quality of the prompt provided remains paramount, irrespective of the sophistication of the underlying model. Even models considered state-of-the-art, such as GPT-o1, exhibit poor performance when the prompt lacks sufficient detail and structure. To overcome these challenges, we performed systematic prompt optimization, iteratively refining the prompt to significantly improve classification accuracy and achieve human-level evaluation benchmarks. We show that while LLMs have made remarkable progress, they still fall short of human reasoning without substantial prompt engineering. The agent presented here provides a robust and reproducible tool for evaluating Q&A pairs and synthesis conditions in a scalable manner and can serve as a foundation for future developments in automated evaluation of LLM inputs and outputs.",
+            null, null, null, null)
+
         addpaper("Fully-stretched, single-crystalline polymers of linear poly[n]catenanes",
             "Kaiyu Wang, Nakul Rampal, Ying Liu, Cailing Chen, Ha Nguyen, Felipe Gándara, Vivek Singh, Zichao Rong, Yuang Shi, Sebastian Neumann, Jackson Thomassian, Raynald Giovine, Punit Kumar, Robert Ritchie, Lingmei Liu, Yu Han<b>*</b>, Ting Xu<b>*</b>, Omar Yaghi<b>*</b>",
             "ChemRxiv, <u>2025</u>",
             "",
             "Making single crystals of fully stretched polymers is an outstanding challenge because polymers generally crystallize by chain folding. We report a strategy termed 'phantom templation', wherein the metal templates the formation of poly[n]catenanes but is not found in the crystalline product. Based on this strategy, we synthesized the highly sought after linear poly[n]catenanes with molecular weight of 4.5 megadaltons and degree of polymerization of 2,800—over 100 times higher than previous records. Generally, post-synthetic demetalation leads to non-crystalline solids; a challenge addressed by the in situ nature of phantom templation. This also allowed the installed anthracene units to organize through π-π stacking and chain-to-chain packing, giving single crystals of linear poly[n]catenanes as structurally determined by transmission electron microscopy and x-ray diffraction techniques.",
             "https://chemrxiv.org/engage/chemrxiv/article-details/67cb4789fa469535b9674e39", null, null, null, null)
-
-        addpaper("Comparison of LLMs in Extracting Synthesis Conditions and Generating Q&A Datasets for Metal-Organic Frameworks",
-            "Yuang Shi<sup><b>&sect</b></sup>, <b>Nakul Rampal</b><sup><b>&sect</b></sup>, Chengbin Zhao, Joe Fu, Christian Borgs Jennifer T. Chayes, Omar Yaghi<b>*</b>",
-            "ChemRxiv, <u>2024</u>",
-            "",
-            "Artificial intelligence, represented by large language models (LLMs), has demonstrated tremendous capabilities in natural language recognition and extraction. To further evaluate the performance of various LLMs in extracting information from academic papers, this study explores the application of LLMs in reticular chemistry, focusing on their effectiveness in generating Q&A datasets and extracting synthesis conditions from scientific literature. The models evaluated include OpenAI's GPT-4 Turbo, Anthropic’s Claude 3 Opus, and Google's Gemini 1.5 Pro. Key results indicate that Claude excelled in providing complete synthesis data, while Gemini outperformed others in accuracy, characterization-free compliance(obedience), and proactive structuring of responses. Although GPT-4 was less effective in quantitative metrics, it demonstrated strong logical reasoning and contextual inference capabilities. Overall, Gemini and Claude achieved the highest scores in accuracy, groundedness, and adherence to prompt requirements, making them suitable benchmarks for future studies. The findings reveal the potential of LLMs to aid in scientific research, particularly in the efficient construction of structured datasets, which can help train models, predict, and assist in the synthesis of new metal-organic frameworks (MOFs).",
-            "https://chemrxiv.org/engage/chemrxiv/article-details/67651f5a81d2151a02580020", null, null, null, null)
 
 
         addpaper("A Multi-Grained Symmetric Differential Equation Model for Learning Protein-Ligand Binding Dynamics",
@@ -232,7 +233,7 @@ function googleTranslateElementInit() {
     </p>
 <ul>
     <script>
-        paper_count = 22
+        paper_count = 23
 
         function addpaper(title, authors, conference, link, abstract, arxiv_link, invited, errata_link, cover, magazine) {
             list_entry = "<li style=\"font-size:17px\">"
@@ -291,6 +292,13 @@ function googleTranslateElementInit() {
         function ICALP(year) {
             return "the International Colloquium on Automata, Languages and Programming (ICALP " + year + ")"
         }
+
+        addpaper("Comparison of LLMs in Extracting Synthesis Conditions and Generating Q&A Datasets for Metal-Organic Frameworks",
+            "Yuang Shi<sup><b>&sect</b></sup>, <b>Nakul Rampal</b><sup><b>&sect</b></sup>, Chengbin Zhao, Joe Fu, Christian Borgs Jennifer T. Chayes, Omar Yaghi<b>*</b>",
+            "Digital Discovery, <u>2025</u>",
+            "",
+            "Artificial intelligence, represented by large language models (LLMs), has demonstrated tremendous capabilities in natural language recognition and extraction. To further evaluate the performance of various LLMs in extracting information from academic papers, this study explores the application of LLMs in reticular chemistry, focusing on their effectiveness in generating Q&A datasets and extracting synthesis conditions from scientific literature. The models evaluated include OpenAI's GPT-4 Turbo, Anthropic's Claude 3 Opus, and Google's Gemini 1.5 Pro. Key results indicate that Claude excelled in providing complete synthesis data, while Gemini outperformed others in accuracy, characterization-free compliance(obedience), and proactive structuring of responses. Although GPT-4 was less effective in quantitative metrics, it demonstrated strong logical reasoning and contextual inference capabilities. Overall, Gemini and Claude achieved the highest scores in accuracy, groundedness, and adherence to prompt requirements, making them suitable benchmarks for future studies. The findings reveal the potential of LLMs to aid in scientific research, particularly in the efficient construction of structured datasets, which can help train models, predict, and assist in the synthesis of new metal-organic frameworks (MOFs).",
+            "https://pubs.rsc.org/en/content/articlehtml/2025/dd/d5dd00081e", "MagazineTextNone", "MagazineLinkNone", "CoverLinkNone", "NameMagazineNone")
 
         addpaper("Large language models for reticular chemistry",
             "Zhiling Zheng, <b>Nakul Rampal</b>, Theo Jaffrelot Inizan, Christian Borgs, Jennifer T. Chayes, Omar M. Yaghi<b>*</b>",
@@ -457,266 +465,19 @@ function googleTranslateElementInit() {
             "Asphaltenes are the heaviest component of crude oil, causing the formation of a stable oil-water emulsion. Even though asphaltenes are known to behave as an emulsifying agent for emulsion formation, their arrangement at the oil-water interface is poorly understood. We investigated the effect of asphaltene structure (island type vs archipelago type) and heteroatom type (Oxygen-O, Nitrogen-N, and Sulfur-S) on their structural behavior in the oil-water system. Out of six asphaltenes studied here, only three asphaltenes remain at the oil-water interface while others are soluble in the oil phase. Molecular orientation of asphaltene at the interface, position, and angle of asphaltene with the interface has also been determined. We observed that the N-based archipelago type are perpendicular to the interface. These asphaltene molecules are anchored at the interface by the heteroatom. The S-based asphaltenes (both island and archipelago type) and O-based archipelago type asphaltenes are soluble in the oil phase due to their inability to form a hydrogen bond with water and steric crowding near the heteroatom. This study will help in understanding the role of asphaltenes in oil-water emulsion formation based on its structure and how to avoid it",
             "https://pubs.acs.org/doi/abs/10.1021/acs.energyfuels.8b01648", "MagazineTextNone", "MagazineLinkNone", "CoverLinkNone", "NameMagazineNone")
 
-<!--        addpaper("Fast Software Cache Design for Network Appliances",-->
-<!--            "Dong Zhou, Huacheng Yu, Michael Kaminsky, and David Andersen",-->
-<!--            "In 2020 USENIX Annual Technical Conference (USENIX ATC'20)",-->
-<!--            "https://www.usenix.org/system/files/atc20-zhou.pdf",-->
-<!--            "The high packet rates handled by network appliances and similar software-based packet processing applications place a challenging load on caches such as flow caches. In these environments, both hit rate and cache hit latency are critical to throughput. Much recent work, however, has focused exclusively on one of these two desiderata, missing opportunities to further improve overall system throughput. This paper introduces Bounded Linear Probing (BLP), a new cache design optimized for network appliances. BLP works well across different workloads and cache sizes by balancing between hit rate and lookup latency. To accompany BLP, we also present a new, lightweight cache eviction policy called Probabilistic Bubble LRU that achieves near-optimal cache hit rate (assuming the algorithm is offline) without using any extra space. We make three main contributions: a theoretical analysis of BLP, a comparison between existing and proposed cache designs using microbenchmarks, and an end-to-end evaluation of BLP in the popular Open vSwitch (OvS) system. Our end-to-end experiments show that BLP is effective in practice: replacing the microflow cache in OvS with BLP improves throughput by up to 15%."-->
-<!--            )-->
-
-<!--        addpaper("Succinct Filters for Sets of Unknown Sizes",-->
-<!--            "Mingmou Liu, Yitong Yin, and Huacheng Yu",-->
-<!--            in_conf(ICALP, 2020),-->
-<!--            "files/unknown_size.pdf",-->
-<!--            "The membership problem asks to maintain a set S&sube;[u], supporting insertions and membership queries, i.e., testing if a given element is in the set. A data structure that computes exact answers is called a dictionary. When a (small) false positive rate ϵ is allowed, the data structure is called a filter. The space usages of the standard dictionaries or filters usually depend on the upper bound on the size of S, while the actual set can be much smaller. Pagh, Segev and Wieder (FOCS'13) were the first to study filters with varying space usage based on the current |S|. They showed in order to match the space with the current set size n=|S|, any filter data structure must use (1−o(1))n(log(1/&epsilon;)+(1−O(&epsilon;))loglog n) bits, in contrast to the well-known lower bound of N log(1/&epsilon;) bits, where N is an upper bound on |S|. They also presented a data structure with almost optimal space of (1+o(1))n(log(1/&epsilon;)+O(loglog n)) bits provided that n>u<sup>0.001</sup>, with expected amortized constant insertion time and worst-case constant lookup time.<br><br>\-->
-<!--            In this work, we present a filter data structure with improvements in two aspects:<br>\-->
-<!--                &nbsp;&nbsp;&nbsp;- it has constant worst-case time for all insertions and lookups with high probability;<br>\-->
-<!--                &nbsp;&nbsp;&nbsp;- it uses space (1+o(1))n(log(1/&epsilon;)+loglog n) bits when n>n<sup>0.001</sup>, achieving optimal leading constant for all &epsilon;=o(1).<br>\-->
-<!--            We also present a dictionary that uses (1+o(1))nlog(u/n) bits of space, matching the optimal space in terms of the current size, and performs all operations in constant time with high probability.",-->
-<!--            "https://arxiv.org/abs/2004.12465"-->
-<!--            )-->
-
-<!--        addpaper("Nearly Optimal Static Las Vegas Succinct Dictionary",-->
-<!--            "Huacheng Yu",-->
-<!--            in_conf(STOC, 2020),-->
-<!--            "files/succinct_dict.pdf",-->
-<!--            "Given a set S of n (distinct) keys from key space [U], each associated with a value from Σ, the static dictionary problem asks to preprocess these (key, value) pairs into a data structure, supporting value-retrieval queries: for any given x&isin;[U], valRet(x) must return the value associated with x if x&isin;S, or return &bot; if x&notin;S. The special case where |&Sigma;|=1 is called the membership problem. The \"textbook\" solution is to use a hash table, which occupies linear space and answers each query in constant time. On the other hand, the minimum possible space to encode all (key, value) pairs is only OPT:=&lceil;lg<sub>2</sub>(<span class='supsub'><sup class='superscript'>U</sup><sub class='subscript'>n</sub></span>)+nlg<sub>2</sub>|&Sigma;|&rceil; bits, which could be much less.<br>\-->
-<!--            <br>\-->
-<!--            In this paper, we design a randomized dictionary data structure using OPT+polylg n+O(lglglglglg U) bits of space, and it has expected constant query time, assuming the query algorithm can access an external lookup table of size n<sup>0.001</sup>. The lookup table depends only on U, n and |&Sigma;|, and not the input. Previously, even for membership queries and U&le;n<sup>O(1)</sup>, the best known data structure with constant query time requires OPT+n/polylg n bits of space (Pagh [Pag01] and P&#259;tra&#351;cu [Pat08]); the best-known using OPT+n<sup>0.999</sup> space has query time O(lg n); the only known non-trivial data structure with OPT+n<sup>0.001</sup> space has O(lg n) query time and requires a lookup table of size &ge;n<sup>2.99</sup> (!). Our new data structure answers open questions by P&#259;tra&#351;cu and Thorup [Pat08,Tho13].<br>\-->
-<!--            <br>\-->
-<!--            We also present a scheme that compresses a sequence X&isin;&Sigma;<sup>n</sup> to its zeroth order (empirical) entropy up to |&Sigma;|⋅polylg n extra bits, supporting decoding each X<sub>i</sub> in O(lg|&Sigma;|) expected time.",-->
-<!--            "https://arxiv.org/abs/1911.01348",-->
-<!--            "Invited to the special issue of SIAM Journal on Computing (SICOMP)"-->
-<!--        )-->
-
-<!--        addpaper("Lower Bound for Succinct Range Minimum Query",-->
-<!--            "Mingmou Liu, and Huacheng Yu",-->
-<!--            in_conf(STOC, 2020),-->
-<!--            "files/suc_rmq.pdf",-->
-<!--            "Given an integer array A[1..n], the Range Minimum Query problem (RMQ) asks to preprocess A into a data structure, supporting RMQ queries: given a,b&isin;[1,n], return the index i&isin;[a,b] that minimizes A[i], i.e., argmin<sub>i&isin;[a,b]</sub>A[i]. This problem has a classic solution using O(n) space and O(1) query time by Gabow, Bentley, Tarjan (STOC, 1984) and Harel, Tarjan (SICOMP, 1984). The best known data structure by Fischer, Heun (SICOMP, 2011) and Navarro, Sadakane (TALG, 2014) uses 2n+n/((log n)/t)<sup>t</sup>+Õ (n<sup>3/4</sup>) bits and answers queries in O(t) time, assuming the word-size is w=&Theta;(log n). In particular, it uses 2n+n/polylog n bits of space as long as the query time is a constant.<br>\-->
-<!--            <br>\-->
-<!--            In this paper, we prove the first lower bound for this problem, showing that 2n+n/polylog n space is necessary for constant query time. In general, we show that if the data structure has query time O(t), then it must use at least 2n+n/(log n)<sup>O(t<sup>2</sup>)</sup> space, in the cell-probe model with word-size w=&Theta;(log n).",-->
-<!--            "https://arxiv.org/abs/2004.05738"-->
-<!--            )-->
-
-<!--        addpaper("Faster Update Time for Turnstile Streaming Algorithms",-->
-<!--            "Josh Alman, and Huacheng Yu",-->
-<!--            in_conf(SODA, 2020),-->
-<!--            "files/time_ub.pdf",-->
-<!--            "In this paper, we present a new algorithm for maintaining linear sketches in turnstile streams with faster update time. As an application, we show that log n Count sketches or CountMin sketches with a constant number of columns (i.e., buckets) can be implicitly maintained in worst-case O(log<sup>0.582</sup>n) update time using O(log n) words of space, on a standard word RAM with word-size w=&Theta;(log n). The exponent 0.582&asymp;2&omega;/3−1, where &omega; is the current matrix multiplication exponent. Due to the numerous applications of linear sketches, our algorithm improves the update time for many streaming problems in turnstile streams, in the high success probability setting, without using more space, including &ell;<sub>2</sub> norm estimation, &ell;<sub>2</sub> heavy hitters, point query with &ell;<sub>1</sub> or &ell;<sub>2</sub> error, etc. Our algorithm generalizes, with the same update time and space, to maintaining logn linear sketches, where each sketch partitions the coordinates into k&lt;log<sup>o(1)</sup>n buckets using a c-wise independent hash function for constant c, and maintains the sum of coordinates for each bucket. Moreover, if arbitrary word operations are allowed, the update time can be further improved to O(log<sup>0.187</sup>n), where 0.187&asymp;&omega;/2−1. Our update algorithm is adaptive, and it circumvents the non-adaptive cell-probe lower bounds for turnstile streaming algorithms by Larsen, Nelson and Nguy&#7877;n (STOC'15).<br>\-->
-<!--            <br>\-->
-<!--            On the other hand, our result also shows that proving unconditional cell-probe lower bound for the update time seems very difficult, even if the space is restricted to be (nearly) the optimum. If &omega;=2, the cell-probe update time of our algorithm would be log<sup>o(1)</sup>n. Hence, proving any higher lower bound would imply &omega;>2.",-->
-<!--            "https://arxiv.org/abs/1911.01351"-->
-<!--            )-->
-
-<!--        addpaper("How to Store a Random Walk",-->
-<!--            "Emanuele Viola, Omri Weinstein, and Huacheng Yu",-->
-<!--            in_conf(SODA, 2020),-->
-<!--            "files/suc_walk.pdf",-->
-<!--            "Motivated by storage applications, we study the following data structure problem: An encoder wishes to store a collection of jointly-distributed files <span style=\"text-decoration:overline\">X</span>:=(X<sub>1</sub>,X<sub>2</sub>,&hellip;,X<sub>n</sub>)&sim;&mu; which are correlated (H<sub>&mu;</sub>(<span style=\"text-decoration:overline\">X</span>)&#8810;&sum;<sub>i</sub>H<sub>&mu;</sub>(X<sub>i</sub>)), using as little (expected) memory as possible, such that each individual file Xi can be recovered quickly with few (ideally constant) memory accesses.<br>\-->
-<!--            <br>\-->
-<!--            In the case of independent random files, a dramatic result by P&#259;tra&#351;cu (FOCS'08) and subsequently by Dodis, P&#259;tra&#351;cu and Thorup (STOC'10) shows that it is possible to store <span style=\"text-decoration:overline\">X</span> using just a constant number of extra bits beyond the information-theoretic minimum space, while at the same time decoding each X<sub>i</sub> in constant time. However, in the (realistic) case where the files are correlated, much weaker results are known, requiring at least &Omega;(n/polylg n) extra bits for constant decoding time, even for \"simple\" joint distributions &mu;.<br>\-->
-<!--            <br>\-->
-<!--            We focus on the natural case of compressing Markov chains, i.e., storing a length-n random walk on any (possibly directed) graph G. Denoting by &kappa;(G,n) the number of length-n walks on G, we show that there is a succinct data structure storing a random walk using lg<sub>2</sub>&kappa;(G,n)+O(lg n) bits of space, such that any vertex along the walk can be decoded in O(1) time on a word-RAM. For the harder task of matching the point-wise optimal space of the walk, i.e., the empirical entropy &sum;<span class='supsub'><sup class='superscript'>n-1</sup><sub class='subscript'>i=1</sub></span>lg(deg(v<sub>i</sub>)), we present a data structure with O(1) extra bits at the price of O(lg n) decoding time, and show that any improvement on this would lead to an improved solution on the long-standing Dictionary problem. All of our data structures support the online version of the problem with constant update and query time.",-->
-<!--            "https://arxiv.org/abs/1907.10874"-->
-<!--            )-->
-
-<!--        addpaper("Optimal Succinct Rank Data Structure via Approximate Nonnegative Tensor Decomposition",-->
-<!--            "Huacheng Yu",-->
-<!--            in_conf(STOC, 2019),-->
-<!--            "files/succinct_rank.pdf",-->
-<!--            "Given an n-bit array A, the succinct rank data structure problem asks to construct a data structure using space n+r bits for r&ll;n, supporting rank queries of form rank(x)=&Sigma;<span class='supsub'><sup class='superscript'>x-1</sup><sub class='subscript'>i=0</sub></span>A[i]. In this paper, we design a new succinct rank data structure with r=n/(log n)<sup>&Omega;(t)</sup>+n<sup>1−c</sup> and query time O(t) for some constant c&gt;0, improving the previous best-known by P&#259;tra&#351;cu [Pat08], which has r=n/((log n)/t)<sup>&Omega;(t)</sup>+O&#771;(n<sup>3/4</sup>) bits of redundancy. For r&gt;n<sup>1−c</sup>, our space-time tradeoff matches the cell-probe lower bound by P&#259;tra&#351;cu and Viola [PV10], which asserts that r must be at least n/(log n)<sup>O(t)</sup>. Moreover, one can avoid an n<sup>1−c</sup>-bit lookup table when the data structure is implemented in the cell-probe model, achieving r=&lceil;n/(log n)<sup>&Omega;(t)</sup>&rceil;. It matches the lower bound for the full range of parameters.<br>\-->
-<!--            <br>\-->
-<!--            En route to our new data structure design, we establish an interesting connection between succinct data structures and approximate nonnegative tensor decomposition. Our connection shows that for specific problems, to construct a space-efficient data structure, it suffices to approximate a particular tensor by a sum of (few) nonnegative rank-1 tensors. For the rank problem, we explicitly construct such an approximation, which yields an explicit construction of the data structure.",-->
-<!--            "https://arxiv.org/abs/1811.02078"-->
-<!--            )-->
-
-<!--        addpaper("Pruning based Distance Sketches with Provable Guarantees on Random Graphs",-->
-<!--            "Hongyang Zhang, Huacheng Yu, and Ashish Goel",-->
-<!--            "In the Web Conference (WWW 2019)",-->
-<!--            "files/distance_label.pdf",-->
-<!--            "Measuring the distances between vertices on graphs is one of the most fundamental components in network analysis. Since finding shortest paths requires traversing the graph, it is challenging to obtain distance information on large graphs very quickly. In this work, we present a preprocessing algorithm that is able to create landmark based distance sketches efficiently, with strong theoretical guarantees. When evaluated on a diverse set of social and information networks, our algorithm significantly improves over existing approaches by reducing the number of landmarks stored, preprocessing time, or stretch of the estimated distances.<br>\-->
-<!--            <br>\-->
-<!--            On Erd&ouml;s-R&eacute;nyi graphs and random power law graphs with degree distribution exponent 2&lt;&beta;&lt;3, our algorithm outputs an exact distance data structure with space between &Theta;(n<sup>5/4</sup>) and &Theta;(n<sup>3/2</sup>) depending on the value of &beta;, where n is the number of vertices. We complement the algorithm with tight lower bounds for Erd&ouml;s-R&eacute;nyi graphs and the case when &beta; is close to two.",-->
-<!--            "https://arxiv.org/abs/1712.08709"-->
-<!--            )-->
-
-<!--        addpaper("Optimal Lower Bounds for Distributed and Streaming Spanning Forest Computation",-->
-<!--            "Jelani Nelson, and Huacheng Yu",-->
-<!--            in_conf(SODA, 2019),-->
-<!--            "files/graph_skt.pdf",-->
-<!--            "We show optimal lower bounds for spanning forest computation in two different models:<br>\-->
-<!--                &nbsp;&nbsp;&nbsp;* One wants a data structure for fully dynamic spanning forest in which updates can insert or delete edges amongst a base set of n vertices. The sole allowed query asks for a spanning forest, which the data structure should successfully answer with some given (potentially small) constant probability &epsilon;&gt;0. We prove that any such data structure must use &Omega;(n log<sup>3</sup>n) bits of memory.<br>\-->
-<!--                &nbsp;&nbsp;&nbsp;* There is a referee and n vertices in a network sharing public randomness, and each vertex knows only its neighborhood; the referee receives no input. The vertices each send a message to the referee who then computes a spanning forest of the graph with constant probability &epsilon;&gt;0. We prove the average message length must be &Omega;(log<sup>3</sup>n) bits.<br>\-->
-<!--                <br>\-->
-<!--                Both our lower bounds are optimal, with matching upper bounds provided by the AGM sketch [AGM12] (which even succeeds with probability 1−1/poly(n)). Furthermore, for the first setting we show optimal lower bounds even for low failure probability &delta;, as long as &delta;&gt;2<sup>−n<sup>1−&epsilon;</sup></sup>.",-->
-<!--            "https://arxiv.org/abs/1807.05135",null,-->
-<!--            "files/graph_skt_errata.txt"-->
-<!--            )-->
-
-<!--        addpaper("Fillable Arrays with Constant Time Operations and A Single Bit of Redundancy",-->
-<!--            "Jacob Teo Por Loong, Jelani Nelson, and Huacheng Yu",-->
-<!--            "manuscript",-->
-<!--            "files/fillable_array.pdf",-->
-<!--            "In the fillable array problem one must maintain an array A[1..n] of w-bit entries subject to random access reads and writes, and also a fill(&Delta;) operation which sets every entry of to some &Delta;&isin;{0,&hellip;,2<sup>w</sup>−1}. We show that with just one bit of redundancy, i.e. a data structure using nw+1 bits of memory, read/fill can be implemented in worst case constant time, and write can be implemented in either amortized constant time (deterministically) or worst case expected constant (randomized). In the latter case, we need to store an additional O(log n) random bits to specify a permutation drawn from an 1/n<sup>2</sup>-almost pairwise independent family.",-->
-<!--            "https://arxiv.org/abs/1709.09574"-->
-<!--            )-->
-
-<!--        addpaper("Crossing the Logarithmic Barrier for Dynamic Boolean Data Structure Lower Bounds",-->
-<!--            "Kasper Green Larsen, Omri Weinstein, and Huacheng Yu",-->
-<!--            in_conf(STOC, 2018),-->
-<!--            "files/RangeCounting.pdf",-->
-<!--            "This paper proves the first super-logarithmic lower bounds on the cell probe complexity of dynamic boolean (a.k.a. decision) data structure problems, a long-standing milestone in data structure lower bounds.<br>\-->
-<!--            <br>\-->
-<!--            We introduce a new method for proving dynamic cell probe lower bounds and use it to prove a &Omega;&#771;(log<sup>1.5</sup>n) lower bound on the operational time of a wide range of boolean data structure problems, most notably, on the query time of dynamic range counting over <b>F</b><sub>2</sub> ([Pat07]). Proving an &omega;(lg n) lower bound for this problem was explicitly posed as one of five important open problems in the late Mihai P&#259;tra&#351;cu's obituary [Tho13]. This result also implies the first &omega;(lg n) lower bound for the classical 2D range counting problem, one of the most fundamental data structure problems in computational geometry and spatial databases. We derive similar lower bounds for boolean versions of dynamic polynomial evaluation and 2D rectangle stabbing, and for the (non-boolean) problems of range selection and range median.<br>\-->
-<!--            <br>\-->
-<!--            Our technical centerpiece is a new way of \"weakly\" simulating dynamic data structures using efficient one-way communication protocols with small advantage over random guessing. This simulation involves a surprising excursion to low-degree (Chebychev) polynomials which may be of independent interest, and offers an entirely new algorithmic angle on the \"cell sampling\" method of Panigrahy et al. [PTW10].",-->
-<!--            "https://arxiv.org/abs/1703.03575",-->
-<!--            "Invited to the special issue of SIAM Journal on Computing (SICOMP)"-->
-<!--        )-->
-
-<!--        addpaper("Cell-Probe Lower Bounds from Online Communication Complexity",-->
-<!--            "Josh Alman, Joshua R. Wang, and Huacheng Yu",-->
-<!--            in_conf(STOC, 2018),-->
-<!--            "files/matrix-seq.pdf",-->
-<!--            "In this work, we introduce an online model for communication complexity. Analogous to how online algorithms receive their input piece-by-piece, our model presents one of the players, Bob, his input piece-by-piece, and has the players Alice and Bob cooperate to compute a result each time before the next piece is revealed to Bob. This model has a closer and more natural correspondence to dynamic data structures than classic communication models do, and hence presents a new perspective on data structures.<br>\-->
-<!--            <br>\-->
-<!--            We first present a tight lower bound for the online set intersection problem in the online communication model, demonstrating a general approach for proving online communication lower bounds. The online communication model prevents a batching trick that classic communication complexity allows, and yields a stronger lower bound. We then apply the online communication model to prove data structure lower bounds for two dynamic data structure problems: the Group Range problem and the Dynamic Connectivity problem for forests. Both of the problems admit a worst case O(log n)-time data structure. Using online communication complexity, we prove a tight cell-probe lower bound for each: spending o(log n) (even amortized) time per operation results in at best an exp(−δ<sup>2</sup>n) probability of correctly answering a (1/2+&delta;)-fraction of the n queries.",-->
-<!--            "https://arxiv.org/pdf/1704.06185.pdf"-->
-<!--            )-->
-
-<!--        addpaper("DecreaseKeys are Expensive for External Memory Priority Queues",-->
-<!--            "Kasper Eenberg, Kasper Green Larsen, and Huacheng Yu",-->
-<!--            "Presented at MASSIVE 2016.<br>" + in_conf(STOC, 2017),-->
-<!--            "files/priority_queue.pdf",-->
-<!--            "One of the biggest open problems in external memory data structures is the priority queue problem with DecreaseKey operations. If only Insert and ExtractMin operations need to be supported, one can design a comparison-based priority queue performing O((N/B)lg<sub>M/B</sub>N) I/Os over a sequence of N operations, where B is the disk block size in number of words and M is the main memory size in number of words. This matches the lower bound for comparison-based sorting and is hence optimal for comparison-based priority queues. However, if we also need to support DecreaseKeys, the performance of the best known priority queue is only O((N/B)lg<sub>2</sub>N) I/Os. The big open question is whether a degradation in performance really is necessary. We answer this question affirmatively by proving a lower bound of &Omega;((N/B)lg<sub>lgN</sub>B) I/Os for processing a sequence of N intermixed Insert, ExtraxtMin and DecreaseKey operations. Our lower bound is proved in the cell probe model and thus holds also for non-comparison-based priority queues.",-->
-<!--            "https://arxiv.org/abs/1611.00911"-->
-<!--            )-->
-
-<!--        addpaper("Beating Brute Force for Systems of Polynomial Equations over Finite Fields",-->
-<!--            "Daniel Lokshtanov, Ramamohan Paturi, Suguru Tamaki, Ryan Williams, and Huacheng Yu",-->
-<!--            in_conf(SODA, 2017),-->
-<!--            "files/polyEq.pdf",-->
-<!--            "We consider the problem of solving systems of multivariate polynomial equations of degree k over a finite field. For every integer k&ge;2 and finite field <b>F</b><sub>q</sub> where q = p<sup>d</sup> for a prime p, we give, to the best of our knowledge, the first algorithms that achieve an exponential speedup over the brute force O(q<sup>n</sup>) time algorithm in the worst case. We present two algorithms, a randomized algorithm with running time q<sup>n+o(n)</sup>&sdot;q<sup>−n/O(k)</sup> time if q&le;2<sup>4ekd</sup>, and q<sup>n+o(n)</sup>&sdot;((log q)/dek)<sup>-dn</sup> otherwise, where e = 2.718... is Napier's constant, and a deterministic algorithm for counting solutions with running time q<sup>n+o(n)</sup>&sdot;q<sup>−n/O(kq<sup>6/7d</sup>)</sup>. For the important special case of quadratic equations in <b>F</b><sub>2</sub>, our randomized algorithm has running time O(2<sup>0.8765n</sup>).<br>\-->
-<!--                <br>\-->
-<!--                For systems over <b>F</b><sub>2</sub> we also consider the case where the input polynomials do not have bounded degree, but instead can be efficiently represented as a &Sigma;&Pi;&Sigma; circuit, i.e., a sum of products of sums of variables. For this case we present a deterministic algorithm running in time 2<sup>n−&delta;n</sup> for &delta;=1/O(log(s/n)) for instances with s product gates in total and n variables.<br>\-->
-<!--                <br>\-->
-<!--                Our algorithms adapt several techniques recently developed via the polynomial method from circuit complexity. The algorithm for systems of &Sigma;&Pi;&Sigma; polynomials also introduces a new degree reduction method that takes an instance of the problem and outputs a subexponential-sized set of instances, in such a way that feasibility is preserved and every polynomial among the output instances has degree O(log(s/n))."-->
-<!--            )-->
-
-<!--        addpaper("Amortized Dynamic Cell-Probe Lower Bounds from Four-Party Communication",-->
-<!--            "Omri Weinstein, and Huacheng Yu",-->
-<!--            in_conf(FOCS, 2016),-->
-<!--            "files/2D-ORC.pdf",-->
-<!--            "This paper develops a new technique for proving amortized, randomized cell-probe lower bounds on dynamic data structure problems. We introduce a new randomized nondeterministic four-party communication model that enables \"accelerated\", error-preserving simulations of dynamic data structures.<br>\-->
-<!--            <br>\-->
-<!--            We use this technique to prove an &Omega;(n(log n/loglog n)<sup>2</sup>) cell-probe lower bound for the dynamic 2D weighted orthogonal range counting problem (2D-ORC) with n/polylog n updates and n queries, that holds even for data structures with exp(−&Omega;&#771;(n)) success probability. This result not only proves the highest amortized lower bound to date, but is also tight in the strongest possible sense, as a matching upper bound can be obtained by a deterministic data structure with worst-case operational time. This is the first demonstration of a \"sharp threshold\" phenomenon for dynamic data structures.<br>\-->
-<!--            <br>\-->
-<!--            Our broader motivation is that cell-probe lower bounds for exponentially small success facilitate reductions from dynamic to static data structures. As a proof-of-concept, we show that a slightly strengthened version of our lower bound would imply an &Omega;((log n/loglog n)<sup>2</sup>) lower bound for the static 3D-ORC problem with O(nlog<sup>O(1)</sup>n) space. Such result would give a near quadratic improvement over the highest known static cell-probe lower bound, and break the long standing &Omega;(log n) barrier for static data structures.",-->
-<!--            "https://arxiv.org/abs/1604.03030")-->
-
-<!--        addpaper("Cell-Probe Lower Bounds for Dynamic Problems via a New Communication Model",-->
-<!--            "Huacheng Yu",-->
-<!--            in_conf(STOC, 2016),-->
-<!--            "files/dynintun.pdf",-->
-<!--            "In this paper, we develop a new communication model to prove a data structure lower bound for the dynamic interval union problem. The problem is to maintain a multiset of intervals <i>I</i> over [0,n] with integer coordinates, supporting the following operations:<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;- insert(a, b): add an interval [a,b] to <i>I</i>, provided that a and b are integers in [0,n];<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;- delete(a, b): delete a (previously inserted) interval [a,b] from <i>I</i>;<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;- query(): return the total length of the union of all intervals in <i>I</i>.<br>\-->
-<!--            <br>\-->
-<!--            It is related to the two-dimensional case of Klee's measure problem. We prove that there is a distribution over sequences of operations with O(n) insertions and deletions, and O(n<sup>0.01</sup>) queries, for which any data structure with any constant error probability requires &Omega;(nlog n) time in expectation. Interestingly, we use the sparse set disjointness protocol of H&aring;stad and Wigderson [ToC'07] to speed up a reduction from a new kind of nondeterministic communication games, for which we prove lower bounds.<br>\-->
-<!--            <br>\-->
-<!--            For applications, we prove lower bounds for several dynamic graph problems by reducing them from dynamic interval union.",-->
-<!--            "https://arxiv.org/abs/1512.01293")-->
-
-<!--        addpaper("An Improved Combinatorial Algorithm for Boolean Matrix Multiplication",-->
-<!--            "Huacheng Yu",-->
-<!--            "In the International Colloquium on Automata, Languages, and Programming (ICALP 2015)",-->
-<!--            "files/cbmm.pdf",-->
-<!--            "We present a new combinatorial algorithm for triangle finding and Boolean matrix multiplication that runs in O&#770;(n<sup>3</sup>/log<sup>4</sup>n) time, where the O&#770; notation suppresses poly(loglog) factors. This improves the previous best combinatorial algorithm by Chan that runs in O&#770;(n<sup>3</sup>/log<sup>3</sup>n) time. Our algorithm generalizes the divide-and-conquer strategy of Chan's algorithm. Moreover, we propose a general framework for detecting triangles in graphs and computing Boolean matrix multiplication. Roughly speaking, if we can find the \"easy parts\" of a given instance efficiently, we can solve the whole problem faster than n<sup>3</sup>.",-->
-<!--            "https://arxiv.org/abs/1505.06811",-->
-<!--            "Co-winner of the best student paper award for Track A.<br>\-->
-<!--            Invited to the special issue of Information and Computation.<br>\-->
-<!--            Invited presentation at HALG 2016")-->
-
-<!--        addpaper("Matching Triangles and Basing Hardness on an Extremely Popular Conjecture",-->
-<!--            "Amir Abboud, Virginia Vassilevska Williams, and Huacheng Yu",-->
-<!--            in_conf(STOC, 2015),-->
-<!--            "files/MatchTria.pdf",-->
-<!--            "Due to the lack of unconditional polynomial lower bounds, it is now in fashion to prove conditional lower bounds in order to advance our understanding of the class P. The vast majority of these lower bounds are based on one of three famous hypotheses: the 3-SUM conjecture, the APSP conjecture, and the Strong Exponential Time Hypothesis. Only circumstantial evidence is known in support of these hypotheses, and no formal relationship between them is known. In hopes of obtaining \"less conditional\" and therefore more reliable lower bounds, we consider the conjecture that at least one of the above three hypotheses is true. We design novel reductions from 3-SUM, APSP, and CNF-SAT, and derive interesting consequences of this very plausible conjecture, including:<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;- Tight n<sup>3-o(1)</sup> lower bounds for purely-combinatorial problems about the triangles in unweighted graphs.<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;- New n<sup>1-o(1)</sup> lower bounds for the amortized update and query times of dynamic algorithms for single-source reachability, strongly connected components, and Max-Flow.<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;- New n<sup>1.5-o(1)</sup> lower bound for computing a set of n st-maximum-flow values in a directed graph with n nodes and O&#771;(n) edges.<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;- There is a hierarchy of natural graph problems on n nodes with complexity n<sup>c</sup> for c&isin;(2,3).<br>\-->
-<!--            <br>\-->
-<!--            Only slightly non-trivial consequences of this conjecture were known prior to our work. Along the way we also obtain new conditional lower bounds for the Single-Source-Max-Flow problem.",-->
-<!--            null,-->
-<!--            "Invited to the special issue of SIAM Journal on Computing (SICOMP)")-->
-
-<!--        addpaper("More Applications of the Polynomial Method to Algorithm Design",-->
-<!--            "Amir Abboud, Ryan Williams, and Huacheng Yu",-->
-<!--            in_conf(SODA, 2015),-->
-<!--            "files/faster-orthog-soda.pdf",-->
-<!--            "In low-depth circuit complexity, the polynomial method is a way to prove lower bounds by translating weak circuits into low-degree polynomials, then analyzing properties of these polynomials. Recently, this method found an application to algorithm design: Williams (STOC 2014) used it to compute all-pairs shortest paths in n<sup>3</sup>/2<sup>&Omega;(&radic;log n)</sup> time on dense n-node graphs. In this paper, we extend this methodology to solve a number of problems in combinatorial pattern matching and Boolean algebra, considerably faster than previously known methods.<br>\-->
-<!--            <br>\-->
-<!--            First, we give an algorithm for Boolean Orthogonal Detection, which is to detect among two sets A, B &sube; {0, 1}<sup>d</sup> of size n if there is an x &isin; A and y &isin; B such that &lt;x, y&gt; = 0. For vectors of dimension d = c(n) log n, we solve Boolean Orthogonal Detection in n<sup>2−1/O(log c(n)</sup>) time by a Monte Carlo randomized algorithm. We apply this as a subroutine in several other new algorithms:<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;&bull; In Batch Partial Match, we are given n query strings from from {0, 1, *}<sup>c(n)log n</sup> (* is a \"don't care\"), n strings from {0, 1}<sup>c(n)log n</sup>, and wish to determine for each query whether or not there is a string matching the query. We solve this problem in n<sup>2−1/O(log c(n))</sup> time by a Monte Carlo randomized algorithm.<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;&bull; Let t &le; v be integers. Given a DNF F on c log t variables with t terms, and v arbitrary assignments on the variables, F can be evaluated on all v assignments in v&sdot;t<sup>1−1/O(log c)</sup> time, with high probability.<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;&bull; There is a randomized algorithm that solves the Longest Common Substring with don't cares problem on two strings of length n in n<sup>2</sup>/2<sup>&Omega;(&radic;log n)</sup> time.<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;&bull; Given two strings S, T of length n, there is a randomized algorithm that computes the length of the longest substring of S that has Edit-Distance less than k to a substring of T in k<sup>1.5</sup>n<sup>2</sup>/2<sup>&Omega;(&radic;(log n)/k)</sup> time.<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;&bull; Symmetric Boolean Constraint Satisfaction Problems (CSPs) with n variables and m constraints are solvable in poly(m)&sdot;2<sup>n(1−1/O(log mn))</sup> time.")-->
-
-<!--        addpaper("Finding Four-Node Subgraphs in Triangle Time",-->
-<!--            "Virginia Vassilevska Williams, Joshua R. Wang, Ryan Williams, and Huacheng Yu",-->
-<!--            in_conf(SODA, 2015),-->
-<!--            "files/graph-cr.pdf",-->
-<!--            "We present new algorithms for finding induced four-node subgraphs in a given graph, which run in time roughly that of detecting a clique on three nodes (i.e., a triangle).<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;&bull; The best known algorithms for triangle finding in an nnode graph take O(n<sup>&omega;</sup>) time, where &omega; < 2.373 is the matrix multiplication exponent. We give a general randomized technique for finding any induced four-node subgraph, except for the clique or independent set on 4 nodes, in O&#771;(n<sup>&omega;</sup>) time with high probability. The algorithm can be derandomized in some cases: we show how to detect a diamond (or its complement) in deterministic O&#771;(n<sup>&omega;</sup>) time. Our approach substantially improves on prior work. For instance, the previous best algorithm for C<sub>4</sub> detection ran in O(n<sup>3.3</sup>) time, and for diamond detection in O(n<sup>3</sup>) time.<br>\-->
-<!--            &nbsp;&nbsp;&nbsp;&bull; For sparse graphs with m edges, the best known triangle finding algorithm runs in O(m<sup>2&omega;/(&omega;+1)</sup>) &le; O(m<sup>1.41</sup>) time. We give a randomized O&#771(m<sup>2&omega;/(&omega;+1)</sup>) time algorithm (analogous to the best known for triangle finding) for finding any induced four-node subgraph other than C<sub>4</sub>, K<sub>4</sub> and their complements. In the case of diamond detection, we also design a deterministic O&#771;(m<sup>2&omega;/(&omega;+1)</sup>) time algorithm. For C<sub>4</sub> or its complement, we give randomized O&#771;(m<sup>(4&omega;-1)/(2&omega;+1)</sup>) &le; O(m<sup>1.48</sup>) time finding algorithms. These algorithms substantially improve on prior work. For instance, the best algorithm for diamond detection ran in O(m<sup>1.5</sup>) time."-->
-<!--            )-->
-
-<!--        addpaper("Finding Orthogonal Vectors in Discrete Structures",-->
-<!--            "Ryan Williams, and Huacheng Yu",-->
-<!--            in_conf(SODA, 2014),-->
-<!--            "files/orthog-soda.pdf",-->
-<!--            "Hopcroft's problem in d dimensions asks: given n points and n hyperplanes in &#8477;<sup>d</sup>, does any point lie on any hyperplane? Equivalently, if we are given two sets of n vectors each in &#8477;<sup>d+1</sup>, is there a pair of vectors (one from each set) that are orthogonal? This problem has a long history and a multitude of applications. It is widely believed that for large d, the problem is subject to the curse of dimensionality: all known algorithms need at least f(d) · n<sup>2-1/O(d)</sup> time for fast-growing functions f, and at the present time there is little hope that a n<sup>2-&epsilon;&sdot;poly(d)</sup> time algorithm will be found.<br>\-->
-<!--            <br>\-->
-<!--            We consider Hopcroft's problem over finite fields and integers modulo composites, leading to both surprising algorithms and hardness reductions. The algorithms arise from studying the communication problem of determining whether two lists of vectors (one list held by Alice, one by Bob) contain an orthogonal pair of vectors over a discrete structure (one from each list). We show the randomized communication complexity of the problem is closely related to the sizes of matching vector families, which have been studied in the design of locally decodable codes. Letting HOPCROFTR denote Hopcroft's problem over a ring <b>R</b>, we give randomized algorithms and almost matching lower bounds (modulo a breakthrough in SAT algorithms) for HOPCROFTR, when <b>R</b> is the ring of integers modulo m or a finite field.<br>\-->
-<!--            <br>\-->
-<!--            Building on the ideas developed here, we give a very simple and efficient output-sensitive algorithm for matrix multiplication that works over any field.")-->
-
-<!--        addpaper("On a Conjecture of Butler and Graham",-->
-<!--            "Tengyu Ma, Xiaoming Sun, and Huacheng Yu",-->
-<!--            "Designs, Codes and Cryptography 69(3), 265&#45;&#45;274 (2013)",-->
-<!--            "files/mark_line_v2.pdf",-->
-<!--            "Motivated by a hat guessing problem proposed by Iwasawa [Iwa10], Butler and Graham [BG11] made the following conjecture on the existence of certain way of marking the coordinate lines in [k]<sup>n</sup>: there exists a way to mark one point on each coordinate line in [k]<sup>n</sup>, so that every point in [k]<sup>n</sup> is marked exactly a or b times as long as the parameters (a,b,n,k) satisfies that there are non-negative integers s and t such that s+t=k<sup>n</sup> and as+bt=nk<sup>n-1</sup>. In this paper we prove this conjecture for any prime number k. Moreover, we prove the conjecture for the case when a=0 for general k.",-->
-<!--            "https://arxiv.org/abs/1107.2027")-->
-
-<!--        addpaper("A New Variation of Hat Guessing Games",-->
-<!--            "Tengyu Ma, Xiaoming Sun, and Huacheng Yu",-->
-<!--            "In the International Computing and Combinatorics Conference (COCOON 2011)",-->
-<!--            "files/HatGuessing.pdf",-->
-<!--            "Several variations of hat guessing games have been popularly discussed in recreational mathematics. In a typical hat guessing game, after initially coordinating a strategy, each of n players is assigned a hat from a given color set. Simultaneously, each player tries to guess the color of his/her own hat by looking at colors of hats worn by other players. In this paper, we consider a new variation of this game, in which we require at least k correct guesses and no wrong guess for the players to win the game, but they can choose to \"pass\".<br>\-->
-<!--            <br>\-->
-<!--            A strategy is called perfect if it can achieve the simple upper bound n/(n+k) of the winning probability. We present sufficient and necessary condition on the parameters n and k for the existence of perfect strategy in the hat guessing games. In fact for any fixed parameter k, the existence of perfect strategy can be determined for every sufficiently large n.<br>\-->
-<!--            <br>\-->
-<!--            In our construction we introduce a new notion: (d<sub>1</sub>,d<sub>2</sub>)-regular partition of the boolean hypercube, which is worth to study in its own right. For example, it is related to the k-dominating set of the hypercube. It also might be interesting in coding theory. The existence of (d<sub>1</sub>,d<sub>2</sub>)-regular partition is explored in the paper and the existence of perfect k-dominating set follows as a corollary.",-->
-<!--            "https://arxiv.org/abs/1101.0869v1"-->
-<!--        )-->
     </script>
 </ul>
-
-<!--<h2 id="service">Service</h2>
-<p>
-I am/was on the <a href="http://algo2021.tecnico.ulisboa.pt/ESA2021/">ESA 2021</a>, <a href="http://acm-stoc.org/stoc2021/">STOC 2021</a>, <a href="http://focs2019.cs.jhu.edu">FOCS 2019</a>, <a href="http://isaac2018.ie.nthu.edu.tw">ISAAC 2018</a>, <a href="http://cocoon2017.comp.polyu.edu.hk">COCOON 2017</a> and <a href="http://anl.sjtu.edu.cn/cocoa2017/">COCOA 2017</a> PC.
-</p>
-<br>-->
 
 <hr/>
 
     <h2 id="talks">Talks</h2>
 
     <ul>
+
+        <li style=\"font-size:17px\"> Invited talk at the at the University of Milan (Department of Chemistry), 23<sup>rd</sup> June 2025. </li>
+
+        <li style=\"font-size:17px\"> Invited talk at The Chemist’s Interactions – June Seminar at the University of Milan, 23<sup>rd</sup> June 2025. </li>
+
         <li style=\"font-size:17px\" > Invited talk (virtual/in-person) at the Nanyang Technological University (School of Physical and Mathematical Sciences), 21<sup>st</sup> January 2022. </li>
 
         <li style=\"font-size:17px\" > Presentation (virtual) at the 2<sup>nd</sup> International School on Porous Materials: MOFschool2021, Lake Como School of Advanced Studies, 21-25 June 2021. </li>
@@ -732,7 +493,6 @@ I am/was on the <a href="http://algo2021.tecnico.ulisboa.pt/ESA2021/">ESA 2021</
 
 
         <li style=\"font-size:17px\"> Invited talk at the Theoretical Chemistry Seminar at the Norwegian University of Science and Technology (NTNU), 14<sup>th</sup> December 2018. </li>
-
 
     </ul>
 
@@ -800,6 +560,10 @@ I am/was on the <a href="http://algo2021.tecnico.ulisboa.pt/ESA2021/">ESA 2021</
         <li style=\"font-size:17px\"> <u>Joe Fu</u>, BS/PhD in Electrical Engineering & Computer Science, June 2024 to Ongoing </li>
 
         <li style=\"font-size:17px\"> <u>Daniel Ahn</u>, PhD in Chemistry, January 2025 to Ongoing </li>
+
+        <li style=\"font-size:17px\"> <u>Dongha Kim</u>, B.S. in Chemical Engineering/Data Science, July 2025 to Ongoing </li>
+
+        <li style=\"font-size:17px\"> <u>Om Kannan</u>, B.S. in Applied Math/Data Science, July 2025 to Ongoing </li>
 
     </ul>
 
