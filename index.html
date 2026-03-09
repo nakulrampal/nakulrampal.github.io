@@ -106,7 +106,7 @@ function googleTranslateElementInit() {
 
 <h2 id="bio">Bio</h2>
 <p align="justify">
-    I am currently a <a href="https://bidmap.berkeley.edu/people">BIDMaP Fellow</a> at the University of Calfornia, Berkeley advised by <a href="http://yaghi.berkeley.edu/">Omar Yaghi</a>, <a href="http://jenniferchayes.com/">Jennifer Chayes</a>, and <a href="http://christianborgs.com/">Christian Borgs</a>. I completed by PhD at the Department of Chemical Engineering & Biotechnology at the <a href="https://www.cam.ac.uk/">University of Cambridge</a> where I was fortunate to be advised by <a href="https://www.ceb.cam.ac.uk/directory/david-fairen-jimenez">David Fairen-Jimenez</a> . Prior to Cambridge, I completed my MS at the <a href="https://chemistry.berkeley.edu/cbe">University of California, Berkeley</a> where I was fortunate to be advised by <a href="https://chemistry.berkeley.edu/faculty/cbe/smit">Berend Smit</a>.
+    I am currently a <a href="https://bidmap.berkeley.edu/people">BIDMaP Fellow</a> at the University of California, Berkeley advised by <a href="http://yaghi.berkeley.edu/">Omar Yaghi</a>, <a href="http://jenniferchayes.com/">Jennifer Chayes</a>, and <a href="http://christianborgs.com/">Christian Borgs</a>. I completed by PhD at the Department of Chemical Engineering & Biotechnology at the <a href="https://www.cam.ac.uk/">University of Cambridge</a> where I was fortunate to be advised by <a href="https://www.ceb.cam.ac.uk/directory/david-fairen-jimenez">David Fairen-Jimenez</a> . Prior to Cambridge, I completed my MS at the <a href="https://chemistry.berkeley.edu/cbe">University of California, Berkeley</a> where I was fortunate to be advised by <a href="https://chemistry.berkeley.edu/faculty/cbe/smit">Berend Smit</a>.
 
     Prior to that,  I did my undergraduate research at <a href="https://www.iitb.ac.in/">IIT Bombay</a> where I was fortunate to be advised by <a href="https://www.che.iitb.ac.in/faculty/ateeque-malani">Ateeque Malani</a>. I completed by undergraduate degree at <a href="https://manipal.edu/mit.html"> Manipal Institute of Technology</a>. 
     <br>
@@ -201,13 +201,6 @@ function googleTranslateElementInit() {
         }
 
 
-        addpaper("An Automated Evaluation Agent for Q&A Pairs and Reticular Synthesis Conditions",
-            "Nakul Rampal<sup><b>&sect</b></sup>, Dongrong Joe Fu<sup><b>&sect</b></sup>, Chengbin Zhao, Hanan S. Murayshid, Albatool A. Abaalkhail, Nahla E. Alhazmi, Majed O. Alawad, Christian Borgs<b>*</b>, Jennifer T. Chayes<b>*</b>, Omar M. Yaghi<b>*</b>",
-            "ChemRxiv, <u>2025</u>",
-            "https://chemrxiv.org/engage/chemrxiv/article-details/686d46e9728bf9025e658164",
-            "We report an automated evaluation agent that can reliably assign classification labels to different Q&A pairs of both single-hop and multi-hop types, as well as to synthesis conditions datasets. Our agent is built around a suite of large language models (LLMs) and is designed to eliminate human involvement in the evaluation process. Through extensive testing of various approaches such as DSPy and finetuning, among others, we found that the performance of a given LLM on these Q&A and synthesis conditions classification tasks is determined primarily by the architecture of the agent where it makes a significant difference how the different inputs are parsed and processed, and how the LLMs are called. We also found that the quality of the prompt provided remains paramount, irrespective of the sophistication of the underlying model. Even models considered state-of-the-art, such as GPT-o1, exhibit poor performance when the prompt lacks sufficient detail and structure. To overcome these challenges, we performed systematic prompt optimization, iteratively refining the prompt to significantly improve classification accuracy and achieve human-level evaluation benchmarks. We show that while LLMs have made remarkable progress, they still fall short of human reasoning without substantial prompt engineering. The agent presented here provides a robust and reproducible tool for evaluating Q&A pairs and synthesis conditions in a scalable manner and can serve as a foundation for future developments in automated evaluation of LLM inputs and outputs.",
-            null, null, null, null)
-
         addpaper("Fully-stretched, single-crystalline polymers of linear poly[n]catenanes",
             "Kaiyu Wang, Nakul Rampal, Ying Liu, Cailing Chen, Ha Nguyen, Felipe Gándara, Vivek Singh, Zichao Rong, Yuang Shi, Sebastian Neumann, Jackson Thomassian, Raynald Giovine, Punit Kumar, Robert Ritchie, Lingmei Liu, Yu Han<b>*</b>, Ting Xu<b>*</b>, Omar Yaghi<b>*</b>",
             "ChemRxiv, <u>2025</u>",
@@ -215,15 +208,12 @@ function googleTranslateElementInit() {
             "Making single crystals of fully stretched polymers is an outstanding challenge because polymers generally crystallize by chain folding. We report a strategy termed 'phantom templation', wherein the metal templates the formation of poly[n]catenanes but is not found in the crystalline product. Based on this strategy, we synthesized the highly sought after linear poly[n]catenanes with molecular weight of 4.5 megadaltons and degree of polymerization of 2,800—over 100 times higher than previous records. Generally, post-synthetic demetalation leads to non-crystalline solids; a challenge addressed by the in situ nature of phantom templation. This also allowed the installed anthracene units to organize through π-π stacking and chain-to-chain packing, giving single crystals of linear poly[n]catenanes as structurally determined by transmission electron microscopy and x-ray diffraction techniques.",
             "https://chemrxiv.org/engage/chemrxiv/article-details/67cb4789fa469535b9674e39", null, null, null, null)
 
-
         addpaper("A Multi-Grained Symmetric Differential Equation Model for Learning Protein-Ligand Binding Dynamics",
             "Shengchao Liu<sup><b>&sect</b></sup>, Weitao Du<sup><b>&sect</b></sup>, Yanjing Li, Zhuoxinran Li, Vignesh Bhethanabotla, <b>Nakul Rampal</b>, Omar Yaghi, Christian Borgs, Anima Anandkumar, Hongyu Guo<b>*</b>, Jennifer Chayes<b>*</b>",
             "arXiv, <u>2024</u>",
             "",
             "In drug discovery, molecular dynamics (MD) simulation for protein-ligand binding provides a powerful tool for predicting binding affinities, estimating transport properties, and exploring pocket sites. There has been a long history of improving the efficiency of MD simulations through better numerical methods and, more recently, by utilizing machine learning (ML) methods. Yet, challenges remain, such as accurate modeling of extended-timescale simulations. To address this issue, we propose NeuralMD, the first ML surrogate that can facilitate numerical MD and provide accurate simulations in protein-ligand binding. We propose a principled approach that incorporates a novel physics-informed multi-grained group symmetric framework. Specifically, we propose (1) a BindingNet model that satisfies group symmetry using vector frames and captures the multi-level protein-ligand interactions, and (2) an augmented neural differential equation solver that learns the trajectory under Newtonian mechanics. For the experiment, we design ten single-trajectory and three multi-trajectory binding simulation tasks. We show the efficiency and effectiveness of NeuralMD, with a 2000× speedup over standard numerical MD simulation and outperforming all other ML approaches by up to ~80% under the stability metric. We further qualitatively show that NeuralMD reaches more stable binding predictions compared to other machine learning methods.",
             "https://arxiv.org/abs/2401.15122", null, null, null, null)
-
-
 
     </script>
 </ul>
@@ -295,6 +285,27 @@ function googleTranslateElementInit() {
             return "the International Colloquium on Automata, Languages and Programming (ICALP " + year + ")"
         }
 
+        addpaper("Synthesis of Highly Crystalline Covalent Organic Frameworks Using Large Language Models",
+            "Kaiyu Wang, Daehyun Daniel Ahn, <b>Nakul Rampal</b>, Jackson Thomassian, Neda S. Sabeva, Om Kannan, Christian Borgs, Jennifer T. Chayes, Omar M. Yaghi<b>*</b>",
+            "Journal of the American Chemical Society, <u>2026</u>",
+            "",
+            "Crystallizing covalent organic frameworks (COFs) remain a central challenge in reticular chemistry, as achieving long-range order typically requires extensive trial-and-error optimization over many months or years. Here, we demonstrate that by integrating a deep research agent within ChatGPT, this process can be markedly accelerated, reducing the crystallization timeline to less than one month. Our approach, termed the LLM For Accelerated Synthesis Technique (LFAST), operates through two interlinked cycles. In the first, we formulated a structured, multistep prompt to guide the deep research agent in mining, correlating, and validating synthesis parameters from the relevant chemical literature. This yielded an expanded and refined design space for reaction condition screening. In the second, these conditions were executed by using an automated synthesis platform coupled with high-throughput powder X-ray diffraction analysis. Using a widely reported β-ketoenamine-linked COF, TpPa-SO3H, as a benchmark, LFAST produced frameworks with diffraction peaks corresponding to a 350% increase in crystallinity index (CI) relative to prior reports. The same protocol enabled the synthesis of an unreported β-ketoenamine-linked COF-2000 with an even higher structural order. To ensure reproducibility and data accessibility, we further introduce a standardized metadata format encompassing synthesis and PXRD data sets. This data-driven methodology transforms the way that COFs are crystallized and significantly accelerates the pace of materials discovery.",
+            "https://pubs.acs.org/doi/abs/10.1021/jacs.5c23233", "MagazineTextNone", "MagazineLinkNone", "CoverLinkNone", "NameMagazineNone")
+
+        addpaper("An Automated Evaluation Agent for Q&A Pairs and Reticular Synthesis Conditions",
+            "Nakul Rampal<sup><b>&sect</b></sup>, Dongrong Joe Fu<sup><b>&sect</b></sup>, Chengbin Zhao, Hanan S. Murayshid, Albatool A. Abaalkhail, Nahla E. Alhazmi, Majed O. Alawad, Christian Borgs<b>*</b>, Jennifer T. Chayes<b>*</b>, Omar M. Yaghi<b>*</b>",
+            "Digital Discovery, <u>2026</u>",
+            "",
+            "We report an automated evaluation agent that can reliably assign classification labels to different Q&A pairs of both single-hop and multi-hop types, as well as to synthesis conditions datasets. Our agent is built around a suite of large language models (LLMs) and is designed to eliminate human involvement in the evaluation process. Through extensive testing of various approaches such as DSPy and finetuning, among others, we found that the performance of a given LLM on these Q&A and synthesis conditions classification tasks is determined primarily by the architecture of the agent where it makes a significant difference how the different inputs are parsed and processed, and how the LLMs are called. We also found that the quality of the prompt provided remains paramount, irrespective of the sophistication of the underlying model. Even models considered state-of-the-art, such as GPT-o1, exhibit poor performance when the prompt lacks sufficient detail and structure. To overcome these challenges, we performed systematic prompt optimization, iteratively refining the prompt to significantly improve classification accuracy and achieve human-level evaluation benchmarks. We show that while LLMs have made remarkable progress, they still fall short of human reasoning without substantial prompt engineering. The agent presented here provides a robust and reproducible tool for evaluating Q&A pairs and synthesis conditions in a scalable manner and can serve as a foundation for future developments in automated evaluation of LLM inputs and outputs.",
+            "https://pubs.rsc.org/en/content/articlehtml/2025/dd/d5dd00413f", "MagazineTextNone", "MagazineLinkNone", "CoverLinkNone", "NameMagazineNone")
+
+        addpaper("Reticular Chemistry: Past, Present, and Future",
+            "Haozhe Li, <b>Nakul Rampal</b>, Omar M. Yaghi<b>*</b>",
+            "Molecular Frontiers Journal, <u>2025</u>",
+            "",
+            "Reticular chemistry—stitching molecular building blocks with strong bonds to produce extended, crystalline, porous frameworks—has enabled a new paradigm in materials design. This article traces the field’s evolution from early molecular hosts to the discovery of metal-organic framework (MOF)-5 and an expansive family of MOFs and covalent organic frameworks (COFs) characterized by ultrahigh surface areas and tunable pore chemistry. Selected examples (MOF-808, MOF-303, MOF-LA2-1, COF-999) demonstrate excellent performance in CO2 capture and atmospheric water harvesting and show great potential for addressing environmental challenges. The article highlights scale-up and commercialization efforts and outlines the “Digital Discovery Cycle,” where AI, robotics, and data-driven synthesis accelerate crystallization and screening. The piece concludes by situating reticular materials as promising, scalable solutions for climate challenges and by mapping directions for future research and deployment.",
+            "https://www.worldscientific.com/doi/full/10.1142/S2529732525300034", "MagazineTextNone", "MagazineLinkNone", "CoverLinkNone", "NameMagazineNone")
+
         addpaper("Comparison of LLMs in Extracting Synthesis Conditions and Generating Q&A Datasets for Metal-Organic Frameworks",
             "Yuang Shi<sup><b>&sect</b></sup>, <b>Nakul Rampal</b><sup><b>&sect</b></sup>, Chengbin Zhao, Joe Fu, Christian Borgs Jennifer T. Chayes, Omar Yaghi<b>*</b>",
             "Digital Discovery, <u>2025</u>",
@@ -309,7 +320,7 @@ function googleTranslateElementInit() {
             "Reticular chemistry is the science of connecting molecular building units into crystalline extended structures such as metal–organic frameworks and covalent organic frameworks. Large language models (LLMs, a type of generative artifcial intelligence system, can augment laboratory research in reticular chemistry by helping scientists to extract knowledge from literature, design materials and collect and interpret experimental data — ultimately accelerating scientifc discovery. In this Perspective, we explore the concepts and methods used to apply LLMs in research, including prompt engineering, knowledge and tool augmentation and fne-tuning. We discuss how ‘chemistry-aware’ models can be tailored to specifc tasks and integrated into existing practices of reticular chemistry, transforming the traditional ‘make, characterize, use’ protocol driven by empirical knowledge into a discovery cycle based on fnding synthesis–structure–property–performance relationships. Furthermore, we explore how modular LLM agents can be integrated into multi-agent laboratory systems, such as self-driving robotic laboratories, to streamline labour-intensive tasks and collaborate with chemists and how LLMs can lower the barriers to applying generative artifcial intelligence and data-driven workfows to such challenging research questions as crystallization. This contribution equips both computational and experimental chemists with the insights necessary to harness LLMs for materials discovery in reticular chemistry and, more broadly, materials science.",
             "https://www.nature.com/articles/s41578-025-00772-8", "Featured on the cover of Nature Reviews Materials (Volume 10 Issue 5)", "MagazineLinkNone", "https://www.nature.com/natrevmats/volumes/10/issues/5", "NameMagazineNone")
 
-        addpaper("Single and Multi-Hop Question-Answering Datasets for Reticular Chemistry with GPT-4-Turbo",
+        addpaper("Large language models for reticular chemistry",
             "<b>Nakul Rampal</b>, Kaiyu Wang, Matthew Burigana, Lingxiang Hou, Juri Al-Johani, Anna Sackmann, Hanan S. Murayshid, Walaa A. AlSumari, Arwa M. AlAbdulkarim, Nahla E. AlHazmi, Majed O. Alawad, Christian Borgs<b>*</b>, Jennifer Chayes<b>*</b>, Omar M. Yaghi<b>*</b>",
             "Journal of Chemical Theory and Computation, <u>2024</u>",
             "",
@@ -476,6 +487,14 @@ function googleTranslateElementInit() {
 
     <ul>
 
+        <li style=\"font-size:17px\"> Invited talk at Shanghai JiaoTong University, 22nd January 2026. </li>
+
+        <li style=\"font-size:17px\"> Invited talk at IIT Bombay (Department of Chemical Engineering), 9th January 2026. </li>
+
+        <li style=\"font-size:17px\"> Invited talk at Saudi Aramco R&DC, 6th November 2025. </li>
+
+        <li style=\"font-size:17px\"> Invited talk at KAUST (Advanced Membranes and Porous Materials Center), 5th November 2025. </li>
+
         <li style=\"font-size:17px\"> Invited talk at the University of Milan (Department of Chemistry), 23<sup>rd</sup> June 2025. </li>
 
         <li style=\"font-size:17px\"> Invited talk at The Chemist’s Interactions – June Seminar at the University of Milan, 23<sup>rd</sup> June 2025. </li>
@@ -536,6 +555,10 @@ function googleTranslateElementInit() {
 
         <li style=\"font-size:17px\"> Co-instructor for a 6-week summer course on ‘Adsorption and Nanoporous Materials’ run by Cambridge Enterprise, Summer 2021 (1 course), 2022 (2 courses), and 2023 (1 course) </li>
 
+        <li style=\"font-size:17px\"> Guest instructor for the course PHYS H190 Physical Systems by and for Artificial Intelligence, Spring 2025, University of California, Berkeley </li>
+
+        <li style=\"font-size:17px\"> Guest instructor for CHEM 96 - Introduction to Research and Study, College of Chemistry, Fall 2024, University of California, Berkeley </li>
+
     </ul>
 
       <hr/>
@@ -553,7 +576,7 @@ function googleTranslateElementInit() {
 
         <li style=\"font-size:17px\"> <u>Zhiling Zheng</u>, PhD in Chemistry, June 2023 to December 2023 – Currently an Assistant Professor at Washington University in St. Louis </li>
 
-        <li style=\"font-size:17px\"> <u>Ali Al-Awadhi</u>, PhD in Chemistry, September 2023 to Ongoing </li>
+        <li style=\"font-size:17px\"> <u>Ali Al-Awadhi</u>, PhD in Chemistry, September 2023 to Dec 2025 — Currently Assistant Professor at UAE University </li>
 
         <li style=\"font-size:17px\"> <u>Kaiyu Wang</u>, PhD in Chemistry, September 2023 to Ongoing </li>
 
@@ -563,9 +586,13 @@ function googleTranslateElementInit() {
 
         <li style=\"font-size:17px\"> <u>Daniel Ahn</u>, PhD in Chemistry, January 2025 to Ongoing </li>
 
-        <li style=\"font-size:17px\"> <u>Dongha Kim</u>, B.S. in Chemical Engineering/Data Science, July 2025 to Ongoing </li>
+        <li style="font-size:17px"> <u>Dongha Kim</u>, B.S. in Chemical Engineering/Data Science, July 2025 to December 2025 </li>
 
-        <li style=\"font-size:17px\"> <u>Om Kannan</u>, B.S. in Applied Math/Data Science, July 2025 to Ongoing </li>
+        <li style="font-size:17px"> <u>Om Kannan</u>, B.S. in Applied Math/Data Science, July 2025 to December 2025 </li>
+
+        <li style=\"font-size:17px\"> <u>Joe Zhou</u>, B.S. in Electrical Engineering & Computer Science, Jan 2026 – Ongoing </li>
+
+        <li style=\"font-size:17px\"> <u>Ruikang Wang</u>, B.S. in Electrical Engineering & Computer Science, Jan 2026 – Ongoing </li>
 
     </ul>
 
@@ -580,7 +607,7 @@ function googleTranslateElementInit() {
     <br>
     </div>
 
-    <p style="text-align:center">Last update: 3<sup>rd</sup> September, 2025. Template adapted (with permission) from <a href=https://www.cs.princeton.edu/~hy2/>Huacheng Yu</a>'s.</p>
+    <p style="text-align:center">Last update: 9<sup>th</sup> March, 2026. Template adapted (with permission) from <a href=https://www.cs.princeton.edu/~hy2/>Huacheng Yu</a>'s.</p>
     <br>
 </div>
 </body>
