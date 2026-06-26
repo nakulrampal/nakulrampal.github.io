@@ -156,6 +156,43 @@ tt {
     margin-bottom: 4px;
 }
 
+.latest-updates {
+    margin: 2px 0 14px;
+    font-family: Lato;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.latest-updates dl {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    column-gap: 10px;
+    row-gap: 4px;
+    max-height: 132px;
+    overflow-y: auto;
+    margin: 4px 0 0;
+    padding: 0;
+}
+
+.latest-updates dt {
+    color: #666;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.latest-updates dd {
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+}
+
+.update-links {
+    display: inline-block;
+    margin-left: 4px;
+}
+
 a:focus,
 button:focus,
 input:focus,
@@ -323,6 +360,25 @@ textarea:focus {
     font-weight: 400;
 }
 
+.new-label {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 5px 2px;
+    color: #d21d1d;
+    background: #fff1a8;
+    border: 1px solid #e2b642;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    vertical-align: 2px;
+}
+
+.latest-updates .new-label {
+    margin-left: 0;
+    margin-right: 6px;
+}
+
 .paper-links {
     margin-left: 4px;
     vertical-align: 1px;
@@ -397,6 +453,54 @@ textarea:focus {
     color: #3c4650;
     background: #e3e7eb;
     border-color: #c2cad2;
+}
+
+.paper-links .badge-resource,
+.latest-updates .badge-resource,
+.talk-links .badge-resource {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.paper-links .badge-github,
+.latest-updates .badge-github,
+.talk-links .badge-github {
+    color: #1f2328;
+    background: #eceff2;
+    border-color: #ccd2d8;
+}
+
+.paper-links .badge-huggingface,
+.latest-updates .badge-huggingface,
+.talk-links .badge-huggingface {
+    color: #6d5215;
+    background: #fff0c2;
+    border-color: #e1c878;
+}
+
+.latest-updates .badge-youtube,
+.talk-links .badge-youtube {
+    color: #8a1f1f;
+    background: #f6dddd;
+    border-color: #dea6a6;
+}
+
+.resource-logo {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+.resource-logo-github {
+    flex: 0 0 14px;
+}
+
+.resource-logo-hf {
+    width: auto;
+    height: auto;
+    font-size: 12px;
+    line-height: 1;
 }
 
 .paper-links a:hover .badge,
