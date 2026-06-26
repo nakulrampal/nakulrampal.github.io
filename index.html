@@ -78,35 +78,30 @@ document.addEventListener("DOMContentLoaded", function () {
         var items = Array.prototype.slice.call(publicationList.querySelectorAll(".publication-item"));
         if (!items.length) return;
 
-        var grouped = document.createElement("div");
-        grouped.className = "publication-topics";
-
         var filter = document.createElement("div");
         filter.className = "topic-filter";
         var filterLabel = document.createElement("label");
         filterLabel.setAttribute("for", "publication-topic-filter");
-        filterLabel.textContent = "View by topic:";
+        filterLabel.textContent = "View:";
         filter.appendChild(filterLabel);
 
         var filterSelect = document.createElement("select");
         filterSelect.id = "publication-topic-filter";
         filterSelect.className = "topic-filter-select";
 
-        function addFilterOption(label, topic) {
+        function addFilterOption(label, value) {
             var option = document.createElement("option");
-            option.value = topic;
+            option.value = value;
             option.textContent = label;
             filterSelect.appendChild(option);
         }
 
-        addFilterOption("All topics", "all");
+        addFilterOption("Chronological", "chronological");
+        addFilterOption("Grouped by topic", "all-topics");
 
-        filterSelect.addEventListener("change", function () {
-            var selectedTopic = filterSelect.value;
-            Array.prototype.slice.call(grouped.querySelectorAll(".publication-topic")).forEach(function (topicSection) {
-                topicSection.hidden = selectedTopic !== "all" && topicSection.getAttribute("data-topic") !== selectedTopic;
-            });
-        });
+        var grouped = document.createElement("div");
+        grouped.className = "publication-topics";
+        grouped.hidden = true;
 
         topics.forEach(function (topic) {
             var topicItems = items.filter(function (item) {
@@ -115,27 +110,60 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!topicItems.length) return;
 
             addFilterOption(topic.key, topic.key);
+        });
 
-            var section = document.createElement("section");
-            section.className = "publication-topic";
-            section.setAttribute("data-topic", topic.key);
-
-            var heading = document.createElement("h3");
-            heading.textContent = topic.key;
-            section.appendChild(heading);
-
-            var list = document.createElement("ul");
-            topicItems.forEach(function (item) {
-                list.appendChild(item);
+        function renderChronologicalView() {
+            items.forEach(function (item) {
+                publicationList.appendChild(item);
             });
-            section.appendChild(list);
-            grouped.appendChild(section);
+            publicationList.hidden = false;
+            grouped.hidden = true;
+            grouped.innerHTML = "";
+        }
+
+        function renderTopicView(selectedTopic) {
+            grouped.innerHTML = "";
+            publicationList.hidden = true;
+
+            topics.forEach(function (topic) {
+                if (selectedTopic !== "all-topics" && topic.key !== selectedTopic) return;
+
+                var topicItems = items.filter(function (item) {
+                    return item.getAttribute("data-topic") === topic.key;
+                });
+                if (!topicItems.length) return;
+
+                var section = document.createElement("section");
+                section.className = "publication-topic";
+                section.setAttribute("data-topic", topic.key);
+
+                var heading = document.createElement("h3");
+                heading.textContent = topic.key;
+                section.appendChild(heading);
+
+                var list = document.createElement("ul");
+                topicItems.forEach(function (item) {
+                    list.appendChild(item);
+                });
+                section.appendChild(list);
+                grouped.appendChild(section);
+            });
+
+            grouped.hidden = false;
+        }
+
+        filterSelect.addEventListener("change", function () {
+            var selectedView = filterSelect.value;
+            if (selectedView === "chronological") {
+                renderChronologicalView();
+                return;
+            }
+            renderTopicView(selectedView);
         });
 
         filter.appendChild(filterSelect);
         publicationList.parentNode.insertBefore(filter, publicationList);
-        publicationList.parentNode.insertBefore(grouped, publicationList);
-        publicationList.remove();
+        publicationList.parentNode.insertBefore(grouped, publicationList.nextSibling);
     }
 
     categorizePublications();
@@ -155,6 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var label = document.createElement("span");
         label.textContent = heading.textContent;
+        button.setAttribute("data-label", heading.textContent);
         button.appendChild(label);
 
         heading.textContent = "";
@@ -183,6 +212,99 @@ document.addEventListener("DOMContentLoaded", function () {
         content.hidden = !shouldOpen;
         button.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
     });
+
+    function typeSectionLabel(button) {
+        if (!button || button.isTypingLabel) return;
+        var label = button.querySelector("span");
+        var text = button.getAttribute("data-label");
+        if (!label || !text) return;
+        button.isTypingLabel = true;
+        button.classList.add("is-typing");
+        label.textContent = "";
+        var index = 0;
+        var interval = window.setInterval(function () {
+            label.textContent = text.slice(0, index + 1);
+            index += 1;
+            if (index >= text.length) {
+                window.clearInterval(interval);
+                window.setTimeout(function () {
+                    label.textContent = text;
+                    button.classList.remove("is-typing");
+                    button.isTypingLabel = false;
+                    if (!button.matches(":hover") && document.activeElement !== button) {
+                        button.classList.remove("is-hovered");
+                    }
+                }, 500);
+            }
+        }, 35);
+    }
+
+    document.querySelectorAll(".section-toggle").forEach(function (button) {
+        button.addEventListener("mouseenter", function () {
+            button.classList.add("is-hovered");
+            typeSectionLabel(button);
+        });
+        button.addEventListener("mouseleave", function () {
+            if (!button.isTypingLabel) {
+                button.classList.remove("is-hovered");
+            }
+        });
+        button.addEventListener("focus", function () {
+            button.classList.add("is-hovered");
+            typeSectionLabel(button);
+        });
+        button.addEventListener("blur", function () {
+            if (!button.isTypingLabel) {
+                button.classList.remove("is-hovered");
+            }
+        });
+    });
+
+    var nameHeading = document.querySelector(".profile-header h1");
+    if (nameHeading) {
+        nameHeading.setAttribute("tabindex", "0");
+        nameHeading.setAttribute("data-label", nameHeading.textContent);
+        nameHeading.addEventListener("mouseenter", function () {
+            typeNameHeading(nameHeading);
+        });
+        nameHeading.addEventListener("focus", function () {
+            typeNameHeading(nameHeading);
+        });
+        nameHeading.addEventListener("mouseleave", function () {
+            if (!nameHeading.isTypingLabel) {
+                nameHeading.classList.remove("is-typing");
+            }
+        });
+        nameHeading.addEventListener("blur", function () {
+            if (!nameHeading.isTypingLabel) {
+                nameHeading.classList.remove("is-typing");
+            }
+        });
+    }
+
+    function typeNameHeading(heading) {
+        if (!heading || heading.isTypingLabel) return;
+        var text = heading.getAttribute("data-label");
+        if (!text) return;
+        heading.isTypingLabel = true;
+        heading.classList.add("is-typing");
+        heading.textContent = "";
+        var index = 0;
+        var interval = window.setInterval(function () {
+            heading.textContent = text.slice(0, index + 1);
+            index += 1;
+            if (index >= text.length) {
+                window.clearInterval(interval);
+                window.setTimeout(function () {
+                    heading.textContent = text;
+                    heading.isTypingLabel = false;
+                    if (!heading.matches(":hover") && document.activeElement !== heading) {
+                        heading.classList.remove("is-typing");
+                    }
+                }, 500);
+            }
+        }, 35);
+    }
 
     function openSectionById(id) {
         if (!id) return;
@@ -268,7 +390,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <div class="col-sm-7 col-md-8">
 <div class="clearfix visible-xs-block"></div>
 <h1>Nakul Rampal</h1>
-    <h4><a href="https://twitter.com/RampalNakul" class="twitter-follow-button">Follow @RampalNakul</a></h4>
+    <h4><a href="https://twitter.com/RampalNakul" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow Me</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></h4>
 
 <p style="font-size: 18px">BIDMaP Fellow<br>
 <a href="https://bidmap.berkeley.edu/">Bakar Institute of Digital Materials for the Planet</a> <br>
@@ -424,12 +546,11 @@ function googleTranslateElementInit() {
             list_entry += "<b>" + title + "</b>"
             list_entry += "<br><span class=\"paper-authors\">" + compactAuthors(authors) + "</span>"
             list_entry += "<br>" + conference
-            if (hasPaperUrl(link) || hasPaperUrl(arxiv_link) || abstract != null || errata_link != null || cover != null) {
+            var paperUrl = hasPaperUrl(arxiv_link) ? arxiv_link : link;
+            if (hasPaperUrl(paperUrl) || abstract != null || errata_link != null || cover != null) {
                 list_entry += " <span class=\"paper-links\">"
-                if (hasPaperUrl(link))
-                    list_entry += paperActionLink(link, "Link", "P")
-                if (hasPaperUrl(arxiv_link) && arxiv_link !== link)
-                    list_entry += paperActionLink(arxiv_link, "Link", "P")
+                if (hasPaperUrl(paperUrl))
+                    list_entry += paperActionLink(paperUrl, "Link", "P")
                 if (abstract != null)
                     list_entry += paperActionLink("javascript:display_abstract(" + paper_count + ")", "abstract", "A")
                 if (errata_link != null)
@@ -539,12 +660,11 @@ function googleTranslateElementInit() {
             list_entry += "<b>" + title + "</b>"
             list_entry += "<br><span class=\"paper-authors\">" + compactAuthors(authors) + "</span>"
             list_entry += "<br>" + conference
-            if (hasPaperUrl(link) || hasPaperUrl(arxiv_link) || abstract != null || errata_link != "MagazineLinkNone" || cover != "CoverLinkNone") {
+            var paperUrl = hasPaperUrl(arxiv_link) ? arxiv_link : link;
+            if (hasPaperUrl(paperUrl) || abstract != null || errata_link != "MagazineLinkNone" || cover != "CoverLinkNone") {
                 list_entry += " <span class=\"paper-links\">"
-                if (hasPaperUrl(link))
-                    list_entry += paperActionLink(link, "Link", "P")
-                if (hasPaperUrl(arxiv_link) && arxiv_link !== link)
-                    list_entry += paperActionLink(arxiv_link, "Link", "P")
+                if (hasPaperUrl(paperUrl))
+                    list_entry += paperActionLink(paperUrl, "Link", "P")
                 if (abstract != null)
                     list_entry += paperActionLink("javascript:display_abstract(" + paper_count + ")", "abstract", "A")
                 if (errata_link != "MagazineLinkNone") {
