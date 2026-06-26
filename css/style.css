@@ -392,7 +392,10 @@ textarea:focus {
     line-height: 1.2;
 }
 
-.paper-links .badge {
+.paper-links .badge,
+.latest-updates .badge,
+.talk-links .badge {
+    display: inline-block;
     border: 1px solid transparent;
     border-radius: 4px;
     font-family: Lato, Arial, sans-serif;
@@ -400,6 +403,20 @@ textarea:focus {
     font-weight: 600;
     letter-spacing: 0;
     text-transform: none;
+}
+
+.latest-updates .badge-warning,
+.talk-links .badge-warning {
+    color: #66500f;
+    background: #f4e6aa;
+    border-color: #d8c26c;
+}
+
+.latest-updates .badge-info,
+.talk-links .badge-info {
+    color: #1f5c68;
+    background: #d2ebf0;
+    border-color: #9fcbd5;
 }
 
 @keyframes cursor-blink {
@@ -489,10 +506,17 @@ textarea:focus {
 .resource-logo {
     width: 14px;
     height: 14px;
+    max-width: 14px;
+    max-height: 14px;
     fill: currentColor;
+    vertical-align: -2px;
 }
 
 .resource-logo-github {
+    flex: 0 0 14px;
+}
+
+.resource-logo-youtube {
     flex: 0 0 14px;
 }
 
@@ -576,5 +600,47 @@ img {
     .topic-filter-select {
         width: 100%;
         margin-top: 6px;
+    }
+
+    .latest-updates {
+        font-size: 15px;
+        line-height: 23px;
+    }
+
+    .latest-updates dl {
+        grid-template-columns: 42px minmax(0, 1fr);
+        max-height: 150px;
+        column-gap: 8px;
+    }
+
+    .latest-updates dt,
+    .latest-updates dd {
+        font-size: 15px;
+        line-height: 23px;
+    }
+
+    .new-label {
+        padding: 1px 4px 2px;
+        font-size: 10px;
+        line-height: 1;
+    }
+
+    .latest-updates .badge,
+    .talk-links .badge,
+    .paper-links .badge {
+        font-size: 11px;
+        line-height: 1.15;
+    }
+
+    .resource-logo {
+        width: 12px;
+        height: 12px;
+        max-width: 12px;
+        max-height: 12px;
+    }
+
+    .resource-logo-github,
+    .resource-logo-youtube {
+        flex-basis: 12px;
     }
 }
