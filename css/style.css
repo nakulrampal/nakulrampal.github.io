@@ -3,7 +3,7 @@ h1 {
     font-size: 24px;
     font-style: normal;
     font-variant: normal;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 26.4px;
 }
 
@@ -12,7 +12,7 @@ h2 {
     font-size: 20px;
     font-style: normal;
     font-variant: normal;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 15.4px;
 }
 
@@ -21,7 +21,7 @@ h3 {
     font-size: 14px;
     font-style: normal;
     font-variant: normal;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 15.4px;
 }
 
@@ -31,22 +31,337 @@ p {
     font-style: normal;
     font-variant: normal;
     font-weight: 400;
-    line-height: 22px;
+    line-height: 25px;
 }
 
-ul li{
-//    font-family: Lato;
+b,
+strong {
+    font-weight: 600;
+}
+
+ul li {
     font-size: 17px;
-//    font-style: normal;
-    font-weight: normal;
-//    font-variant: normal;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 27px;
     text-align: justify;
 }
 
 pre {
     font-family: Lato;
-    overflow-x:hidden;
-    white-space:pre-wrap;
+    overflow-x: hidden;
+    white-space: pre-wrap;
+}
+
+.page {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.skip-link {
+    position: absolute;
+    left: 12px;
+    top: -48px;
+    z-index: 1000;
+    padding: 8px 12px;
+    color: #fff;
+    background: #000;
+}
+
+.skip-link:focus {
+    top: 12px;
+    color: #fff;
+}
+
+.profile-header {
+    display: flex;
+    align-items: flex-start;
+    row-gap: 24px;
+}
+
+.profile-photo {
+    max-height: 300px;
+}
+
+.twitter-follow-button {
+    display: inline-block;
+    padding: 4px 10px;
+    color: #fff;
+    background: #000;
+    border-radius: 999px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-decoration: none;
+}
+
+.twitter-follow-button:hover,
+.twitter-follow-button:focus {
+    color: #fff;
+    background: #222;
+    text-decoration: none;
+}
+
+p[align="justify"] {
+    text-align: left;
+}
+
+tt {
+    overflow-wrap: anywhere;
+}
+
+.translate-widget {
+    margin-top: 10px;
+    margin-bottom: 12px;
+    font-family: Lato;
+    font-size: 17px;
+    line-height: 25px;
+}
+
+.translate-widget span {
+    display: block;
+    margin-bottom: 4px;
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #9cc7e6;
+    outline-offset: 2px;
+}
+
+.section-nav {
+    font-family: Lato;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.collapsible-section {
+    border-top: 1px solid #eee;
+}
+
+.collapsible-section:first-child {
+    border-top: 0;
+}
+
+.collapsible-section h2 {
+    margin: 0;
+}
+
+.section-toggle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    color: inherit;
+    background: transparent;
+    border: 0;
+    font: inherit;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 15.4px;
+    text-align: left;
+}
+
+.section-toggle::after {
+    content: "+";
+    flex: 0 0 auto;
+    margin-left: 16px;
+    color: #777;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.section-toggle[aria-expanded="true"]::after {
+    content: "-";
+}
+
+.section-toggle:hover {
+    color: #007bff;
+}
+
+.section-content {
+    padding-bottom: 16px;
+}
+
+.topic-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 10px 0 18px;
+    font-family: Lato;
+    font-size: 15px;
+}
+
+.topic-filter label {
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.topic-filter-select {
+    width: min(100%, 420px);
+    max-width: 100%;
+    padding: 3px 6px;
+    color: #222;
+    background: #fff;
+    border: 1px solid #bdbdbd;
+    border-radius: 3px;
+}
+
+.publication-topic {
+    margin-top: 18px;
+}
+
+.publication-topic h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.publication-item {
+    margin-bottom: 18px;
+}
+
+.publication-item:last-child {
+    margin-bottom: 0;
+}
+
+.paper-authors {
+    color: #666;
+    font-weight: 400;
+}
+
+.paper-note {
+    color: #9b5a5a;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.paper-links {
+    margin-left: 4px;
+    vertical-align: 1px;
+    white-space: normal;
+}
+
+.badge {
+    margin-top: 4px;
+    margin-right: 4px;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.paper-links .badge {
+    border: 1px solid transparent;
+    font-weight: 600;
+}
+
+.paper-links .badge-success {
+    color: #2d6a3f;
+    background: #eaf6ee;
+    border-color: #c9e4d0;
+}
+
+.paper-links .badge-warning {
+    color: #6f5a1d;
+    background: #fbf4d9;
+    border-color: #eadb9b;
+}
+
+.paper-links .badge-danger {
+    color: #7a3a3a;
+    background: #f8e8e8;
+    border-color: #e9c7c7;
+}
+
+.paper-links .badge-info {
+    color: #2c6572;
+    background: #e6f4f7;
+    border-color: #c2dde5;
+}
+
+.paper-links .badge-dark {
+    color: #4f5b66;
+    background: #f1f3f5;
+    border-color: #d8dee4;
+}
+
+.paper-links a:hover .badge,
+.paper-links a:focus .badge {
+    color: #2f6fa7;
+    background: #eaf2f8;
+    border-color: #c9dbe8;
+}
+
+iframe {
+    display: block;
+    max-width: 100%;
+    margin: 8px 0 18px;
+    aspect-ratio: 4 / 3;
+    height: auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.supsub {
+    display: inline-block;
+}
+
+.supsub sup,
+.supsub sub {
+    position: relative;
+    display: block;
+    line-height: .1em;
+}
+
+.supsub sub {
+    top: .5em;
+}
+
+.llm-statement {
+    max-width: none;
+    margin: 18px auto 8px;
+    color: #555;
+    font-size: 15px;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .page {
+        padding: 20px 18px 28px;
+    }
+
+    .profile-header {
+        display: block;
+    }
+
+    .profile-photo {
+        max-width: 220px;
+        margin-bottom: 20px;
+    }
+
+    .section-nav {
+        font-size: 20px;
+        line-height: 1.6;
+    }
+
+    ul li {
+        text-align: left;
+    }
+
+    .topic-filter {
+        display: block;
+    }
+
+    .topic-filter-select {
+        width: 100%;
+        margin-top: 6px;
+    }
 }

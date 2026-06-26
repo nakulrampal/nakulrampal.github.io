@@ -2,17 +2,27 @@
 <html lang="en">
 
 <head>
-    <title>Nakul Rampal's Homepage</title>
+    <title>Nakul Rampal | AI for Chemistry and Materials Science</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Nakul Rampal">
-    <meta name="keywords" content="Nakul Rampal, Nakul Rampal Cambridge">
+    <meta name="keywords" content="Nakul Rampal, AI for chemistry, artificial intelligence for chemistry, artificial intelligence for materials science, large language models, LLMs, AI agents, agent harnesses, AI alignment, scientific datasets, scientific benchmarks, evaluation frameworks, scientific discovery, self-driving labs, automated synthesis, automated characterization, generative AI, reticular chemistry, metal-organic frameworks, MOFs, covalent organic frameworks, COFs, materials discovery, computational chemistry, University of California Berkeley, BIDMaP">
     <meta name="robots" content="index,follow">
-    <meta name="description" content="Homepage of Nakul Rampal">
+    <meta name="description" content="Nakul Rampal is a BIDMaP Fellow at UC Berkeley working at the intersection of AI and chemistry, developing LLMs, AI agents, datasets, benchmarks, evaluation frameworks, and self-driving labs for scientific discovery.">
+    <link rel="canonical" href="https://www.nakulrampal.xyz/">
+    <meta property="og:title" content="Nakul Rampal | AI for Chemistry and Materials Science">
+    <meta property="og:description" content="BIDMaP Fellow at UC Berkeley developing LLMs, AI agents, datasets, benchmarks, evaluation frameworks, and self-driving labs for scientific discovery.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nakulrampal.xyz/">
+    <meta property="og:image" content="https://www.nakulrampal.xyz/images/profile-picture-latest.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nakul Rampal | AI for Chemistry and Materials Science">
+    <meta name="twitter:description" content="BIDMaP Fellow at UC Berkeley developing LLMs, AI agents, datasets, benchmarks, evaluation frameworks, and self-driving labs for scientific discovery.">
+    <meta name="twitter:image" content="https://www.nakulrampal.xyz/images/profile-picture-latest.jpg">
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-  	<link rel="stylesheet" type="text/css" media="screen,print" href="css/style.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
-	<link rel="icon" type="image/png" href="./images/logos/princeton.png">
+  	<link rel="stylesheet" type="text/css" media="screen,print" href="css/style.css" />
+	<link rel="icon" type="image/jpeg" href="./images/profile-picture-latest.jpg">
 </head>
 
 <script>
@@ -28,6 +38,202 @@ function display_abstract(paper_count) {
     }
     dest.blur();
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    var main = document.getElementById("content");
+    if (!main) return;
+
+    function categorizePublications() {
+        var publicationsHeading = document.getElementById("publications");
+        if (!publicationsHeading) return;
+        var publicationList = null;
+        var nextPublicationNode = publicationsHeading.nextSibling;
+        while (nextPublicationNode && !(nextPublicationNode.nodeType === 1 && nextPublicationNode.tagName === "H2")) {
+            if (nextPublicationNode.nodeType === 1 && nextPublicationNode.tagName === "UL") {
+                publicationList = nextPublicationNode;
+                break;
+            }
+            nextPublicationNode = nextPublicationNode.nextSibling;
+        }
+        if (!publicationList) return;
+
+        var topics = [
+            {
+                key: "AI, LLMs, and agents for scientific discovery"
+            },
+            {
+                key: "Datasets, benchmarks, evaluation, and reproducibility"
+            },
+            {
+                key: "Self-driving labs and AI-guided reticular synthesis"
+            },
+            {
+                key: "Porous materials for climate, energy, and separations"
+            },
+            {
+                key: "Molecular simulation, framework design, and applications"
+            }
+        ];
+
+        var items = Array.prototype.slice.call(publicationList.querySelectorAll(".publication-item"));
+        if (!items.length) return;
+
+        var grouped = document.createElement("div");
+        grouped.className = "publication-topics";
+
+        var filter = document.createElement("div");
+        filter.className = "topic-filter";
+        var filterLabel = document.createElement("label");
+        filterLabel.setAttribute("for", "publication-topic-filter");
+        filterLabel.textContent = "View by topic:";
+        filter.appendChild(filterLabel);
+
+        var filterSelect = document.createElement("select");
+        filterSelect.id = "publication-topic-filter";
+        filterSelect.className = "topic-filter-select";
+
+        function addFilterOption(label, topic) {
+            var option = document.createElement("option");
+            option.value = topic;
+            option.textContent = label;
+            filterSelect.appendChild(option);
+        }
+
+        addFilterOption("All topics", "all");
+
+        filterSelect.addEventListener("change", function () {
+            var selectedTopic = filterSelect.value;
+            Array.prototype.slice.call(grouped.querySelectorAll(".publication-topic")).forEach(function (topicSection) {
+                topicSection.hidden = selectedTopic !== "all" && topicSection.getAttribute("data-topic") !== selectedTopic;
+            });
+        });
+
+        topics.forEach(function (topic) {
+            var topicItems = items.filter(function (item) {
+                return item.getAttribute("data-topic") === topic.key;
+            });
+            if (!topicItems.length) return;
+
+            addFilterOption(topic.key, topic.key);
+
+            var section = document.createElement("section");
+            section.className = "publication-topic";
+            section.setAttribute("data-topic", topic.key);
+
+            var heading = document.createElement("h3");
+            heading.textContent = topic.key;
+            section.appendChild(heading);
+
+            var list = document.createElement("ul");
+            topicItems.forEach(function (item) {
+                list.appendChild(item);
+            });
+            section.appendChild(list);
+            grouped.appendChild(section);
+        });
+
+        filter.appendChild(filterSelect);
+        publicationList.parentNode.insertBefore(filter, publicationList);
+        publicationList.parentNode.insertBefore(grouped, publicationList);
+        publicationList.remove();
+    }
+
+    categorizePublications();
+
+    var headings = Array.prototype.slice.call(main.querySelectorAll(":scope > h2[id]"));
+
+    headings.forEach(function (heading) {
+        var section = document.createElement("section");
+        section.className = "collapsible-section";
+        section.setAttribute("aria-labelledby", heading.id);
+
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "section-toggle";
+        button.setAttribute("aria-controls", heading.id + "-content");
+        button.setAttribute("onclick", "return togglePageSection(event, '" + heading.id + "')");
+
+        var label = document.createElement("span");
+        label.textContent = heading.textContent;
+        button.appendChild(label);
+
+        heading.textContent = "";
+        heading.appendChild(button);
+
+        var content = document.createElement("div");
+        content.className = "section-content";
+        content.id = heading.id + "-content";
+
+        main.insertBefore(section, heading);
+        section.appendChild(heading);
+
+        var next = section.nextSibling;
+        while (next && !(next.nodeType === 1 && next.tagName === "H2")) {
+            var current = next;
+            next = next.nextSibling;
+            if (current.nodeType === 1 && current.tagName === "HR") {
+                current.remove();
+                break;
+            }
+            content.appendChild(current);
+        }
+        section.appendChild(content);
+
+        var shouldOpen = window.location.hash === "#" + heading.id;
+        content.hidden = !shouldOpen;
+        button.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+    });
+
+    function openSectionById(id) {
+        if (!id) return;
+        var targetHeading = document.getElementById(id);
+        if (!targetHeading) return;
+        var targetSection = targetHeading.closest(".collapsible-section");
+        if (!targetSection) return;
+        var targetButton = targetSection.querySelector(".section-toggle");
+        var targetContent = targetSection.querySelector(".section-content");
+        targetButton.setAttribute("aria-expanded", "true");
+        targetContent.hidden = false;
+    }
+
+    window.togglePageSection = function (event, id) {
+        if (event) event.preventDefault();
+        var targetHeading = document.getElementById(id);
+        if (!targetHeading) return false;
+        var targetSection = targetHeading.closest(".collapsible-section");
+        if (!targetSection) return false;
+        var targetButton = targetSection.querySelector(".section-toggle");
+        var targetContent = targetSection.querySelector(".section-content");
+        var isOpen = targetButton.getAttribute("aria-expanded") === "true";
+        targetButton.setAttribute("aria-expanded", isOpen ? "false" : "true");
+        targetContent.hidden = isOpen;
+        return false;
+    };
+
+    function openSectionFromHash() {
+        openSectionById(window.location.hash.slice(1));
+    }
+
+    window.openPageSection = function (event, id) {
+        if (event) event.preventDefault();
+        openSectionById(id);
+        if (window.location.hash !== "#" + id) {
+            history.pushState(null, "", "#" + id);
+        }
+        return false;
+    };
+
+    document.querySelectorAll(".section-nav a[href^='#']").forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            var id = link.getAttribute("href").slice(1);
+            event.preventDefault();
+            window.openPageSection(event, id);
+        });
+    });
+
+    window.addEventListener("hashchange", openSectionFromHash);
+    openSectionFromHash();
+});
 </script>
 
 <style>
@@ -49,73 +255,74 @@ function display_abstract(paper_count) {
 </style>
 
 <body>
-<div class="container">
-<br>
-<br>
+<a class="skip-link" href="#bio">Skip to main content</a>
+<div class="container page">
 
-<div class="row">
-<div class="col-lg-6">
+<header class="row profile-header">
+<div class="col-sm-5 col-md-4">
 <a href="photo.png">
-<img class="img-responsive" style="max-height:300px;" src="./images/profile-picture-latest.jpg"/>
+<img class="img-responsive profile-photo" src="./images/profile-picture-latest.jpg" alt="Nakul Rampal, BIDMaP Fellow at UC Berkeley working on AI, chemistry, materials science, and self-driving labs"/>
 </a>
 </div>
 
-<div class="col-lg-6">
+<div class="col-sm-7 col-md-8">
 <div class="clearfix visible-xs-block"></div>
 <h1>Nakul Rampal</h1>
-    <h4><a href="https://twitter.com/RampalNakul" class="twitter-follow-button" data-show-count="false">Follow Me</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></h4>
+    <h4><a href="https://twitter.com/RampalNakul" class="twitter-follow-button">Follow @RampalNakul</a></h4>
 
 <p style="font-size: 18px">BIDMaP Fellow<br>
-<a href="">Bakar Institute of Digital Materials for the Planet</a> <br>
-<a href="">University of California, Berkeley</a> <br>
+<a href="https://bidmap.berkeley.edu/">Bakar Institute of Digital Materials for the Planet</a> <br>
+<a href="https://www.berkeley.edu/">University of California, Berkeley</a> <br>
 
 <b>Email</b>: <tt>nakul.rampal [at] berkeley [dot] edu</tt> <br>
-<b>Office</b> 373 Cory Hall Berkeley, CA 94720-1770 <br>
+<b>Office</b>: 373 Cory Hall Berkeley, CA 94720-1770 <br>
     <br>
 <b>Current Research Interests</b>:<br>
-<span style="font-size: 17px">My research applies generative AI to reticular chemistry, with a focus on creating synthetic datasets, developing evaluation frameworks and benchmarks, and integrating AI into computational and experimental pipelines. I am particularly interested in how these tools can accelerate the design and application of MOFs, COFs, and related materials for hydrogen storage, carbon capture, and water harvesting.</span>
-    <br><br>
-    To view this page in a different language, please select here:
+<span style="font-size: 17px">I work at the intersection of AI and chemistry, developing LLMs, AI agents, agent harnesses, alignment methods, datasets, benchmarks, and evaluation frameworks for scientific discovery. I also have experience building self-driving labs, where automated synthesis and characterization are integrated with AI systems that interact with the physical world.</span>
+    <br>
+</p>
+<div class="translate-widget">
+    <span>To view this page in a different language, please select here:</span>
     <div id="google_translate_element"></div>
+</div>
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
 }
 </script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-</p>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </div>
-</div>
+</header>
 
 <hr/>
-<h3>
-  <a href="#bio">Bio</a> /
-    <a href="#preprints">Preprints</a> /
-  <a href="#publications">Publications</a> /
-  <a href="#talks">Talks</a> /
-    <a href="#awards">Awards</a> /
-    <a href="#Teaching">Teaching</a> /
-    <a href="#Mentoring">Mentoring</a> /
+<nav class="section-nav" aria-label="Page sections">
+  <a href="#bio" onclick="return openPageSection(event, 'bio')">Bio</a> /
+    <a href="#preprints" onclick="return openPageSection(event, 'preprints')">Preprints</a> /
+  <a href="#publications" onclick="return openPageSection(event, 'publications')">Publications</a> /
+  <a href="#talks" onclick="return openPageSection(event, 'talks')">Talks</a> /
+    <a href="#awards" onclick="return openPageSection(event, 'awards')">Awards</a> /
+    <a href="#Teaching" onclick="return openPageSection(event, 'Teaching')">Teaching</a> /
+    <a href="#Mentoring" onclick="return openPageSection(event, 'Mentoring')">Mentoring</a> /
   <a href="files/CV.pdf">CV</a> /
-  <a href="https://scholar.google.com/citations?user=ujHDA34AAAAJ&hl=en">Google scholar</a>
+  <a href="https://scholar.google.com/citations?user=ujHDA34AAAAJ&hl=en">Google Scholar</a>
 
-</h3>
+</nav>
 <hr/>
 
+<main id="content">
 <h2 id="bio">Bio</h2>
 <p align="justify">
-    I am currently a <a href="https://bidmap.berkeley.edu/people">BIDMaP Fellow</a> at the University of California, Berkeley advised by <a href="http://yaghi.berkeley.edu/">Omar Yaghi</a>, <a href="http://jenniferchayes.com/">Jennifer Chayes</a>, and <a href="http://christianborgs.com/">Christian Borgs</a>. I completed by PhD at the Department of Chemical Engineering & Biotechnology at the <a href="https://www.cam.ac.uk/">University of Cambridge</a> where I was fortunate to be advised by <a href="https://www.ceb.cam.ac.uk/directory/david-fairen-jimenez">David Fairen-Jimenez</a> . Prior to Cambridge, I completed my MS at the <a href="https://chemistry.berkeley.edu/cbe">University of California, Berkeley</a> where I was fortunate to be advised by <a href="https://chemistry.berkeley.edu/faculty/cbe/smit">Berend Smit</a>.
+    I am currently a <a href="https://bidmap.berkeley.edu/people">BIDMaP Fellow</a> at the University of California, Berkeley, advised by <a href="http://yaghi.berkeley.edu/">Omar Yaghi</a>, <a href="http://jenniferchayes.com/">Jennifer Chayes</a>, and <a href="http://christianborgs.com/">Christian Borgs</a>. I work at the intersection of AI and chemistry, developing LLMs, AI agents, agent harnesses, alignment methods, datasets, benchmarks, and evaluation frameworks for scientific discovery, with experience building self-driving labs (automated synthesis + characterization) that integrate AI with the physical world. I am particularly interested in applying these tools to reticular chemistry, metal-organic frameworks (MOFs), covalent organic frameworks (COFs), and porous materials discovery. I completed my PhD in the Department of Chemical Engineering & Biotechnology at the <a href="https://www.cam.ac.uk/">University of Cambridge</a>, where I was fortunate to be advised by <a href="https://www.ceb.cam.ac.uk/directory/david-fairen-jimenez">David Fairen-Jimenez</a>. Prior to Cambridge, I completed my MS at the <a href="https://chemistry.berkeley.edu/cbe">University of California, Berkeley</a>, where I was fortunate to be advised by <a href="https://chemistry.berkeley.edu/faculty/cbe/smit">Berend Smit</a>.
 
-    Prior to that,  I did my undergraduate research at <a href="https://www.iitb.ac.in/">IIT Bombay</a> where I was fortunate to be advised by <a href="https://www.che.iitb.ac.in/faculty/ateeque-malani">Ateeque Malani</a>. I completed by undergraduate degree at <a href="https://manipal.edu/mit.html"> Manipal Institute of Technology</a>. 
+    Prior to that, I did my undergraduate research at <a href="https://www.iitb.ac.in/">IIT Bombay</a>, where I was fortunate to be advised by <a href="https://www.che.iitb.ac.in/faculty/ateeque-malani">Ateeque Malani</a>. I completed my undergraduate degree at <a href="https://manipal.edu/mit.html">Manipal Institute of Technology</a>. 
     <br>
     <br>
     Here's a video explaining the research I do:
     <br>
     <br>
 
-    <iframe width="420" height="315" src="https://www.youtube.com/embed/GVWpxMAiIVI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="420" height="315" src="https://www.youtube.com/embed/GVWpxMAiIVI" title="Video explaining Nakul Rampal's research" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     <br>
     <br>
@@ -123,7 +330,7 @@ function googleTranslateElementInit() {
     <br>
     <br>
 
-    <iframe width="420" height="315" src="https://www.youtube.com/embed/o6SOS4J8_a8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="420" height="315" src="https://www.youtube.com/embed/o6SOS4J8_a8" title="Video explaining the background of a paper on BET surface area reproducibility" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
@@ -147,31 +354,96 @@ function googleTranslateElementInit() {
     <script>
         paper_count = 3
 
-        function addpaper(title, authors, conference, link, abstract, arxiv_link, invited, errata_link, cover) {
-            list_entry = "<li style=\"font-size:17px\">"
-            if (link != null)
-                list_entry += "<a href=\"" + link + "\">"
-            list_entry += "<b>" + title + "</b>"
-            if (link != null)
-                list_entry += "</a>"
-            list_entry += "<br>" + authors + ".<br>" + conference + "."
-            if (invited != null)
-                list_entry += "<br><b><font color=\"red\">" + invited + ".</b></font>"
-            list_entry += "</li>"
+        function hasPaperUrl(url) {
+            return url != null && url !== "" && url !== "MagazineLinkNone" && url !== "CoverLinkNone";
+        }
 
-            if (abstract != null) {
-                list_entry += "<a href=\"javascript:display_abstract(" + paper_count + ")\"><span class=\"badge badge-success\">abstract</span></a> "
+        function compactAuthors(authors) {
+            var normalizedAuthors = authors
+                .replace(/<b>/g, "")
+                .replace(/<\/b>/g, "")
+                .replace(/&sect(?!;)/g, "&sect;")
+                .replace(/\s+/g, " ")
+                .trim();
+            var authorList = normalizedAuthors.split(",").map(function (author) {
+                return author.trim();
+            }).filter(Boolean);
+
+            if (authorList.length > 6) {
+                var keepAuthor = {};
+                authorList.forEach(function (author, index) {
+                    var plainAuthor = author.replace(/<[^>]+>/g, "");
+                    if (index < 3 || index >= authorList.length - 2) {
+                        keepAuthor[index] = true;
+                    }
+                    if (plainAuthor.indexOf("Nakul Rampal") !== -1) {
+                        keepAuthor[index] = true;
+                    }
+                    if (author.indexOf("&sect") !== -1 || plainAuthor.indexOf("§") !== -1 || plainAuthor.indexOf("*") !== -1) {
+                        keepAuthor[index] = true;
+                    }
+                });
+
+                var selectedIndexes = Object.keys(keepAuthor).map(function (index) {
+                    return parseInt(index, 10);
+                }).sort(function (a, b) {
+                    return a - b;
+                });
+
+                var compactList = [];
+                selectedIndexes.forEach(function (index, selectedPosition) {
+                    if (selectedPosition > 0 && index - selectedIndexes[selectedPosition - 1] > 1) {
+                        compactList.push("&hellip;");
+                    }
+                    compactList.push(authorList[index]);
+                });
+                return compactList.join(", ");
             }
-            if (arxiv_link != null)
-                list_entry += "<a href=\"" + arxiv_link + "\"><span class=\"badge badge-dark\">arXiv</span></a> "
-            if (errata_link != null)
-                list_entry += "<a href=\"" + errata_link + "\"><span class=\"badge badge-danger\">C&EN</span></a> "
-            if (cover != null)
-                list_entry += "<a href=\"" + cover + "\"><span class=\"badge badge-info\">Cover</span></a>"
-            list_entry += "<br>"
+            return authorList.join(", ");
+        }
+
+        function paperActionLink(url, label, icon) {
+            var badgeClass = "badge-dark";
+            if (label === "abstract") {
+                badgeClass = "badge-success";
+            }
+            if (label === "Link") {
+                badgeClass = "badge-warning";
+            }
+            if (label === "C&EN" || label === "Chemistry World") {
+                badgeClass = "badge-danger";
+            }
+            if (label === "Cover") {
+                badgeClass = "badge-info";
+            }
+            return "<a href=\"" + url + "\"><span class=\"badge " + badgeClass + "\">" + label + "</span></a> ";
+        }
+
+        function addpaper(title, authors, conference, link, abstract, arxiv_link, invited, errata_link, cover) {
+            list_entry = "<li class=\"publication-item\" style=\"font-size:17px\">"
+            list_entry += "<b>" + title + "</b>"
+            list_entry += "<br><span class=\"paper-authors\">" + compactAuthors(authors) + "</span>"
+            list_entry += "<br>" + conference
+            if (hasPaperUrl(link) || hasPaperUrl(arxiv_link) || abstract != null || errata_link != null || cover != null) {
+                list_entry += " <span class=\"paper-links\">"
+                if (hasPaperUrl(link))
+                    list_entry += paperActionLink(link, "Link", "P")
+                if (hasPaperUrl(arxiv_link) && arxiv_link !== link)
+                    list_entry += paperActionLink(arxiv_link, "Link", "P")
+                if (abstract != null)
+                    list_entry += paperActionLink("javascript:display_abstract(" + paper_count + ")", "abstract", "A")
+                if (errata_link != null)
+                    list_entry += paperActionLink(errata_link, "C&EN", "N")
+                if (cover != null)
+                    list_entry += paperActionLink(cover, "Cover", "C")
+                list_entry += "</span>"
+            }
+            if (invited != null)
+                list_entry += "<br><span class=\"paper-note\">" + invited + ".</span>"
+
             if (abstract != null)
                 list_entry += "<div id=\"abstract" + paper_count + "\" style=\"display:none;padding:10px;border:2px dotted gray;margin:10px;font-size:small;background:#F5F5F5;border-radius:5px;\">" + abstract + "</div>"
-            list_entry += "<br>"
+            list_entry += "</li>"
 
             document.write(list_entry)
             paper_count += 1
@@ -228,35 +500,69 @@ function googleTranslateElementInit() {
     <script>
         paper_count = 23
 
-        function addpaper(title, authors, conference, link, abstract, arxiv_link, invited, errata_link, cover, magazine) {
-            list_entry = "<li style=\"font-size:17px\">"
-            if (link != null)
-                list_entry += "<a href=\"" + link + "\">"
-            list_entry += "<b>" + title + "</b>"
-            if (link != null)
-                list_entry += "</a>"
-            list_entry += "<br>" + authors + ".<br>" + conference + "."
-            if (invited != "MagazineTextNone")
-                list_entry += "<br><b><font color=\"red\">" + invited + ".</b></font>"
-            list_entry += "</li>"
+        function publicationTopic(title) {
+            var topics = {
+                "Synthesis of Highly Crystalline Covalent Organic Frameworks Using Large Language Models": "Self-driving labs and AI-guided reticular synthesis",
+                "An Automated Evaluation Agent for Q&A Pairs and Reticular Synthesis Conditions": "Datasets, benchmarks, evaluation, and reproducibility",
+                "Reticular Chemistry: Past, Present, and Future": "Molecular simulation, framework design, and applications",
+                "Comparison of LLMs in Extracting Synthesis Conditions and Generating Q&A Datasets for Metal-Organic Frameworks": "Datasets, benchmarks, evaluation, and reproducibility",
+                "Large language models for reticular chemistry": "AI, LLMs, and agents for scientific discovery",
+                "Single and Multi-Hop Question-Answering Datasets for Reticular Chemistry with GPT-4-Turbo": "Datasets, benchmarks, evaluation, and reproducibility",
+                "Better together: Monolithic halide perovskite@metal-organic framework composites": "Molecular simulation, framework design, and applications",
+                "Image and Data Mining in Reticular Chemistry Powered by GPT-4V": "Datasets, benchmarks, evaluation, and reproducibility",
+                "Harvesting Water from Air with High-Capacity, Stable Furan-Based Metal-Organic Frameworks": "Porous materials for climate, energy, and separations",
+                "Shaping the Water-Harvesting Behaviour of Metal-Organic Frameworks Aided by Fine-Tuned GPT Models": "Self-driving labs and AI-guided reticular synthesis",
+                "A GPT-4 Reticular Chemist for Guiding MOF Discovery": "AI, LLMs, and agents for scientific discovery",
+                "ChatGPT Research Group for Optimizing the Crystallinity of MOFs and COFs": "Self-driving labs and AI-guided reticular synthesis",
+                "Advances in surface functionalization of nextgeneration metal-organic frameworks for biomedical applications: Design, strategies, and prospects": "Molecular simulation, framework design, and applications",
+                "Monolithic Zirconium-Based Metal–Organic Frameworks for Energy-Efficient Water Adsorption Applications": "Porous materials for climate, energy, and separations",
+                "Homochiral Porous Metal–Organic Polyhedra with Multiple Kinds of Vertices": "Molecular simulation, framework design, and applications",
+                "Sol-Gel Processing of a Covalent Organic Framework for the Generation of Hierarchically Porous Monolithic Adsorbents": "Porous materials for climate, energy, and separations",
+                "Densified HKUST-1 Monoliths as a Route to High Volumetric and Gravimetric Hydrogen Storage Capacity": "Porous materials for climate, energy, and separations",
+                "How Reproducible Are Surface Areas Calculated from the BET Equation?": "Datasets, benchmarks, evaluation, and reproducibility",
+                "Lanthanide metal–organic frameworks for the fixation of CO<sub>2</sub> under aqueous-rich and mixed-gas conditions": "Porous materials for climate, energy, and separations",
+                "Endohedral functionalization of chiral metal-organic cages for encapsulating achiral dyes to induce circularly polarized luminescence": "Molecular simulation, framework design, and applications",
+                "The development of a comprehensive toolbox based on multi-level, high-throughput screening of MOFs for CO/N<sub>2</sub> separations": "Porous materials for climate, energy, and separations",
+                "Formulation of Metal–Organic Framework-Based Drug Carriers by Controlled Coordination of Methoxy PEG Phosphate: Boosting Colloidal Stability and Redispersibility": "Molecular simulation, framework design, and applications",
+                "Monolithic metal-organic frameworks for carbon dioxide separation": "Porous materials for climate, energy, and separations",
+                "Investigation of Adhesion between Heavy Oil/Bitumen and Reservoir Rock: A Molecular Dynamics Study": "Molecular simulation, framework design, and applications",
+                "In silico discovery of covalent organic frameworks for carbon capture": "Porous materials for climate, energy, and separations",
+                "Ab Initio Flexible Force Field for Metal-Organic Frameworks Using Dummy Model Coordination Bonds": "Molecular simulation, framework design, and applications",
+                "Structural Behavior of Isolated Asphaltene Molecules at the Oil-Water Interface": "Molecular simulation, framework design, and applications"
+            };
 
-            if (abstract != null) {
-                list_entry += "<a href=\"javascript:display_abstract(" + paper_count + ")\"><span class=\"badge badge-success\">abstract</span></a> "
+            return topics[title] || "Molecular simulation, framework design, and applications";
+        }
+
+        function addpaper(title, authors, conference, link, abstract, arxiv_link, invited, errata_link, cover, magazine) {
+            list_entry = "<li class=\"publication-item\" data-topic=\"" + publicationTopic(title) + "\" style=\"font-size:17px\">"
+            list_entry += "<b>" + title + "</b>"
+            list_entry += "<br><span class=\"paper-authors\">" + compactAuthors(authors) + "</span>"
+            list_entry += "<br>" + conference
+            if (hasPaperUrl(link) || hasPaperUrl(arxiv_link) || abstract != null || errata_link != "MagazineLinkNone" || cover != "CoverLinkNone") {
+                list_entry += " <span class=\"paper-links\">"
+                if (hasPaperUrl(link))
+                    list_entry += paperActionLink(link, "Link", "P")
+                if (hasPaperUrl(arxiv_link) && arxiv_link !== link)
+                    list_entry += paperActionLink(arxiv_link, "Link", "P")
+                if (abstract != null)
+                    list_entry += paperActionLink("javascript:display_abstract(" + paper_count + ")", "abstract", "A")
+                if (errata_link != "MagazineLinkNone") {
+                    if (magazine == "cen")
+                        list_entry += paperActionLink(errata_link, "C&EN", "N")
+                    if (magazine == "cw")
+                        list_entry += paperActionLink(errata_link, "Chemistry World", "W")
+                }
+                if (cover != "CoverLinkNone")
+                    list_entry += paperActionLink(cover, "Cover", "C")
+                list_entry += "</span>"
             }
-            if (arxiv_link != null)
-                list_entry += "<a href=\"" + arxiv_link + "\"><span class=\"badge badge-warning\">Link</span></a> "
-            if (errata_link != "MagazineLinkNone") {
-                if (magazine == "cen")
-                    list_entry += "<a href=\"" + errata_link + "\"><span class=\"badge badge-danger\">C&EN</span></a> "
-                if (magazine == "cw")
-                    list_entry += "<a href=\"" + errata_link + "\"><span class=\"badge badge-danger\">Chemistry World</span></a> "
-            }
-            if (cover != "CoverLinkNone")
-                list_entry += "<a href=\"" + cover + "\"><span class=\"badge badge-info\">Cover</span></a>"
-            list_entry += "<br>"
+            if (invited != "MagazineTextNone")
+                list_entry += "<br><span class=\"paper-note\">" + invited + ".</span>"
+
             if (abstract != null)
                 list_entry += "<div id=\"abstract" + paper_count + "\" style=\"display:none;padding:10px;border:2px dotted gray;margin:10px;font-size:small;background:#F5F5F5;border-radius:5px;\">" + abstract + "</div>"
-            list_entry += "<br>"
+            list_entry += "</li>"
 
             document.write(list_entry)
             paper_count += 1
@@ -311,14 +617,14 @@ function googleTranslateElementInit() {
             "Yuang Shi<sup><b>&sect</b></sup>, <b>Nakul Rampal</b><sup><b>&sect</b></sup>, Chengbin Zhao, Joe Fu, Christian Borgs Jennifer T. Chayes, Omar Yaghi<b>*</b>",
             "Digital Discovery, <u>2025</u>",
             "",
-            "Artificial intelligence, represented by large language models (LLMs), has demonstrated tremendous capabilities in natural language recognition and extraction. To further evaluate the performance of various LLMs in extracting information from academic papers, this study explores the application of LLMs in reticular chemistry, focusing on their effectiveness in generating Q&A datasets and extracting synthesis conditions from scientific literature. The models evaluated include OpenAI's GPT-4 Turbo, Anthropic's Claude 3 Opus, and Google's Gemini 1.5 Pro. Key results indicate that Claude excelled in providing complete synthesis data, while Gemini outperformed others in accuracy, characterization-free compliance(obedience), and proactive structuring of responses. Although GPT-4 was less effective in quantitative metrics, it demonstrated strong logical reasoning and contextual inference capabilities. Overall, Gemini and Claude achieved the highest scores in accuracy, groundedness, and adherence to prompt requirements, making them suitable benchmarks for future studies. The findings reveal the potential of LLMs to aid in scientific research, particularly in the efficient construction of structured datasets, which can help train models, predict, and assist in the synthesis of new metal-organic frameworks (MOFs).",
+            "Artificial intelligence, represented by large language models (LLMs), has demonstrated tremendous capabilities in natural language recognition and extraction. To further evaluate the performance of various LLMs in extracting information from academic papers, this study explores the application of LLMs in reticular chemistry, focusing on their effectiveness in generating Q&A datasets and extracting synthesis conditions from scientific literature. The models evaluated include OpenAI's GPT-4 Turbo, Anthropic's Claude 3 Opus, and Google's Gemini 1.5 Pro. Key results indicate that Claude excelled in providing complete synthesis data, while Gemini outperformed others in accuracy, characterization-free compliance (obedience), and proactive structuring of responses. Although GPT-4 was less effective in quantitative metrics, it demonstrated strong logical reasoning and contextual inference capabilities. Overall, Gemini and Claude achieved the highest scores in accuracy, groundedness, and adherence to prompt requirements, making them suitable benchmarks for future studies. The findings reveal the potential of LLMs to aid in scientific research, particularly in the efficient construction of structured datasets, which can help train models, predict, and assist in the synthesis of new metal-organic frameworks (MOFs).",
             "https://pubs.rsc.org/en/content/articlehtml/2025/dd/d5dd00081e", "MagazineTextNone", "MagazineLinkNone", "CoverLinkNone", "NameMagazineNone")
 
         addpaper("Large language models for reticular chemistry",
             "Zhiling Zheng, <b>Nakul Rampal</b>, Theo Jaffrelot Inizan, Christian Borgs, Jennifer T. Chayes, Omar M. Yaghi<b>*</b>",
             "Nature Reviews Materials, <u>2025</u>",
             "",
-            "Reticular chemistry is the science of connecting molecular building units into crystalline extended structures such as metal–organic frameworks and covalent organic frameworks. Large language models (LLMs, a type of generative artifcial intelligence system, can augment laboratory research in reticular chemistry by helping scientists to extract knowledge from literature, design materials and collect and interpret experimental data — ultimately accelerating scientifc discovery. In this Perspective, we explore the concepts and methods used to apply LLMs in research, including prompt engineering, knowledge and tool augmentation and fne-tuning. We discuss how ‘chemistry-aware’ models can be tailored to specifc tasks and integrated into existing practices of reticular chemistry, transforming the traditional ‘make, characterize, use’ protocol driven by empirical knowledge into a discovery cycle based on fnding synthesis–structure–property–performance relationships. Furthermore, we explore how modular LLM agents can be integrated into multi-agent laboratory systems, such as self-driving robotic laboratories, to streamline labour-intensive tasks and collaborate with chemists and how LLMs can lower the barriers to applying generative artifcial intelligence and data-driven workfows to such challenging research questions as crystallization. This contribution equips both computational and experimental chemists with the insights necessary to harness LLMs for materials discovery in reticular chemistry and, more broadly, materials science.",
+            "Reticular chemistry is the science of connecting molecular building units into crystalline extended structures such as metal–organic frameworks and covalent organic frameworks. Large language models (LLMs), a type of generative artificial intelligence system, can augment laboratory research in reticular chemistry by helping scientists to extract knowledge from literature, design materials, and collect and interpret experimental data — ultimately accelerating scientific discovery. In this Perspective, we explore the concepts and methods used to apply LLMs in research, including prompt engineering, knowledge and tool augmentation, and fine-tuning. We discuss how ‘chemistry-aware’ models can be tailored to specific tasks and integrated into existing practices of reticular chemistry, transforming the traditional ‘make, characterize, use’ protocol driven by empirical knowledge into a discovery cycle based on finding synthesis–structure–property–performance relationships. Furthermore, we explore how modular LLM agents can be integrated into multi-agent laboratory systems, such as self-driving robotic laboratories, to streamline labour-intensive tasks and collaborate with chemists, and how LLMs can lower the barriers to applying generative artificial intelligence and data-driven workflows to such challenging research questions as crystallization. This contribution equips both computational and experimental chemists with the insights necessary to harness LLMs for materials discovery in reticular chemistry and, more broadly, materials science.",
             "https://www.nature.com/articles/s41578-025-00772-8", "Featured on the cover of Nature Reviews Materials (Volume 10 Issue 5)", "MagazineLinkNone", "https://www.nature.com/natrevmats/volumes/10/issues/5", "NameMagazineNone")
 
         addpaper("Single and Multi-Hop Question-Answering Datasets for Reticular Chemistry with GPT-4-Turbo",
@@ -349,7 +655,7 @@ function googleTranslateElementInit() {
             "We synthesized two isoreticular furan-based metal–organic frameworks (MOFs), MOF-LA2-1(furan) and MOF-LA2-2(furan) with rod-like secondary building units (SBUs) featuring 1D channels, as sorbents for atmospheric water harvesting (LA = long arm). These aluminum-based MOFs demonstrated a combination of high water uptake and stability, exhibiting working capacities of 0.41 and 0.48 g<sub>water</sub>/g<sub>MOF</sub> (under isobaric conditions of 1.70 kPa), respectively. Remarkably, both MOFs showed a negligible loss in water uptake after 165 adsorption–desorption cycles. These working capacities rival that of MOF-LA2-1(pyrazole), which has a working capacity of 0.55 g<sub>water</sub>/g<sub>MOF</sub>. The current MOFs stand out for their high water stability, as evidenced by 165 cycles of water uptake and release. MOF-LA2-2(furan) is the first aluminum MOF to employ a double ‘long arm’ extension strategy, which is confirmed through single-crystal X-ray diffraction (SCXRD). The MOFs were synthesized by using a straightforward synthesis route. This study offers valuable insights into the design of durable, water-stable MOFs and underscores their potential for efficient water harvesting.",
             "https://pubs.acs.org/doi/10.1021/jacs.3c11947", "MagazineTextNone", "MagazineLinkNone", "CoverLinkNone", "NameMagazineNone")
 
-        addpaper("Shaping the Water- Harvesting Behaviour of Metal-Organic Frameworks Aided by Fine-Tuned GPT Models",
+        addpaper("Shaping the Water-Harvesting Behaviour of Metal-Organic Frameworks Aided by Fine-Tuned GPT Models",
             "Zhiling Zheng, Ali Al-Awadhi, Saumil Chheda, Ephraim Neumann, <b>Nakul Rampal</b>, Shengchao Liu, Lac Ha Nguyen, Yen-hsu Lin, Zichao Rong, Ilja Siepmann, Laura Gagliardi, Anima Anandkumar, Christian Borgs, Jennifer Chayes, and Omar Yaghi<b>*</b>",
             "Journal of the American Chemical Society, 145, 51, 28284-28295, <u>2023</u>",
             "",
@@ -448,28 +754,28 @@ function googleTranslateElementInit() {
             "David Madden, Robin Babu, Ceren Camur, <b>Nakul Rampal</b>, Joaquin Silvestre-Albero, Teresa Curtin, and David Fairen-Jimenez<b>*</b>",
             "Faraday Discussions, 231, 51-65, <u>2021</u>",
             "",
-            "Carbon dioxide (CO<sub>2</sub>) is both a primary contributor to global warming and a major industrial impurity. Traditional approaches to carbon capture involve corrosive and energy intensive processes such as liquid amine absorption. Although adsorptive separation has long been a promising alternative to traditions processes, to this point, there has been a lack of appropriate adsorbents capable to capturing CO<sub>2</sub> whilst maintaining low regeneration energies. In this context of CO<sub>2</sub> capture, metal-organic frameworks (MOFs) have gained much attention in the past two decades as potential materials. Their tuneable nature allows for exquisite control over pore size and chemistry, which allows for tailoring of their properties for selective adsorption of CO<sub>2</sub>. While many candidate materials exist, the amount of research into materials shaping for use in industrial processes has been limited. Traditional shaping strategies such as pelletisation involve the use of binders and/or mechanical processes, which can have a detrimental impact on the adsorption properties of the resulting materials or can result in low-density structures with low volumetric adsorption capacity. Herein, we demonstrate the use of a series of monolithic MOFs (<sub>mono</sub>UiO-66, <sub>mono</sub>UiO-66-NH<sub>2</sub> & <sub>mono</sub>HKUST-1) for use in gas separation processes.",
+            "Carbon dioxide (CO<sub>2</sub>) is both a primary contributor to global warming and a major industrial impurity. Traditional approaches to carbon capture involve corrosive and energy-intensive processes such as liquid amine absorption. Although adsorptive separation has long been a promising alternative to traditional processes, to this point, there has been a lack of appropriate adsorbents capable of capturing CO<sub>2</sub> while maintaining low regeneration energies. In this context of CO<sub>2</sub> capture, metal-organic frameworks (MOFs) have gained much attention in the past two decades as potential materials. Their tuneable nature allows for exquisite control over pore size and chemistry, which allows for tailoring of their properties for selective adsorption of CO<sub>2</sub>. While many candidate materials exist, the amount of research into materials shaping for use in industrial processes has been limited. Traditional shaping strategies such as pelletisation involve the use of binders and/or mechanical processes, which can have a detrimental impact on the adsorption properties of the resulting materials or can result in low-density structures with low volumetric adsorption capacity. Herein, we demonstrate the use of a series of monolithic MOFs (<sub>mono</sub>UiO-66, <sub>mono</sub>UiO-66-NH<sub>2</sub> & <sub>mono</sub>HKUST-1) for use in gas separation processes.",
             "https://pubs.rsc.org/en/content/articlehtml/2021/fd/d1fd00017a", "MagazineTextNone", "MagazineLinkNone", "CoverLinkNone", "NameMagazineNone")
 
         addpaper("Investigation of Adhesion between Heavy Oil/Bitumen and Reservoir Rock: A Molecular Dynamics Study",
             "Bablu Meghwal, <b>Nakul Rampal</b>, and Ateeque Malani<b>*</b>",
             "Energy & Fuels 34 (12), 16023-16034, <u>2020</u>",
             "",
-            "Heavy oil is an abundant and important energy source that has the potential to meet the increasing energy demand of the world. However, its economic recovery is challenging and having a thorough molecular understanding of the heavy oil-rock interface will be advantageous. Here, we have used molecualr dynamics simulation tot probe the adhesion of heavy oil at commonly found carbonate (calcite), sandstone (silica), and clay (mica)-type rock reservoirs. The calcite surface has the highest adhesion energy with heavy oil followed by mica and silica surfaces. The dispersion interaction is dominant as compared to electrostatic interactions in calcite and silica systems. In contrast, an equal contribution of both interactions is found in the heavy oil-mica interface. The structure of heavy oil adjacent to the rock surface is characterized by a dense interfacial layer (IL) followed by a bulk zone. We found that the areal density of exposed atoms, roughness, and dipole moment of the rock surface has a significant effect on the structure of the IL and adhesion energy. A higher areal density of surface atoms coupled with low roughness leads to stronger adsorption of heavy oil molecules favored by dispersion interactions. The adsorption of aromatic carbon (from aromatic and resin fractions) of heavy oil is more than that of aliphatic carbons (from saturates) in the calcite and mica system, whereas a reverse trend is observed in the silica system. The charge distribution is non-uniform in the IL; however, the electrostatic interaction between the heavy oil and rock surface is dictated by the dipole moment of the rock surface",
+            "Heavy oil is an abundant and important energy source that has the potential to meet the increasing energy demand of the world. However, its economic recovery is challenging and having a thorough molecular understanding of the heavy oil-rock interface will be advantageous. Here, we have used molecular dynamics simulation to probe the adhesion of heavy oil at commonly found carbonate (calcite), sandstone (silica), and clay (mica)-type rock reservoirs. The calcite surface has the highest adhesion energy with heavy oil followed by mica and silica surfaces. The dispersion interaction is dominant as compared to electrostatic interactions in calcite and silica systems. In contrast, an equal contribution of both interactions is found in the heavy oil-mica interface. The structure of heavy oil adjacent to the rock surface is characterized by a dense interfacial layer (IL) followed by a bulk zone. We found that the areal density of exposed atoms, roughness, and dipole moment of the rock surface has a significant effect on the structure of the IL and adhesion energy. A higher areal density of surface atoms coupled with low roughness leads to stronger adsorption of heavy oil molecules favored by dispersion interactions. The adsorption of aromatic carbon (from aromatic and resin fractions) of heavy oil is more than that of aliphatic carbons (from saturates) in the calcite and mica system, whereas a reverse trend is observed in the silica system. The charge distribution is non-uniform in the IL; however, the electrostatic interaction between the heavy oil and rock surface is dictated by the dipole moment of the rock surface",
             "https://pubs.acs.org/doi/abs/10.1021/acs.energyfuels.0c02921", "MagazineTextNone", "MagazineLinkNone", "CoverLinkNone", "NameMagazineNone")
 
         addpaper("In silico discovery of covalent organic frameworks for carbon capture",
             "Kathryn S. Deeg, Daiane Damasceno Borges, Daniele Ongari, <b>Nakul Rampal</b>, Leopold Talirz, Aliaksandr V Yakutovich, Johanna M Huck, and Berend Smit<b>*</b>",
             "ACS Applied Materials & Interfaces 12 (19), 21559-21568, <u>2020</u>",
             "",
-            "We screen a database of more than 69,000 hypothetical covalent organic frameworks (COFs) for carbon caputre using parasitic energy as a metric. To compute CO<sub>2</sub>-framework interactions in molecular simulations, we develop a genetic algorithm to tune the charge equilibration method and derive accurate framework partial charges. Nearly 400 COFs are identified with parasitic energy lower than that of an amine scrubbing process using monoethanolamine; more than 70 are better performers than the best experimental COFs and several perform similarly to Mg-MOF-74. We analyze the effect of pore topology on carbon capture performance to guide the development of improve carbon capture materials.",
+            "We screen a database of more than 69,000 hypothetical covalent organic frameworks (COFs) for carbon capture using parasitic energy as a metric. To compute CO<sub>2</sub>-framework interactions in molecular simulations, we develop a genetic algorithm to tune the charge equilibration method and derive accurate framework partial charges. Nearly 400 COFs are identified with parasitic energy lower than that of an amine scrubbing process using monoethanolamine; more than 70 are better performers than the best experimental COFs and several perform similarly to Mg-MOF-74. We analyze the effect of pore topology on carbon capture performance to guide the development of improved carbon capture materials.",
             "https://pubs.acs.org/doi/abs/10.1021/acsami.0c01659", "MagazineTextNone", "MagazineLinkNone", "CoverLinkNone", "NameMagazineNone")
 
         addpaper("Ab Initio Flexible Force Field for Metal-Organic Frameworks Using Dummy Model Coordination Bonds",
             "Sudi Jawahery, <b>Nakul Rampal</b>, Seyed Mohamad Moosavi, Mathew Witman, and Berend Smit<b>*</b>",
             "Journal of Chemical Theory and Computation 15 (6), 3666-3677, <u>2019</u>",
             "",
-            "We present force fields developed from periodic density function theory (DFT) calculations that can be used in classical molecular simulations to model M-MOF-74 (M= Co, Fe, Mg, Mn, Ni, Zn) and its extended linker analogs. Our force fields are based on cationic dummy models (CDMs). These dummy models simplify the methodology required to tune the parameters and improve the accuracy of the force fields. We used our force fields to compare mechanical properties across the M-MOF-74 series and determine that increasing the size of the linker decreases the framework rigidity. In addition, we applied our force fields to an extended linker analog of Mf-MOF-74 and characterized the free energy of a previously reported deformation pattern in which the one-dimensional hexagonal channels of the framework become irregular. The free energy profiles confirm that the deformation is adsorbate induced and impossible to access solely by a pressure stimulus. On the basis of our results, we conclude tha the force fields presented here and others that may be developed using our methodology are transferable across metal-organic framework series that share a metal center topology. Finally, we believe that these force fields have the potential to be adapted for the study of complex problems in MOF chemistry, including defects and crystal growth, that have thus far been beound the scope of classical molecular simulations. ",
+            "We present force fields developed from periodic density function theory (DFT) calculations that can be used in classical molecular simulations to model M-MOF-74 (M= Co, Fe, Mg, Mn, Ni, Zn) and its extended linker analogs. Our force fields are based on cationic dummy models (CDMs). These dummy models simplify the methodology required to tune the parameters and improve the accuracy of the force fields. We used our force fields to compare mechanical properties across the M-MOF-74 series and determine that increasing the size of the linker decreases the framework rigidity. In addition, we applied our force fields to an extended linker analog of Mf-MOF-74 and characterized the free energy of a previously reported deformation pattern in which the one-dimensional hexagonal channels of the framework become irregular. The free energy profiles confirm that the deformation is adsorbate induced and impossible to access solely by a pressure stimulus. On the basis of our results, we conclude that the force fields presented here and others that may be developed using our methodology are transferable across metal-organic framework series that share a metal center topology. Finally, we believe that these force fields have the potential to be adapted for the study of complex problems in MOF chemistry, including defects and crystal growth, that have thus far been beyond the scope of classical molecular simulations. ",
             "https://pubs.acs.org/doi/abs/10.1021/acs.jctc.9b00135", "MagazineTextNone", "MagazineLinkNone", "CoverLinkNone", "NameMagazineNone")
 
         addpaper("Structural Behavior of Isolated Asphaltene Molecules at the Oil-Water Interface",
@@ -488,7 +794,7 @@ function googleTranslateElementInit() {
 
     <ul>
 
-        <li style=\"font-size:17px\"> Invited talk at Shanghai JiaoTong University, 22nd January 2026. </li>
+        <li style=\"font-size:17px\"> Invited talk at Shanghai Jiao Tong University, 22nd January 2026. </li>
 
         <li style=\"font-size:17px\"> Invited talk at IIT Bombay (Department of Chemical Engineering), 9th January 2026. </li>
 
@@ -508,7 +814,7 @@ function googleTranslateElementInit() {
         <li style=\"font-size:17px\"> Presentation (virtual) at the bp-ICAM Annual Conference 2020, 20<sup>th</sup>-21<sup>st</sup> October 2020. </li>
 
 
-        <li style=\"font-size:17px\"> Invited talk at Chalmers University of Techonology (Department of Physics), 4<sup>th</sup> February 2019. </li>
+        <li style=\"font-size:17px\"> Invited talk at Chalmers University of Technology (Department of Physics), 4<sup>th</sup> February 2019. </li>
 
 
         <li style=\"font-size:17px\"> Invited talk at Karlsruhe Institute of Technology (Department of Theoretical Chemical Biology), 1<sup>st</sup> February 2019. </li>
@@ -529,13 +835,13 @@ function googleTranslateElementInit() {
         <li style=\"font-size:17px\"> Trinity Henry-Barlow Scholarship </li>
 
 
-        <li style=\"font-size:17px\"> Merit based Scholarship in Fall 2016 and Spring 2017 at UC, Berkeley </li>
+        <li style=\"font-size:17px\"> Merit-based Scholarship in Fall 2016 and Spring 2017 at UC Berkeley </li>
 
 
         <li style=\"font-size:17px\"> Top 3 of the graduating class at MIT, Manipal </li>
 
 
-        <li style=\"font-size:17px\"> School Topper Medal in the Unified Cyber Olympiad </li>
+        <li style=\"font-size:17px\"> School Topper Medal, Unified Cyber Olympiad </li>
 
         <li style=\"font-size:17px\"> School Wiz Kid Medal in the 10<sup>th</sup> National Science Olympiad </li>
 
@@ -577,7 +883,7 @@ function googleTranslateElementInit() {
 
         <li style=\"font-size:17px\"> <u>Zhiling Zheng</u>, PhD in Chemistry, June 2023 to December 2023 – Currently an Assistant Professor at Washington University in St. Louis </li>
 
-        <li style=\"font-size:17px\"> <u>Ali Al-Awadhi</u>, PhD in Chemistry, September 2023 to Dec 2025 — Currently Assistant Professor at UAE University </li>
+        <li style=\"font-size:17px\"> <u>Ali Al-Awadhi</u>, PhD in Chemistry, September 2023 to Dec 2025 — Currently an Assistant Professor at UAE University </li>
 
         <li style=\"font-size:17px\"> <u>Kaiyu Wang</u>, PhD in Chemistry, September 2023 to Ongoing </li>
 
@@ -600,6 +906,7 @@ function googleTranslateElementInit() {
 
 
     <hr/>
+</main>
 
     <div style="text-align: center;">
 
@@ -608,7 +915,8 @@ function googleTranslateElementInit() {
     <br>
     </div>
 
-    <p style="text-align:center">Last update: 9<sup>th</sup> March, 2026. Template adapted (with permission) from <a href=https://www.cs.princeton.edu/~hy2/>Huacheng Yu</a>'s.</p>
+    <p class="llm-statement">LLM usage statement: I use Codex to maintain and update this website.</p>
+    <p style="text-align:center">Last update: 26<sup>th</sup> June, 2026. Template adapted (with permission) from <a href=https://www.cs.princeton.edu/~hy2/>Huacheng Yu</a>'s.</p>
     <br>
 </div>
 </body>
