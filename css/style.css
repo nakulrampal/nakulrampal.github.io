@@ -73,13 +73,15 @@ pre {
 }
 
 .profile-header {
-    display: flex;
     align-items: flex-start;
-    row-gap: 24px;
 }
 
 .profile-photo {
+    display: block;
+    width: 100%;
+    max-width: 260px;
     max-height: 300px;
+    object-fit: cover;
 }
 
 .twitter-follow-button {
@@ -152,19 +154,23 @@ textarea:focus {
 }
 
 .section-toggle {
+    appearance: none;
+    -webkit-appearance: none;
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
     padding: 18px 0;
     color: inherit;
-    background: transparent;
-    border: 0;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
     font: inherit;
     font-size: 20px;
     font-weight: 500;
     line-height: 15.4px;
     text-align: left;
+    cursor: pointer;
 }
 
 .section-toggle::after {
