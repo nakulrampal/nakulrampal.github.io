@@ -338,12 +338,12 @@ textarea:focus {
 
 .paper-links .badge {
     border: 1px solid transparent;
-    border-radius: 2px;
-    font-family: Menlo, Monaco, Consolas, monospace;
-    font-size: 11px;
+    border-radius: 4px;
+    font-family: Lato, Arial, sans-serif;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0;
-    text-transform: lowercase;
+    text-transform: none;
 }
 
 @keyframes cursor-blink {
