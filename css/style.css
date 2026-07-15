@@ -349,6 +349,15 @@ textarea:focus {
     margin-bottom: 0;
 }
 
+.changelog-list {
+    margin-top: 0;
+}
+
+.changelog-list li {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
 .paper-authors {
     color: #666;
     font-weight: 400;
