@@ -358,6 +358,39 @@ textarea:focus {
     text-align: left;
 }
 
+.footer-changelog {
+    max-width: 680px;
+    margin: 4px auto 8px;
+    color: #666;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.footer-changelog summary {
+    display: inline-block;
+    color: #777;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.footer-changelog summary:hover,
+.footer-changelog summary:focus {
+    color: #007bff;
+}
+
+.footer-changelog .changelog-list {
+    margin: 8px 0 0;
+    padding-left: 18px;
+    text-align: left;
+}
+
+.footer-changelog .changelog-list li {
+    color: #666;
+    font-size: 13px;
+    line-height: 20px;
+}
+
 .paper-authors {
     color: #666;
     font-weight: 400;
