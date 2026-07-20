@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>an-autonomous-off-grid-water-harvester</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <style>
+        @page {
+            size: letter;
+            margin: 0.35in;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: #111;
+            background: #fff;
+            font-family: Lato, Arial, sans-serif;
+        }
+
+        main {
+            max-width: 7.8in;
+            margin: 0 auto;
+        }
+
+        .kicker,
+        .meta,
+        .link,
+        figcaption {
+            color: #555;
+            font-size: 8.4pt;
+            line-height: 1.25;
+        }
+
+        .kicker {
+            margin: 0 0 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        h1 {
+            margin: 0 0 5px;
+            color: #111;
+            font-size: 20pt;
+            font-weight: 500;
+            line-height: 1.08;
+        }
+
+        .deck {
+            margin: 0 0 5px;
+            color: #333;
+            font-size: 10.2pt;
+            line-height: 1.3;
+        }
+
+        .meta,
+        .link {
+            margin: 0;
+        }
+
+        header {
+            margin-bottom: 9px;
+            padding-bottom: 7px;
+            border-bottom: 1px solid #aaa;
+        }
+
+        .body-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+            gap: 14px;
+            align-items: start;
+        }
+
+        p {
+            margin: 0 0 7px;
+            color: #111;
+            font-size: 9.5pt;
+            line-height: 1.34;
+        }
+
+        h2 {
+            margin: 9px 0 4px;
+            color: #111;
+            font-size: 10.2pt;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .callout {
+            margin: 8px 0;
+            padding: 6px 8px;
+            border-left: 3px solid #555;
+            background: #f6f6f6;
+        }
+
+        .callout p {
+            margin-bottom: 0;
+            font-size: 9.1pt;
+            line-height: 1.3;
+        }
+
+        figure {
+            margin: 0;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            max-height: 4.35in;
+            object-fit: contain;
+            border: 1px solid #ddd;
+        }
+
+        figcaption {
+            margin-top: 5px;
+        }
+
+        ul {
+            margin: 0 0 7px 15px;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 3px;
+            color: #111;
+            font-size: 9pt;
+            line-height: 1.25;
+        }
+
+        footer {
+            margin-top: 8px;
+            padding-top: 7px;
+            border-top: 1px solid #bbb;
+        }
+
+        footer p {
+            color: #222;
+            font-size: 8.9pt;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+
+<body>
+<main>
+    <header>
+        <p class="kicker">July 2026</p>
+        <h1>An Autonomous Off-grid MOF Water Harvester for Extreme Arabian Desert Conditions</h1>
+        <p class="deck">A short note on translating a material discovered in the lab into an actual working device in the field.</p>
+        <p class="meta">Nakul Rampal · ChemRxiv preprint · 15 July 2026</p>
+        <p class="link">Preprint: https://chemrxiv.org/doi/abs/10.26434/chemrxiv.15006110/v1</p>
+    </header>
+
+    <section class="body-grid">
+        <div>
+            <p>
+                We built an autonomous, off-grid water harvester that operates under extreme desert conditions, w/ some days during field testing seeing midday temperatures reach ~50 &deg;C, RH drop close to 5%, and very high wind speeds.
+            </p>
+            <p>
+                This is also a nice example of how a material discovered in the lab can be translated into an actual working device in the field.
+            </p>
+
+            <section class="callout">
+                <h2>Key takeaway</h2>
+                <p>
+                    While it may seem that high desert temperatures would lead to rapid heating of the MOF (which is important for desorbing the adsorbed water), this is not always true. Under such harsh desert conditions, windblown sand attenuates the solar irradiance reaching the device, while high wind speeds can also increase heat loss. This can lead to slower heating and a slower rate of water collection, reducing the total amount of water collected over the course of a day.
+                </p>
+            </section>
+
+            <h2>Field videos</h2>
+            <ul>
+                <li>Weather conditions during field testing.</li>
+                <li>The device generating water.</li>
+                <li>Daniel drinking the collected water.</li>
+            </ul>
+            <p class="link">Online version: https://www.nakulrampal.xyz/blog/water-harvester.html</p>
+        </div>
+
+        <figure>
+            <img src="../images/blog/water-harvester-device.jpg" alt="Annotated schematic of the off-grid MOF water harvester device">
+            <figcaption>Device schematic and MOF-coated disc stack.</figcaption>
+        </figure>
+    </section>
+
+    <footer>
+        <p>
+            A big thank you to Ali Alawadhi and Daniel Ahn, and to Prof. Yaghi for his mentorship. This was made possible because of generous funding from the King Abdulaziz City for Science and Technology (KACST) and the Bakar Institute of Digital Materials for the Planet (BIDMaP).
+        </p>
+    </footer>
+</main>
+
+<script>
+if (new URLSearchParams(window.location.search).get("print") === "1") {
+    window.addEventListener("load", function () {
+        window.setTimeout(function () {
+            document.title = "an-autonomous-off-grid-water-harvester";
+            window.print();
+        }, 250);
+    });
+}
+</script>
+</body>
+</html>

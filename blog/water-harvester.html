@@ -343,6 +343,14 @@
                 <path d="M6 14h12v8H6z"></path>
             </svg>
         </button>
+        <a class="blog-icon-button" href="../files/an-autonomous-off-grid-water-harvester.pdf" download="an-autonomous-off-grid-water-harvester.pdf" aria-label="Download PDF">
+            <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <path d="M14 2v6h6"></path>
+                <path d="M12 18v-6"></path>
+                <path d="M9 15l3 3 3-3"></path>
+            </svg>
+        </a>
         <div class="blog-translate">
             <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
@@ -455,8 +463,10 @@ function googleTranslateElementInit() {
 }
 
 function printBlogPost() {
-  document.title = 'an-autonomous-off-grid-water-harvester';
-  window.print();
+  var printWindow = window.open('water-harvester-print.html?print=1', '_blank', 'noopener');
+  if (!printWindow) {
+    window.location.href = 'water-harvester-print.html?print=1';
+  }
 }
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
