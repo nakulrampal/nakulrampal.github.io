@@ -159,6 +159,91 @@
             font-size: 14px;
             line-height: 1.5;
         }
+
+        .print-only {
+            display: none;
+        }
+
+        @media print {
+            @page {
+                size: letter;
+                margin: 0.55in;
+            }
+
+            .blog-tools,
+            .blog-videos {
+                display: none;
+            }
+
+            .blog-page-shell,
+            .blog-post {
+                max-width: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .blog-hero {
+                margin-bottom: 14px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #bbb;
+                break-after: avoid;
+            }
+
+            .blog-post h1 {
+                margin: 4px 0 8px;
+                font-size: 22pt;
+                line-height: 1.12;
+            }
+
+            .blog-post p {
+                margin-bottom: 9px;
+                color: #111;
+                font-size: 10.6pt;
+                line-height: 1.42;
+            }
+
+            .blog-subtitle {
+                margin-bottom: 7px;
+                color: #333;
+                font-size: 12pt;
+                line-height: 1.35;
+            }
+
+            .blog-date,
+            .blog-meta {
+                color: #444;
+                font-size: 8.8pt;
+                line-height: 1.3;
+            }
+
+            .blog-callout {
+                margin: 10px 0;
+                padding: 7px 10px;
+                border-left: 3px solid #777;
+                background: #f7f7f7;
+                break-inside: avoid;
+            }
+
+            .blog-post a[href]::after {
+                content: " (" attr(href) ")";
+                color: #444;
+                font-size: 8.5pt;
+            }
+
+            .print-only {
+                display: block;
+                color: #444;
+                font-size: 8.8pt;
+                line-height: 1.35;
+            }
+
+            .badge {
+                padding: 0;
+                color: #111 !important;
+                background: transparent !important;
+                border: 0 !important;
+            }
+        }
     </style>
 </head>
 
@@ -209,6 +294,9 @@
         </p>
         <p>
             Also sharing some videos showing the weather conditions, the device generating water, and my wonderful colleague Daniel drinking that water...
+        </p>
+        <p class="print-only">
+            Videos are available in the online version: https://www.nakulrampal.xyz/blog/water-harvester.html
         </p>
 
         <div class="blog-videos" aria-label="Videos from the autonomous passive MOF water harvester field testing">

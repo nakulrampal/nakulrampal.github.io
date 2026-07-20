@@ -407,6 +407,10 @@ tt {
     border: 0;
 }
 
+.print-only {
+    display: none;
+}
+
 @media (max-width: 767px) {
     .blog-post {
         margin: 0;
@@ -430,9 +434,21 @@ tt {
 }
 
 @media print {
+    @page {
+        size: letter;
+        margin: 0.55in;
+    }
+
     .blog-tools,
-    .blog-videos {
+    .blog-videos,
+    .skip-link,
+    script {
         display: none;
+    }
+
+    body.blog-page {
+        color: #111;
+        background: #fff;
     }
 
     .blog-page-shell {
@@ -442,6 +458,70 @@ tt {
 
     .blog-post {
         max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .blog-hero {
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #bbb;
+        break-after: avoid;
+    }
+
+    .blog-post h1 {
+        margin: 4px 0 8px;
+        font-size: 22pt;
+        line-height: 1.12;
+    }
+
+    .blog-post p {
+        margin-bottom: 9px;
+        color: #111;
+        font-size: 10.6pt;
+        line-height: 1.42;
+    }
+
+    .blog-post .blog-subtitle {
+        margin-bottom: 7px;
+        color: #333;
+        font-size: 12pt;
+        line-height: 1.35;
+    }
+
+    .blog-date,
+    .blog-post .blog-meta {
+        color: #444;
+        font-size: 8.8pt;
+        line-height: 1.3;
+    }
+
+    .blog-post .blog-callout {
+        margin: 10px 0;
+        padding: 7px 10px;
+        border-left: 3px solid #777;
+        background: #f7f7f7;
+        break-inside: avoid;
+    }
+
+    .blog-post a[href]::after {
+        content: " (" attr(href) ")";
+        color: #444;
+        font-size: 8.5pt;
+    }
+
+    .print-only {
+        display: block;
+        color: #444;
+        font-size: 8.8pt;
+        line-height: 1.35;
+    }
+
+    .badge {
+        padding: 0;
+        color: #111 !important;
+        background: transparent !important;
+        border: 0 !important;
     }
 }
 
