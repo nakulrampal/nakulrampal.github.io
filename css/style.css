@@ -265,7 +265,8 @@ tt {
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
-    margin: 26px 0 30px;
+    max-width: 560px;
+    margin: 26px auto 30px;
 }
 
 .blog-videos figure {
