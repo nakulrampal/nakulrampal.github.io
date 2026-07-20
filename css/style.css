@@ -411,6 +411,10 @@ tt {
     display: none;
 }
 
+.print-sheet {
+    display: none;
+}
+
 @media (max-width: 767px) {
     .blog-post {
         margin: 0;
@@ -440,6 +444,7 @@ tt {
     }
 
     .blog-tools,
+    .blog-post,
     .blog-videos,
     .skip-link,
     script {
@@ -456,10 +461,80 @@ tt {
         padding: 0;
     }
 
-    .blog-post {
-        max-width: none;
-        margin: 0;
+    .print-sheet {
+        display: block;
+        color: #111;
+        font-family: Lato, Arial, sans-serif;
+    }
+
+    .print-sheet-header {
+        margin-bottom: 12px;
+        padding-bottom: 9px;
+        border-bottom: 1px solid #aaa;
+    }
+
+    .print-sheet-kicker,
+    .print-sheet-meta,
+    .print-sheet-link {
+        color: #555;
+        font-size: 8.8pt;
+        line-height: 1.35;
+    }
+
+    .print-sheet h1 {
+        margin: 4px 0 6px;
+        color: #111;
+        font-size: 20.5pt;
+        font-weight: 500;
+        line-height: 1.1;
+    }
+
+    .print-sheet-deck {
+        margin: 0 0 6px;
+        color: #333;
+        font-size: 11.2pt;
+        line-height: 1.35;
+    }
+
+    .print-sheet p {
+        margin: 0 0 8px;
+        color: #111;
+        font-size: 10.2pt;
+        line-height: 1.38;
+    }
+
+    .print-sheet h2 {
+        margin: 12px 0 5px;
+        color: #111;
+        font-size: 11pt;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    .print-sheet ul {
+        margin: 0 0 8px 16px;
         padding: 0;
+    }
+
+    .print-sheet li {
+        margin-bottom: 4px;
+        color: #111;
+        font-size: 9.8pt;
+        line-height: 1.32;
+        text-align: left;
+    }
+
+    .print-sheet-callout {
+        margin: 9px 0;
+        padding: 7px 9px;
+        border-left: 3px solid #555;
+        background: #f6f6f6;
+    }
+
+    .print-sheet-footer {
+        margin-top: 12px;
+        padding-top: 8px;
+        border-top: 1px solid #ccc;
     }
 
     .blog-hero {

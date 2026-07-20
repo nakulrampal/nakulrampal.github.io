@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-    <title>An Autonomous Passive MOF Water Harvester for Extreme Arabian Desert Conditions | Nakul Rampal</title>
+    <title>An Autonomous Off-grid MOF Water Harvester for Extreme Arabian Desert Conditions | Nakul Rampal</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Nakul Rampal">
     <meta name="robots" content="index,follow">
     <meta name="description" content="A short field note by Nakul Rampal on an autonomous, off-grid MOF water harvester operating under extreme desert conditions.">
     <link rel="canonical" href="https://www.nakulrampal.xyz/blog/water-harvester.html">
-    <meta property="og:title" content="An Autonomous Passive MOF Water Harvester for Extreme Arabian Desert Conditions">
+    <meta property="og:title" content="An Autonomous Off-grid MOF Water Harvester for Extreme Arabian Desert Conditions">
     <meta property="og:description" content="A short field note on translating a lab-discovered MOF into an autonomous water-harvesting device in the field.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.nakulrampal.xyz/blog/water-harvester.html">
     <meta property="og:image" content="https://www.nakulrampal.xyz/images/profile-picture-latest.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="An Autonomous Passive MOF Water Harvester for Extreme Arabian Desert Conditions">
+    <meta name="twitter:title" content="An Autonomous Off-grid MOF Water Harvester for Extreme Arabian Desert Conditions">
     <meta name="twitter:description" content="A short field note on translating a lab-discovered MOF into an autonomous water-harvesting device in the field.">
     <meta name="twitter:image" content="https://www.nakulrampal.xyz/images/profile-picture-latest.jpg">
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
@@ -164,6 +164,10 @@
             display: none;
         }
 
+        .print-sheet {
+            display: none;
+        }
+
         @media print {
             @page {
                 size: letter;
@@ -171,15 +175,91 @@
             }
 
             .blog-tools,
+            .blog-post,
             .blog-videos {
                 display: none;
             }
 
-            .blog-page-shell,
-            .blog-post {
+            .blog-page-shell {
                 max-width: none;
                 margin: 0;
                 padding: 0;
+            }
+
+            .print-sheet {
+                display: block;
+                color: #111;
+                font-family: Lato, Arial, sans-serif;
+            }
+
+            .print-sheet-header {
+                margin-bottom: 12px;
+                padding-bottom: 9px;
+                border-bottom: 1px solid #aaa;
+            }
+
+            .print-sheet-kicker,
+            .print-sheet-meta,
+            .print-sheet-link {
+                color: #555;
+                font-size: 8.8pt;
+                line-height: 1.35;
+            }
+
+            .print-sheet h1 {
+                margin: 4px 0 6px;
+                color: #111;
+                font-size: 20.5pt;
+                font-weight: 500;
+                line-height: 1.1;
+            }
+
+            .print-sheet-deck {
+                margin: 0 0 6px;
+                color: #333;
+                font-size: 11.2pt;
+                line-height: 1.35;
+            }
+
+            .print-sheet p {
+                margin: 0 0 8px;
+                color: #111;
+                font-size: 10.2pt;
+                line-height: 1.38;
+            }
+
+            .print-sheet h2 {
+                margin: 12px 0 5px;
+                color: #111;
+                font-size: 11pt;
+                font-weight: 600;
+                line-height: 1.2;
+            }
+
+            .print-sheet ul {
+                margin: 0 0 8px 16px;
+                padding: 0;
+            }
+
+            .print-sheet li {
+                margin-bottom: 4px;
+                color: #111;
+                font-size: 9.8pt;
+                line-height: 1.32;
+                text-align: left;
+            }
+
+            .print-sheet-callout {
+                margin: 9px 0;
+                padding: 7px 9px;
+                border-left: 3px solid #555;
+                background: #f6f6f6;
+            }
+
+            .print-sheet-footer {
+                margin-top: 12px;
+                padding-top: 8px;
+                border-top: 1px solid #ccc;
             }
 
             .blog-hero {
@@ -256,7 +336,7 @@
                 <path d="M12 19l-7-7 7-7"></path>
             </svg>
         </a>
-        <button class="blog-print-button blog-icon-button" type="button" onclick="window.print()" aria-label="Print this post">
+        <button class="blog-print-button blog-icon-button" type="button" onclick="printBlogPost()" aria-label="Print this post">
             <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M6 9V2h12v7"></path>
                 <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
@@ -278,7 +358,7 @@
     <article class="blog-post medium-post">
         <header class="blog-hero">
             <p class="blog-date">July 2026</p>
-            <h1>An Autonomous Passive MOF Water Harvester for Extreme Arabian Desert Conditions</h1>
+            <h1>An Autonomous Off-grid MOF Water Harvester for Extreme Arabian Desert Conditions</h1>
             <p class="blog-subtitle">A short note on translating a material discovered in the lab into an actual working device in the field.</p>
             <p class="blog-meta">Nakul Rampal · ChemRxiv preprint · 15 July 2026</p>
         </header>
@@ -330,10 +410,53 @@
             A big thank you to Ali Alawadhi and Daniel Ahn, and to Prof. Yaghi for his mentorship. This was made possible because of generous funding from the King Abdulaziz City for Science and Technology (KACST) and the Bakar Institute of Digital Materials for the Planet (BIDMaP).
         </p>
     </article>
+    <article class="print-sheet" aria-label="Printable one-page version">
+        <header class="print-sheet-header">
+            <p class="print-sheet-kicker">Nakul Rampal · ChemRxiv preprint · 15 July 2026</p>
+            <h1>An Autonomous Off-grid MOF Water Harvester for Extreme Arabian Desert Conditions</h1>
+            <p class="print-sheet-deck">A short note on translating a material discovered in the lab into an actual working device in the field.</p>
+            <p class="print-sheet-link">Preprint: https://chemrxiv.org/doi/abs/10.26434/chemrxiv.15006110/v1</p>
+        </header>
+
+        <p>
+            We built an autonomous, off-grid water harvester that operates under extreme desert conditions, w/ some days during field testing seeing midday temperatures reach ~50 &deg;C, RH drop close to 5%, and very high wind speeds.
+        </p>
+        <p>
+            This is also a nice example of how a material discovered in the lab can be translated into an actual working device in the field.
+        </p>
+
+        <section class="print-sheet-callout">
+            <h2>Key takeaway</h2>
+            <p>
+                While it may seem that high desert temperatures would lead to rapid heating of the MOF (which is important for desorbing the adsorbed water), this is not always true. Under such harsh desert conditions, windblown sand attenuates the solar irradiance reaching the device, while high wind speeds can also increase heat loss. This can lead to slower heating and a slower rate of water collection, reducing the total amount of water collected over the course of a day.
+            </p>
+        </section>
+
+        <h2>Field videos</h2>
+        <ul>
+            <li>Weather conditions during field testing.</li>
+            <li>The device generating water.</li>
+            <li>Daniel drinking the collected water.</li>
+        </ul>
+        <p class="print-sheet-meta">
+            Videos are available in the online version: https://www.nakulrampal.xyz/blog/water-harvester.html
+        </p>
+
+        <footer class="print-sheet-footer">
+            <p>
+                A big thank you to Ali Alawadhi and Daniel Ahn, and to Prof. Yaghi for his mentorship. This was made possible because of generous funding from the King Abdulaziz City for Science and Technology (KACST) and the Bakar Institute of Digital Materials for the Planet (BIDMaP).
+            </p>
+        </footer>
+    </article>
 </main>
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+
+function printBlogPost() {
+  document.title = 'an-autonomous-off-grid-water-harvester';
+  window.print();
 }
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
