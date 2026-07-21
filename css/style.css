@@ -967,6 +967,14 @@ textarea:focus {
     border-color: #e1c878;
 }
 
+.paper-links .badge-blog,
+.latest-updates .badge-blog,
+.talk-links .badge-blog {
+    color: #28536b;
+    background: #dceff7;
+    border-color: #a9d3e3;
+}
+
 .latest-updates .badge-youtube,
 .talk-links .badge-youtube {
     color: #8a1f1f;

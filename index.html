@@ -613,6 +613,9 @@ function googleTranslateElementInit() {
             if (type === "huggingface") {
                 logo = "<span class=\"resource-logo resource-logo-hf\" aria-hidden=\"true\">🤗</span><span>Hugging Face</span>";
             }
+            if (type === "blog") {
+                logo = "<span>Blog</span>";
+            }
             return "<a href=\"" + url + "\" class=\"resource-link\"><span class=\"badge badge-resource badge-" + type + "\">" + logo + "</span></a> ";
         }
 
@@ -679,7 +682,9 @@ function googleTranslateElementInit() {
             "ChemRxiv, <u>2026</u>",
             "",
             "Here we report an off-grid, passively heated, sorbent-assisted atmospheric water harvesting device. A metal-organic framework is integrated as thin coatings in a disc-stack architecture to enhance moisture transport and heat transfer. Under laboratory conditions, the device harvested 660 mL kg<sub>MOF</sub><sup>-1</sup> day<sup>-1</sup> and recovered 175 mL of water across two cycles in an 11.5 h simulated day. Field tests near Al-Muzahmiyya in the Arabian Desert of Saudi Arabia, performed under frequent sandstorms and very low humidity, produced 46.7 &plusmn; 1.5 mL day<sup>-1</sup>. These results demonstrate high specific productivity for a passively heated water harvester under extreme desert operation.",
-            "https://chemrxiv.org/doi/abs/10.26434/chemrxiv.15006110/v1", null, null, null, null)
+            "https://chemrxiv.org/doi/abs/10.26434/chemrxiv.15006110/v1", null, null, null, [
+                {url: "blog/water-harvester.html", label: "Blog", type: "blog"}
+            ])
 
         addpaper("A chemical language model for reticular materials design <span class=\"new-label\">NEW</span>",
             "Dhruv Menon, Vivek Singh, Xu Chen, Mohammad Reza Alizadeh Kiapi, Ivan Zyuzin, Hamish W. Macleod, <b>Nakul Rampal</b>, William Shepard, Omar M. Yaghi, David Fairen-Jimenez<b>*</b>",
