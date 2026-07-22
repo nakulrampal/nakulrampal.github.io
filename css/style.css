@@ -289,6 +289,78 @@ tt {
     line-height: 1.5;
 }
 
+.blog-engagement {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 28px 0 4px;
+    padding-top: 16px;
+    color: #666;
+    border-top: 1px solid #eee;
+    font-family: Lato;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.blog-view-count,
+.reaction-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 28px;
+    padding: 4px 9px;
+    color: #555;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font: inherit;
+}
+
+.reaction-button {
+    cursor: pointer;
+}
+
+.reaction-button:hover,
+.reaction-button:focus {
+    color: #007bff;
+    border-color: #9cc7e6;
+    outline: none;
+}
+
+.reaction-button[aria-pressed="true"] {
+    color: #0056b3;
+    background: #eef6fc;
+    border-color: #9cc7e6;
+}
+
+.reaction-symbol {
+    color: #777;
+    font-weight: 700;
+}
+
+.reaction-count,
+.view-count-number {
+    min-width: 1.2em;
+    color: #333;
+    text-align: center;
+}
+
+.blog-comments {
+    max-width: 760px;
+    margin: 30px auto 0;
+    padding-top: 18px;
+    border-top: 1px solid #eee;
+}
+
+.blog-comments h2 {
+    margin: 0 0 6px;
+    color: #222;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
 .blog-page {
     background: #fff;
 }
@@ -445,6 +517,8 @@ tt {
 
     .blog-tools,
     .blog-post,
+    .blog-engagement,
+    .blog-comments,
     .blog-videos,
     .skip-link,
     script {

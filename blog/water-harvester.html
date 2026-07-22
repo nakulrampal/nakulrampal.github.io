@@ -160,6 +160,77 @@
             line-height: 1.5;
         }
 
+        .blog-engagement {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin: 28px 0 4px;
+            padding-top: 16px;
+            color: #666;
+            border-top: 1px solid #eee;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .blog-view-count,
+        .reaction-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            min-height: 28px;
+            padding: 4px 9px;
+            color: #555;
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font: inherit;
+        }
+
+        .reaction-button {
+            cursor: pointer;
+        }
+
+        .reaction-button:hover,
+        .reaction-button:focus {
+            color: #007bff;
+            border-color: #9cc7e6;
+            outline: none;
+        }
+
+        .reaction-button[aria-pressed="true"] {
+            color: #0056b3;
+            background: #eef6fc;
+            border-color: #9cc7e6;
+        }
+
+        .reaction-symbol {
+            color: #777;
+            font-weight: 700;
+        }
+
+        .reaction-count,
+        .view-count-number {
+            min-width: 1.2em;
+            color: #333;
+            text-align: center;
+        }
+
+        .blog-comments {
+            max-width: 760px;
+            margin: 30px auto 0;
+            padding-top: 18px;
+            border-top: 1px solid #eee;
+        }
+
+        .blog-comments h2 {
+            margin: 0 0 6px;
+            color: #222;
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
         .print-only {
             display: none;
         }
@@ -176,6 +247,8 @@
 
             .blog-tools,
             .blog-post,
+            .blog-engagement,
+            .blog-comments,
             .blog-videos {
                 display: none;
             }
@@ -417,7 +490,33 @@
         <p>
             A big thank you to Ali Alawadhi and Daniel Ahn, and to Prof. Yaghi for his mentorship. This was made possible because of generous funding from the King Abdulaziz City for Science and Technology (KACST) and the Bakar Institute of Digital Materials for the Planet (BIDMaP).
         </p>
+        <div class="blog-engagement" aria-label="Reader response">
+            <span class="blog-view-count">
+                <span>Views</span>
+                <span class="view-count-number" id="view-count">0</span>
+            </span>
+            <button class="reaction-button" type="button" data-reaction="like" aria-pressed="false">
+                <span class="reaction-symbol" aria-hidden="true">+</span>
+                <span>Like</span>
+                <span class="reaction-count" id="like-count">0</span>
+            </button>
+            <button class="reaction-button" type="button" data-reaction="dislike" aria-pressed="false">
+                <span class="reaction-symbol" aria-hidden="true">-</span>
+                <span>Dislike</span>
+                <span class="reaction-count" id="dislike-count">0</span>
+            </button>
+        </div>
     </article>
+    <section class="blog-comments" aria-labelledby="comments-title">
+        <h2 id="comments-title">Comments</h2>
+        <script src="https://utteranc.es/client.js"
+                repo="nakulrampal/nakulrampal.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </section>
     <article class="print-sheet" aria-label="Printable one-page version">
         <header class="print-sheet-header">
             <p class="print-sheet-kicker">Nakul Rampal · ChemRxiv preprint · 15 July 2026</p>
@@ -468,6 +567,76 @@ function printBlogPost() {
     window.location.href = 'water-harvester-print.html?print=1';
   }
 }
+
+function setupBlogEngagement() {
+  var storageKey = 'nakul-water-harvester-engagement';
+  var sessionKey = storageKey + '-viewed';
+  var defaultState = { views: 0, like: 0, dislike: 0, vote: null };
+  var state = defaultState;
+
+  try {
+    state = Object.assign({}, defaultState, JSON.parse(localStorage.getItem(storageKey)) || {});
+  } catch (error) {
+    state = defaultState;
+  }
+
+  try {
+    if (!sessionStorage.getItem(sessionKey)) {
+      state.views = Math.max(0, Number(state.views) || 0) + 1;
+      sessionStorage.setItem(sessionKey, '1');
+    }
+  } catch (error) {
+    state.views = Math.max(0, Number(state.views) || 0) + 1;
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(state));
+    } catch (error) {
+      return;
+    }
+  }
+
+  function renderState() {
+    var viewCount = document.getElementById('view-count');
+    var likeCount = document.getElementById('like-count');
+    var dislikeCount = document.getElementById('dislike-count');
+
+    if (viewCount) viewCount.textContent = state.views;
+    if (likeCount) likeCount.textContent = state.like;
+    if (dislikeCount) dislikeCount.textContent = state.dislike;
+
+    document.querySelectorAll('.reaction-button').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.dataset.reaction === state.vote));
+    });
+  }
+
+  document.querySelectorAll('.reaction-button').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var reaction = button.dataset.reaction;
+      var opposite = reaction === 'like' ? 'dislike' : 'like';
+
+      if (state.vote === reaction) {
+        state[reaction] = Math.max(0, Number(state[reaction]) - 1);
+        state.vote = null;
+      } else {
+        if (state.vote === opposite) {
+          state[opposite] = Math.max(0, Number(state[opposite]) - 1);
+        }
+        state[reaction] = Math.max(0, Number(state[reaction]) || 0) + 1;
+        state.vote = reaction;
+      }
+
+      saveState();
+      renderState();
+    });
+  });
+
+  saveState();
+  renderState();
+}
+
+document.addEventListener('DOMContentLoaded', setupBlogEngagement);
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
