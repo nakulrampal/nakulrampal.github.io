@@ -139,6 +139,15 @@ a.twitter-follow-button:focus {
     text-decoration: none;
 }
 
+.opportunity-note {
+    display: inline-block;
+    margin-top: 8px;
+    color: #333;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 24px;
+}
+
 p[align="justify"] {
     text-align: left;
 }
