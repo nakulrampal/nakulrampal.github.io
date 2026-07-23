@@ -323,7 +323,7 @@ tt {
 }
 
 .blog-view-count,
-.reaction-button {
+.blog-like-button {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -336,33 +336,15 @@ tt {
     font: inherit;
 }
 
-.reaction-button {
+.blog-like-button {
     cursor: pointer;
 }
 
-.reaction-button:hover,
-.reaction-button:focus {
+.blog-like-button:hover,
+.blog-like-button:focus {
     color: #007bff;
     border-color: #9cc7e6;
     outline: none;
-}
-
-.reaction-button[aria-pressed="true"] {
-    color: #0056b3;
-    background: #eef6fc;
-    border-color: #9cc7e6;
-}
-
-.reaction-symbol {
-    color: #777;
-    font-weight: 700;
-}
-
-.reaction-count,
-.view-count-number {
-    min-width: 1.2em;
-    color: #333;
-    text-align: center;
 }
 
 .blog-comments {
@@ -378,6 +360,25 @@ tt {
     font-size: 22px;
     font-weight: 500;
     line-height: 1.3;
+}
+
+.blog-view-count-number,
+.blog-like-count {
+    min-width: 1.2em;
+    padding-left: 6px;
+    border-left: 1px solid #ddd;
+    color: #333;
+    text-align: center;
+}
+
+.applause-counter {
+    position: absolute;
+    left: -9999px;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .blog-page {
