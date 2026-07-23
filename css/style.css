@@ -140,12 +140,22 @@ a.twitter-follow-button:focus {
 }
 
 .opportunity-note {
-    display: inline-block;
-    margin-top: 8px;
+    display: block;
+    max-width: 680px;
+    margin: 16px 0;
+    padding: 8px 10px;
     color: #333;
+    background: #f7fbff;
+    border-left: 3px solid #007bff;
     font-size: 16px;
-    font-style: italic;
     line-height: 24px;
+}
+
+.opportunity-label {
+    display: inline-block;
+    margin-right: 6px;
+    color: #0056b3;
+    font-weight: 600;
 }
 
 p[align="justify"] {

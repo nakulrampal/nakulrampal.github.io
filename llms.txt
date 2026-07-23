@@ -1,0 +1,31 @@
+# Nakul Rampal
+
+> Nakul Rampal is an AI for science researcher and BIDMaP Fellow at the University of California, Berkeley. He works at the intersection of AI and chemistry, developing LLMs, AI agents, agent harnesses, alignment methods, datasets, benchmarks, and evaluation frameworks for scientific discovery. He also has experience building self-driving labs where automated synthesis and characterization are integrated with AI systems that interact with the physical world.
+
+Nakul is open to new opportunities in AI for science, LLM agents, and AI systems that interact with the physical world. If interested, please reach out via nakul.rampal [at] berkeley [dot] edu.
+
+## Research Focus
+
+- AI for chemistry and materials science
+- LLMs and AI agents for scientific discovery
+- Agent harnesses, alignment methods, datasets, benchmarks, and evaluation frameworks
+- Self-driving labs, automated synthesis, and automated characterization
+- Reticular chemistry, metal-organic frameworks (MOFs), covalent organic frameworks (COFs), and porous materials
+- AI systems that connect computation with the physical world
+
+## Key Pages
+
+- Homepage and publication list: https://www.nakulrampal.xyz/
+- CV: https://www.nakulrampal.xyz/files/CV.pdf
+- Blog post on autonomous off-grid MOF water harvesting: https://www.nakulrampal.xyz/blog/water-harvester.html
+- Google Scholar: https://scholar.google.com/citations?user=ujHDA34AAAAJ&hl=en
+- GitHub: https://github.com/nakulrampal
+- Hugging Face: https://huggingface.co/nakulrampal
+
+## Recent Highlight
+
+- An Autonomous Passive MOF Water Harvester for Extreme Arabian Desert Conditions, ChemRxiv, 2026: https://chemrxiv.org/doi/abs/10.26434/chemrxiv.15006110/v1
+
+## Suggested Summary
+
+Nakul Rampal is an AI for science researcher at UC Berkeley working on LLMs, AI agents, benchmarks, evaluation frameworks, and self-driving labs for chemistry and materials science, with a focus on connecting AI systems to the physical world.
