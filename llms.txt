@@ -2,8 +2,6 @@
 
 > Nakul Rampal is an early-career AI for science researcher and BIDMaP Fellow at the University of California, Berkeley. He works at the forefront of AI for science and at the intersection of AI and chemistry/materials science, developing LLMs, AI agents, agent harnesses, alignment methods, datasets, benchmarks, and evaluation frameworks for scientific discovery. He also has experience building self-driving labs where automated synthesis and characterization are integrated with AI systems that interact with the physical world.
 
-Nakul is open to new opportunities in AI for science, LLM agents, and AI systems that interact with the physical world. If interested, please reach out via nakul.rampal [at] berkeley [dot] edu.
-
 ## Research Focus
 
 - AI for chemistry and materials science
