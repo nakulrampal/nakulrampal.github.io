@@ -147,6 +147,112 @@ tt {
     overflow-wrap: anywhere;
 }
 
+.profile-contact {
+    margin-bottom: 0;
+    font-size: 18px;
+}
+
+.profile-research {
+    margin-top: 0;
+}
+
+.retro-visitor-counter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    margin: 10px 0 16px;
+    padding: 5px 7px;
+    color: #4f8a62;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: none;
+    font-family: Menlo, Monaco, Consolas, monospace;
+    font-size: 10px;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.retro-visitor-counter:hover,
+.retro-visitor-counter:focus {
+    color: #3f7d56;
+    border-color: #bbb;
+    text-decoration: none;
+    outline: none;
+}
+
+.retro-counter-label {
+    color: #777;
+    letter-spacing: 0;
+}
+
+.retro-counter-screen {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.retro-digit {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 20px;
+    color: #4f8a62;
+    background: linear-gradient(#f8f8f8 0 48%, #e9e9e9 48% 52%, #f8f8f8 52% 100%);
+    border: 1px solid #ddd;
+    box-shadow: none;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    text-shadow: 1px 0 0 rgba(79, 138, 98, 0.28);
+    transform-origin: center;
+}
+
+.retro-digit::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 50%;
+    height: 1px;
+    background: #ddd;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.retro-digit-value {
+    position: relative;
+    z-index: 1;
+    font-family: "Courier New", Menlo, Monaco, Consolas, monospace;
+    transform: scaleX(0.88);
+}
+
+.retro-digit.is-flipped {
+    animation: visitor-counter-flip 500ms steps(4, end);
+}
+
+.visitor-tracker {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+@keyframes visitor-counter-flip {
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(-90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
 .translate-widget {
     margin-top: 10px;
     margin-bottom: 12px;

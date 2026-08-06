@@ -94,7 +94,7 @@
     </script>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" type="text/css" media="screen,print" href="css/style.css?v=20260722a" />
+    <link rel="stylesheet" type="text/css" media="screen,print" href="css/style.css?v=20260806a" />
 	<link rel="icon" type="image/jpeg" href="./images/profile-picture-latest.jpg">
 </head>
 
@@ -379,6 +379,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 35);
     }
 
+    function initializeRetroVisitorCounter() {
+        var counter = document.querySelector(".retro-visitor-counter");
+        if (!counter) return;
+        var screen = counter.querySelector(".retro-counter-screen");
+        var count = counter.getAttribute("data-visitor-count") || "0";
+        var digits = count.replace(/\D/g, "").padStart(4, "0").split("");
+        screen.innerHTML = "";
+
+        digits.forEach(function (digit, index) {
+            var tile = document.createElement("span");
+            tile.className = "retro-digit";
+            tile.style.animationDelay = (index * 90) + "ms";
+            tile.innerHTML = "<span class=\"retro-digit-value\">0</span>";
+            screen.appendChild(tile);
+            window.setTimeout(function () {
+                tile.innerHTML = "<span class=\"retro-digit-value\">" + digit + "</span>";
+                tile.classList.add("is-flipped");
+            }, 130 + (index * 90));
+        });
+    }
+
     function openSectionById(id) {
         if (!id) return;
         var targetHeading = document.getElementById(id);
@@ -428,6 +449,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("hashchange", openSectionFromHash);
     openSectionFromHash();
+    initializeRetroVisitorCounter();
 });
 </script>
 
@@ -465,12 +487,22 @@ document.addEventListener("DOMContentLoaded", function () {
 <h1>Nakul Rampal</h1>
     <h4><a href="https://twitter.com/RampalNakul" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow Me</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></h4>
 
-<p style="font-size: 18px">BIDMaP Fellow<br>
+<p class="profile-contact">BIDMaP Fellow<br>
 <a href="https://bidmap.berkeley.edu/">Bakar Institute of Digital Materials for the Planet</a> <br>
 <a href="https://www.berkeley.edu/">University of California, Berkeley</a> <br>
 
 <b>Email</b>: <tt>nakul.rampal [at] berkeley [dot] edu</tt> <br>
 <b>Office</b>: 373 Cory Hall Berkeley, CA 94720-1770 <br>
+</p>
+<a class="retro-visitor-counter" href="https://info.flagcounter.com/Y8Lt" data-visitor-count="5360" aria-label="View website visitor statistics">
+    <span class="retro-counter-label">VISITORS</span>
+    <span class="retro-counter-screen" aria-hidden="true"></span>
+    <span class="sr-only">Visitor statistics are tracked with FlagCounter.</span>
+    <span class="visitor-tracker" aria-hidden="true">
+        <img src="https://s01.flagcounter.com/mini/Y8Lt/bg_000000/txt_00FF66/border_00FF66/flags_0/" alt="">
+    </span>
+</a>
+<p class="profile-research">
 <b>Current Research Interests</b>:<br>
 <span style="font-size: 17px">I am an early-career researcher working at the forefront of AI for science, at the intersection of AI and chemistry/materials science. I develop LLMs, AI agents, agent harnesses, alignment methods, datasets, benchmarks, and evaluation frameworks for scientific discovery. I also have experience building self-driving labs, where automated synthesis and characterization are integrated with AI systems that interact with the physical world.</span>
     <br>
@@ -1168,13 +1200,6 @@ function googleTranslateElementInit() {
     </ul>
 
 </main>
-
-    <div style="text-align: center;">
-
-    <a href="https://info.flagcounter.com/Y8Lt"><img src="https://s01.flagcounter.com/countxl/Y8Lt/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_12/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="10"></a>
-    <br>
-    <br>
-    </div>
 
     <details class="footer-changelog">
         <summary>Changelog</summary>
