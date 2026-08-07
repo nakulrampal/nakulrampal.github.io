@@ -217,18 +217,42 @@
         .blog-like-button {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            min-height: 28px;
-            padding: 4px 9px;
+            gap: 0;
+            min-height: 20px;
+            padding: 0;
             color: #555;
             background: #f8f8f8;
             border: 1px solid #ddd;
             border-radius: 3px;
             font: inherit;
+            overflow: hidden;
         }
 
         .blog-like-button {
             cursor: pointer;
+        }
+
+        .blog-view-badge img {
+            display: block;
+            height: 20px;
+        }
+
+        .blog-like-label,
+        .blog-like-count {
+            display: inline-flex;
+            align-items: center;
+            min-height: 20px;
+            padding: 0 7px;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        .blog-like-label {
+            background: #f8f8f8;
+        }
+
+        .blog-like-count {
+            background: #eee;
         }
 
         .blog-like-button:hover,
@@ -256,8 +280,6 @@
         .blog-view-count-number,
         .blog-like-count {
             min-width: 1.2em;
-            padding-left: 6px;
-            border-left: 1px solid #ddd;
             color: #333;
             text-align: center;
         }
@@ -532,13 +554,11 @@
             A big thank you to Ali Alawadhi and Daniel Ahn, and to Prof. Yaghi for his mentorship. This was made possible because of generous funding from the King Abdulaziz City for Science and Technology (KACST) and the Bakar Institute of Digital Materials for the Planet (BIDMaP).
         </p>
         <div class="blog-engagement" aria-label="Reader response">
-            <a class="blog-view-count" href="https://hits.sh/www.nakulrampal.xyz/blog/water-harvester.html/" aria-label="View public page view count">
-                <span>Views</span>
-                <span class="blog-view-count-number" id="blog-view-count">0</span>
+            <a class="blog-view-count blog-view-badge" href="https://hits.sh/www.nakulrampal.xyz/blog/water-harvester.html/" aria-label="View public page view count">
+                <img src="https://hits.sh/www.nakulrampal.xyz/blog/water-harvester.html.svg?label=Views&color=eeeeee&labelColor=f8f8f8" alt="Views">
             </a>
             <button class="blog-like-button" id="blog-like-button" type="button">
-                <span aria-hidden="true">+</span>
-                <span>Like</span>
+                <span class="blog-like-label">Like</span>
                 <span class="blog-like-count" id="blog-like-count">0</span>
             </button>
             <applause-button class="applause-counter" id="applause-counter" api="https://applause.chabouis.fr" url="https://www.nakulrampal.xyz/blog/water-harvester.html" multiclap="true" aria-hidden="true"></applause-button>
@@ -605,25 +625,6 @@ function printBlogPost() {
   }
 }
 
-function setupViewBadge() {
-  var counter = document.getElementById('blog-view-count');
-  if (!counter) return;
-
-  fetch('https://hits.sh/www.nakulrampal.xyz/blog/water-harvester.html.svg?label=Views&color=eeeeee&labelColor=f8f8f8')
-    .then(function (response) {
-      return response.text();
-    })
-    .then(function (svg) {
-      var matches = svg.match(new RegExp('>[0-9][0-9,]*</text>', 'g'));
-      if (!matches || !matches.length) return;
-      var latest = matches[matches.length - 1].replace(/<[^>]+>/g, '').trim();
-      if (latest) counter.textContent = latest;
-    })
-    .catch(function () {
-      return;
-    });
-}
-
 function setupApplauseBadge() {
   var button = document.getElementById('blog-like-button');
   var counter = document.getElementById('blog-like-count');
@@ -660,7 +661,6 @@ function setupApplauseBadge() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', setupViewBadge);
 document.addEventListener('DOMContentLoaded', setupApplauseBadge);
 </script>
 <script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>

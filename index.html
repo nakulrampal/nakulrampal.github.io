@@ -383,21 +383,42 @@ document.addEventListener("DOMContentLoaded", function () {
         var counter = document.querySelector(".retro-visitor-counter");
         if (!counter) return;
         var screen = counter.querySelector(".retro-counter-screen");
-        var count = counter.getAttribute("data-visitor-count") || "0";
-        var digits = count.replace(/\D/g, "").padStart(4, "0").split("");
-        screen.innerHTML = "";
+        var fallbackCount = counter.getAttribute("data-visitor-count") || "0";
 
-        digits.forEach(function (digit, index) {
-            var tile = document.createElement("span");
-            tile.className = "retro-digit";
-            tile.style.animationDelay = (index * 90) + "ms";
-            tile.innerHTML = "<span class=\"retro-digit-value\">0</span>";
-            screen.appendChild(tile);
-            window.setTimeout(function () {
-                tile.innerHTML = "<span class=\"retro-digit-value\">" + digit + "</span>";
-                tile.classList.add("is-flipped");
-            }, 130 + (index * 90));
-        });
+        function renderCount(count) {
+            var digits = String(count).replace(/\D/g, "").padStart(4, "0").split("");
+            screen.innerHTML = "";
+
+            digits.forEach(function (digit, index) {
+                var tile = document.createElement("span");
+                tile.className = "retro-digit";
+                tile.style.animationDelay = (index * 90) + "ms";
+                tile.innerHTML = "<span class=\"retro-digit-value\">0</span>";
+                screen.appendChild(tile);
+                window.setTimeout(function () {
+                    tile.innerHTML = "<span class=\"retro-digit-value\">" + digit + "</span>";
+                    tile.classList.add("is-flipped");
+                }, 130 + (index * 90));
+            });
+        }
+
+        renderCount(fallbackCount);
+
+        var counterUrl = counter.getAttribute("data-count-endpoint");
+        if (!counterUrl) return;
+
+        fetch(counterUrl)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                if (data && data.total != null) {
+                    renderCount(data.total);
+                }
+            })
+            .catch(function () {
+                return;
+            });
     }
 
     function openSectionById(id) {
@@ -494,12 +515,12 @@ document.addEventListener("DOMContentLoaded", function () {
 <b>Email</b>: <tt>nakul.rampal [at] berkeley [dot] edu</tt> <br>
 <b>Office</b>: 373 Cory Hall Berkeley, CA 94720-1770 <br>
 </p>
-<a class="retro-visitor-counter" href="https://info.flagcounter.com/Y8Lt" data-visitor-count="5360" aria-label="View website visitor statistics">
+<a class="retro-visitor-counter" href="https://info.flagcounter.com/Y8Lt" data-visitor-count="5368" data-count-endpoint="https://nakulrampal-flagcounter-total.nakulrampal.workers.dev" aria-label="View website visitor map">
     <span class="retro-counter-label">VISITORS</span>
     <span class="retro-counter-screen" aria-hidden="true"></span>
-    <span class="sr-only">Visitor statistics are tracked with FlagCounter.</span>
+    <span class="sr-only">Visitor count and visitor map are tracked with FlagCounter.</span>
     <span class="visitor-tracker" aria-hidden="true">
-        <img src="https://s01.flagcounter.com/mini/Y8Lt/bg_000000/txt_00FF66/border_00FF66/flags_0/" alt="">
+        <img src="https://s01.flagcounter.com/mini/Y8Lt/bg_FFFFFF/txt_777777/border_DDDDDD/flags_0/" alt="">
     </span>
 </a>
 <p class="profile-research">

@@ -413,18 +413,42 @@ tt {
 .blog-like-button {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    min-height: 28px;
-    padding: 4px 9px;
+    gap: 0;
+    min-height: 20px;
+    padding: 0;
     color: #555;
     background: #f8f8f8;
     border: 1px solid #ddd;
     border-radius: 3px;
     font: inherit;
+    overflow: hidden;
 }
 
 .blog-like-button {
     cursor: pointer;
+}
+
+.blog-view-badge img {
+    display: block;
+    height: 20px;
+}
+
+.blog-like-label,
+.blog-like-count {
+    display: inline-flex;
+    align-items: center;
+    min-height: 20px;
+    padding: 0 7px;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.blog-like-label {
+    background: #f8f8f8;
+}
+
+.blog-like-count {
+    background: #eee;
 }
 
 .blog-like-button:hover,
@@ -452,8 +476,6 @@ tt {
 .blog-view-count-number,
 .blog-like-count {
     min-width: 1.2em;
-    padding-left: 6px;
-    border-left: 1px solid #ddd;
     color: #333;
     text-align: center;
 }
