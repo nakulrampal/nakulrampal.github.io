@@ -299,6 +299,7 @@ tt {
 .latest-updates-window {
     position: relative;
     margin-top: 8px;
+    max-width: 100%;
     overflow: hidden;
     border-top: 1px solid #ededed;
     border-bottom: 1px solid #ededed;
@@ -327,9 +328,11 @@ tt {
 
 .latest-updates-track {
     display: flex;
+    flex-wrap: nowrap;
     align-items: center;
     gap: 28px;
     width: max-content;
+    max-width: none;
     padding: 9px 0;
     white-space: nowrap;
     animation: latest-updates-ticker 46s linear infinite;
@@ -342,9 +345,11 @@ tt {
 
 .latest-update-item {
     display: inline-flex;
+    flex: 0 0 auto;
     align-items: center;
     gap: 6px;
     color: #2b2f33;
+    white-space: nowrap;
 }
 
 .latest-update-date {
@@ -380,8 +385,17 @@ tt {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .latest-updates-window {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
     .latest-updates-track {
         animation: none;
+    }
+
+    .latest-updates-track .latest-update-item[aria-hidden="true"] {
+        display: none;
     }
 }
 
@@ -1380,17 +1394,12 @@ img {
     }
 
     .latest-updates-window {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        overflow: hidden;
     }
 
     .latest-updates-track {
-        animation: none;
-        gap: 20px;
-    }
-
-    .latest-updates-track .latest-update-item[aria-hidden="true"] {
-        display: none;
+        gap: 22px;
+        animation: latest-updates-ticker 38s linear infinite;
     }
 
     .latest-update-item,
