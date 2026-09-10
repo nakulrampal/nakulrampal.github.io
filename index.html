@@ -92,7 +92,6 @@
       ]
     }
     </script>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
     <link rel="stylesheet" type="text/css" media="screen,print" href="css/style.css?v=20260806a" />
 	<link rel="icon" type="image/jpeg" href="./images/profile-picture-latest.jpg">
@@ -421,6 +420,39 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
+    function revealAuthorsOnScroll() {
+        var authorRows = Array.prototype.slice.call(document.querySelectorAll(".paper-authors[data-full-authors]"));
+        if (!authorRows.length) return;
+
+        var isDesktop = window.matchMedia && window.matchMedia("(min-width: 992px)").matches;
+        if (!isDesktop) return;
+
+        if (!("IntersectionObserver" in window)) {
+            authorRows.forEach(function (row) {
+                row.innerHTML = row.getAttribute("data-full-authors");
+            });
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                var row = entry.target;
+                row.innerHTML = row.getAttribute("data-full-authors");
+                row.classList.add("is-revealed");
+                observer.unobserve(row);
+            });
+        }, {
+            root: null,
+            rootMargin: "0px 0px -10% 0px",
+            threshold: 0.25
+        });
+
+        authorRows.forEach(function (row) {
+            observer.observe(row);
+        });
+    }
+
     function openSectionById(id) {
         if (!id) return;
         var targetHeading = document.getElementById(id);
@@ -470,6 +502,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("hashchange", openSectionFromHash);
     openSectionFromHash();
+    revealAuthorsOnScroll();
     initializeRetroVisitorCounter();
 });
 </script>
@@ -513,7 +546,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <a href="https://www.berkeley.edu/">University of California, Berkeley</a> <br>
 
 <b>Email</b>: <tt>nakul.rampal [at] berkeley [dot] edu</tt> <br>
-<b>Office</b>: 373 Cory Hall Berkeley, CA 94720-1770 <br>
+<b>Office</b>: The Gateway <br>
 </p>
 <a class="retro-visitor-counter" href="https://info.flagcounter.com/Y8Lt" data-visitor-count="5368" data-count-endpoint="https://nakulrampal-flagcounter-total.nakulrampal.workers.dev" aria-label="View website visitor map">
     <span class="retro-counter-label">VISITORS</span>
@@ -530,20 +563,22 @@ document.addEventListener("DOMContentLoaded", function () {
 </p>
 <div class="latest-updates">
     <b>Latest updates</b>
-    <dl>
-        <dt>9/9</dt>
-        <dd><span class="new-label">NEW</span> Work led by Dhruv Menon on a chemical language model for reticular chemistry was accepted in JACS. <span class="update-links"><a href="https://pubs.acs.org/jacsat/article/doi/10.1021/jacs.6c06920/5426584/Flow-Guided-Chemical-Language-Modeling-for-Linker"><span class="badge badge-warning">JACS</span></a> <a href="https://github.com/fairen-group/nexerra-r1" class="resource-link"><span class="badge badge-resource badge-github"><svg class="resource-logo resource-logo-github" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.86c.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>GitHub</span></span></a></span></dd>
-        <dt>9/7</dt>
-        <dd><span class="new-label">NEW</span> Nakul gave an invited talk at the Global Science Seminar on Reticular Chemistry. <span class="update-links"><a href="https://globalseminars.org/speakers.html"><span class="badge badge-info">Global Seminar</span></a></span></dd>
-        <dt>8/1-8/2</dt>
-        <dd><span class="new-label">NEW</span> Nakul attended the Agentic AI Summit at UC Berkeley organized by Berkeley RDI. <span class="update-links"><a href="https://rdi.berkeley.edu/events/agentic-ai-summit"><span class="badge badge-info">RDI</span></a></span></dd>
-        <dt>7/15</dt>
-        <dd><span class="new-label">NEW</span> Preprint on an autonomous passive MOF water harvester for extreme Arabian desert conditions posted. <span class="update-links"><a href="https://chemrxiv.org/doi/abs/10.26434/chemrxiv.15006110/v1"><span class="badge badge-warning">ChemRxiv</span></a> <a href="blog/water-harvester.html"><span class="badge badge-info">Blog</span></a></span></dd>
-        <dt>6/11</dt>
-        <dd><span class="new-label">NEW</span> Nakul gave a talk and served on a panel at the IOM3 Machine Learning for Carbon Capture &amp; Battery Discovery event. <span class="update-links"><a href="https://www.iom3.org/events-awards/ems-event-calendar/machine-learning-for-carbon-capture-battery-discovery.html"><span class="badge badge-info">IOM3</span></a></span></dd>
-        <dt>4/16</dt>
-        <dd>Nakul gave a BIDMaP seminar on reticular materials, applications, and the future with AI. <span class="update-links"><a href="https://bidmap.berkeley.edu/seminars/reticular-materials-structures-applications-and-future-ai"><span class="badge badge-info">BIDMaP</span></a> <a href="https://www.youtube.com/watch?v=fsS62P1e2No" class="resource-link"><span class="badge badge-resource badge-youtube"><svg class="resource-logo resource-logo-youtube" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1.1C16.7 2.5 12 2.5 12 2.5h0s-4.7 0-8.1.2c-.5.1-1.5.1-2.4 1.1-.7.8-1 2.4-1 2.4S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.7 1 2.4c.9 1 2.2 1 2.7 1.1 1.9.2 7.8.2 7.8.2s4.7 0 8.1-.3c.5-.1 1.5-.1 2.4-1.1.7-.8 1-2.4 1-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8ZM9.8 14.1V7.6l6.2 3.3-6.2 3.2Z"/></svg><span>YouTube</span></span></a></span></dd>
-    </dl>
+    <div class="latest-updates-window">
+        <div class="latest-updates-track">
+            <span class="latest-update-item"><span class="latest-update-date">9/9</span><span class="new-label">NEW</span> Work led by Dhruv Menon on a chemical language model for reticular chemistry was accepted in JACS. <span class="update-links"><a href="https://pubs.acs.org/jacsat/article/doi/10.1021/jacs.6c06920/5426584/Flow-Guided-Chemical-Language-Modeling-for-Linker"><span class="badge badge-warning">JACS</span></a> <a href="https://github.com/fairen-group/nexerra-r1" class="resource-link"><span class="badge badge-resource badge-github"><svg class="resource-logo resource-logo-github" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.86c.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>GitHub</span></span></a></span></span>
+            <span class="latest-update-item"><span class="latest-update-date">9/7</span><span class="new-label">NEW</span> Nakul gave an invited talk at the Global Science Seminar on Reticular Chemistry. <span class="update-links"><a href="https://globalseminars.org/speakers.html"><span class="badge badge-info">Global Seminar</span></a></span></span>
+            <span class="latest-update-item"><span class="latest-update-date">8/1-8/2</span><span class="new-label">NEW</span> Nakul attended the Agentic AI Summit at UC Berkeley organized by Berkeley RDI. <span class="update-links"><a href="https://rdi.berkeley.edu/events/agentic-ai-summit"><span class="badge badge-info">RDI</span></a></span></span>
+            <span class="latest-update-item"><span class="latest-update-date">7/15</span><span class="new-label">NEW</span> Preprint on an autonomous passive MOF water harvester for extreme Arabian desert conditions posted. <span class="update-links"><a href="https://chemrxiv.org/doi/abs/10.26434/chemrxiv.15006110/v1"><span class="badge badge-warning">ChemRxiv</span></a> <a href="blog/water-harvester.html"><span class="badge badge-info">Blog</span></a></span></span>
+            <span class="latest-update-item"><span class="latest-update-date">6/11</span><span class="new-label">NEW</span> Nakul gave a talk and served on a panel at the IOM3 Machine Learning for Carbon Capture &amp; Battery Discovery event. <span class="update-links"><a href="https://www.iom3.org/events-awards/ems-event-calendar/machine-learning-for-carbon-capture-battery-discovery.html"><span class="badge badge-info">IOM3</span></a></span></span>
+            <span class="latest-update-item"><span class="latest-update-date">4/16</span> Nakul gave a BIDMaP seminar on reticular materials, applications, and the future with AI. <span class="update-links"><a href="https://bidmap.berkeley.edu/seminars/reticular-materials-structures-applications-and-future-ai"><span class="badge badge-info">BIDMaP</span></a> <a href="https://www.youtube.com/watch?v=fsS62P1e2No" class="resource-link"><span class="badge badge-resource badge-youtube"><svg class="resource-logo resource-logo-youtube" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1.1C16.7 2.5 12 2.5 12 2.5h0s-4.7 0-8.1.2c-.5.1-1.5.1-2.4 1.1-.7.8-1 2.4-1 2.4S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.7 1 2.4c.9 1 2.2 1 2.7 1.1 1.9.2 7.8.2 7.8.2s4.7 0 8.1-.3c.5-.1 1.5-.1 2.4-1.1.7-.8 1-2.4 1-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8ZM9.8 14.1V7.6l6.2 3.3-6.2 3.2Z"/></svg><span>YouTube</span></span></a></span></span>
+            <span class="latest-update-item" aria-hidden="true"><span class="latest-update-date">9/9</span><span class="new-label">NEW</span> Work led by Dhruv Menon on a chemical language model for reticular chemistry was accepted in JACS. <span class="update-links"><span class="badge badge-warning">JACS</span> <span class="badge badge-resource badge-github"><svg class="resource-logo resource-logo-github" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.86c.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>GitHub</span></span></span></span>
+            <span class="latest-update-item" aria-hidden="true"><span class="latest-update-date">9/7</span><span class="new-label">NEW</span> Nakul gave an invited talk at the Global Science Seminar on Reticular Chemistry. <span class="update-links"><span class="badge badge-info">Global Seminar</span></span></span>
+            <span class="latest-update-item" aria-hidden="true"><span class="latest-update-date">8/1-8/2</span><span class="new-label">NEW</span> Nakul attended the Agentic AI Summit at UC Berkeley organized by Berkeley RDI. <span class="update-links"><span class="badge badge-info">RDI</span></span></span>
+            <span class="latest-update-item" aria-hidden="true"><span class="latest-update-date">7/15</span><span class="new-label">NEW</span> Preprint on an autonomous passive MOF water harvester for extreme Arabian desert conditions posted. <span class="update-links"><span class="badge badge-warning">ChemRxiv</span> <span class="badge badge-info">Blog</span></span></span>
+            <span class="latest-update-item" aria-hidden="true"><span class="latest-update-date">6/11</span><span class="new-label">NEW</span> Nakul gave a talk and served on a panel at the IOM3 Machine Learning for Carbon Capture &amp; Battery Discovery event. <span class="update-links"><span class="badge badge-info">IOM3</span></span></span>
+            <span class="latest-update-item" aria-hidden="true"><span class="latest-update-date">4/16</span> Nakul gave a BIDMaP seminar on reticular materials, applications, and the future with AI. <span class="update-links"><span class="badge badge-info">BIDMaP</span> <span class="badge badge-resource badge-youtube"><svg class="resource-logo resource-logo-youtube" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1.1C16.7 2.5 12 2.5 12 2.5h0s-4.7 0-8.1.2c-.5.1-1.5.1-2.4 1.1-.7.8-1 2.4-1 2.4S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.7 1 2.4c.9 1 2.2 1 2.7 1.1 1.9.2 7.8.2 7.8.2s4.7 0 8.1-.3c.5-.1 1.5-.1 2.4-1.1.7-.8 1-2.4 1-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8ZM9.8 14.1V7.6l6.2 3.3-6.2 3.2Z"/></svg><span>YouTube</span></span></span></span>
+        </div>
+    </div>
 </div>
 <div class="translate-widget">
     <span>To view this page in a different language, please select here:</span>
@@ -667,6 +702,14 @@ function googleTranslateElementInit() {
             return authorList.join(", ");
         }
 
+        function escapeAttribute(value) {
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/"/g, "&quot;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+        }
+
         function paperActionLink(url, label, icon) {
             var badgeClass = "badge-dark";
             if (label === "abstract") {
@@ -701,7 +744,7 @@ function googleTranslateElementInit() {
         function addpaper(title, authors, conference, link, abstract, arxiv_link, invited, errata_link, cover, resources) {
             list_entry = "<li class=\"publication-item\" style=\"font-size:17px\">"
             list_entry += "<b>" + title + "</b>"
-            list_entry += "<br><span class=\"paper-authors\">" + compactAuthors(authors) + "</span>"
+            list_entry += "<br><span class=\"paper-authors\" data-full-authors=\"" + escapeAttribute(authors) + "\">" + compactAuthors(authors) + "</span>"
             list_entry += "<br>" + conference
             var paperUrl = hasPaperUrl(arxiv_link) ? arxiv_link : link;
             if (hasPaperUrl(paperUrl) || abstract != null || errata_link != null || cover != null || (resources && resources.length)) {
@@ -828,7 +871,7 @@ function googleTranslateElementInit() {
         function addpaper(title, authors, conference, link, abstract, arxiv_link, invited, errata_link, cover, magazine, resources) {
             list_entry = "<li class=\"publication-item\" data-topic=\"" + publicationTopic(title) + "\" style=\"font-size:17px\">"
             list_entry += "<b>" + title + "</b>"
-            list_entry += "<br><span class=\"paper-authors\">" + compactAuthors(authors) + "</span>"
+            list_entry += "<br><span class=\"paper-authors\" data-full-authors=\"" + escapeAttribute(authors) + "\">" + compactAuthors(authors) + "</span>"
             list_entry += "<br>" + conference
             var paperUrl = hasPaperUrl(arxiv_link) ? arxiv_link : link;
             if (hasPaperUrl(paperUrl) || abstract != null || errata_link != "MagazineLinkNone" || cover != "CoverLinkNone" || (resources && resources.length)) {
@@ -1231,6 +1274,8 @@ function googleTranslateElementInit() {
     <details class="footer-changelog">
         <summary>Changelog</summary>
         <ul class="changelog-list">
+            <li><b>2026-09-09 21:54 PDT</b>: Made latest updates a ticker.</li>
+            <li><b>2026-09-09 21:42 PDT</b>: Refined color and typography.</li>
             <li><b>2026-09-09 20:20 PDT</b>: Added recent talk and JACS link.</li>
             <li><b>2026-08-18 02:30 PDT</b>: Updated Bio and latest updates.</li>
             <li><b>2026-07-20 03:36 PDT</b>: Added the autonomous passive MOF water harvester preprint, update, and blog post.</li>
