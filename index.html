@@ -406,8 +406,13 @@ document.addEventListener("DOMContentLoaded", function () {
         var counterUrl = counter.getAttribute("data-count-endpoint");
         if (!counterUrl) return;
 
-        fetch(counterUrl)
+        var requestUrl = counterUrl + (counterUrl.indexOf("?") === -1 ? "?" : "&") + "t=" + Date.now();
+
+        fetch(requestUrl, { cache: "no-store" })
             .then(function (response) {
+                if (!response.ok) {
+                    throw new Error("Visitor counter unavailable");
+                }
                 return response.json();
             })
             .then(function (data) {
@@ -548,7 +553,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <b>Email</b>: <tt>nakul.rampal [at] berkeley [dot] edu</tt> <br>
 <b>Office</b>: The Gateway, 3rd Floor NE, Cubicle 3210-02 <br>
 </p>
-<a class="retro-visitor-counter" href="https://info.flagcounter.com/Y8Lt" data-visitor-count="5368" data-count-endpoint="https://nakulrampal-flagcounter-total.nakulrampal.workers.dev" aria-label="View website visitor map">
+<a class="retro-visitor-counter" href="https://info.flagcounter.com/Y8Lt" data-visitor-count="5821" data-count-endpoint="https://nakulrampal-flagcounter-total.nakulrampal.workers.dev" aria-label="View website visitor map">
     <span class="retro-counter-label">VISITORS</span>
     <span class="retro-counter-screen" aria-hidden="true"></span>
     <span class="sr-only">Visitor count and visitor map are tracked with FlagCounter.</span>
