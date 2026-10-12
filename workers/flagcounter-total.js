@@ -25,7 +25,7 @@ function parseVisitorRows(html) {
 
     if (row.includes(`/factbook/`) && row.includes(`/${FLAGCOUNTER_ID}`)) {
       const visitorCell = row.match(
-        /<td\s+width=1%>\s*<font[^>]*>\s*([0-9,]+)\s*<\/font>\s*<\/td>/i
+        /<td\b[^>]*\bwidth\s*=\s*["']?1%["']?[^>]*>\s*(?:<font[^>]*>)?\s*([0-9][0-9,]*)/i
       );
       if (visitorCell) {
         total += Number(visitorCell[1].replace(/,/g, ""));
@@ -51,7 +51,11 @@ async function fetchFlagCounterTotal() {
     })
   );
 
-  return pages.reduce((sum, html) => sum + parseVisitorRows(html), 0);
+  const total = pages.reduce((sum, html) => sum + parseVisitorRows(html), 0);
+  if (total <= 0) {
+    throw new Error("FlagCounter total parsed as zero");
+  }
+  return total;
 }
 
 export default {
