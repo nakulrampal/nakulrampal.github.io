@@ -1,0 +1,10 @@
+{
+  "name": "nakulrampal-flagcounter-total",
+  "private": true,
+  "scripts": {
+    "test": "node --test test/*.test.cjs"
+  },
+  "devDependencies": {
+    "miniflare": "4.20260730.0"
+  }
+}

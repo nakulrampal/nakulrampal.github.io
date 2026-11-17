@@ -382,17 +382,23 @@ document.addEventListener("DOMContentLoaded", function () {
         var counter = document.querySelector(".retro-visitor-counter");
         if (!counter) return;
         var screen = counter.querySelector(".retro-counter-screen");
-        var fallbackCount = counter.getAttribute("data-visitor-count") || "0";
+        var counterId = counter.getAttribute("data-counter-id");
+        var storageKey = "flagcounter:" + counterId + ":last-total";
+        var shownValue;
+        var pending = false;
 
         function renderCount(count) {
-            var digits = String(count).replace(/\D/g, "").padStart(4, "0").split("");
+            var value = count === null ? "----" : String(count).padStart(4, "0");
+            if (value === shownValue) return;
+            shownValue = value;
+            var digits = value.split("");
             screen.innerHTML = "";
 
             digits.forEach(function (digit, index) {
                 var tile = document.createElement("span");
                 tile.className = "retro-digit";
                 tile.style.animationDelay = (index * 90) + "ms";
-                tile.innerHTML = "<span class=\"retro-digit-value\">0</span>";
+                tile.innerHTML = "<span class=\"retro-digit-value\">-</span>";
                 screen.appendChild(tile);
                 window.setTimeout(function () {
                     tile.innerHTML = "<span class=\"retro-digit-value\">" + digit + "</span>";
@@ -401,14 +407,34 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        renderCount(fallbackCount);
+        function validCount(data) {
+            return data && data.counterId === counterId &&
+                Number.isSafeInteger(data.total) && data.total > 0;
+        }
+
+        function showCount(data) {
+            renderCount(data.total);
+            counter.setAttribute("aria-label", data.total.toLocaleString() + " website visitors. View visitor map.");
+            counter.title = data.stale ? "Last available visitor count. View visitor map." : "View visitor map";
+        }
+
+        renderCount(null);
+        try {
+            var saved = JSON.parse(window.localStorage.getItem(storageKey));
+            if (validCount(saved)) showCount({ total: saved.total, stale: true });
+        } catch (error) {
+            // Storage can be unavailable in private browsing or local previews.
+        }
 
         var counterUrl = counter.getAttribute("data-count-endpoint");
         if (!counterUrl) return;
 
-        var requestUrl = counterUrl + (counterUrl.indexOf("?") === -1 ? "?" : "&") + "t=" + Date.now();
-
-        fetch(requestUrl, { cache: "no-store" })
+        function refreshCount() {
+            if (pending || document.hidden) return;
+            pending = true;
+            var controller = new AbortController();
+            var timeout = window.setTimeout(function () { controller.abort(); }, 20000);
+            fetch(counterUrl, { cache: "no-store", signal: controller.signal })
             .then(function (response) {
                 if (!response.ok) {
                     throw new Error("Visitor counter unavailable");
@@ -416,14 +442,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 return response.json();
             })
             .then(function (data) {
-                var total = data && Number(data.total);
-                if (Number.isFinite(total) && total > 0) {
-                    renderCount(total);
+                if (!validCount(data)) throw new Error("Invalid visitor total");
+                showCount(data);
+                try {
+                    window.localStorage.setItem(storageKey, JSON.stringify(data));
+                } catch (error) {
+                    // A valid live count does not depend on local storage.
                 }
             })
             .catch(function () {
-                return;
+                counter.title = "Visitor count temporarily unavailable. View visitor map.";
+            })
+            .finally(function () {
+                window.clearTimeout(timeout);
+                pending = false;
             });
+        }
+
+        refreshCount();
+        window.setInterval(refreshCount, 60000);
+        document.addEventListener("visibilitychange", function () {
+            if (!document.hidden) refreshCount();
+        });
     }
 
     function revealAuthorsOnScroll() {
@@ -554,7 +594,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <b>Email</b>: <tt>nakul.rampal [at] berkeley [dot] edu</tt> <br>
 <b>Office</b>: The Gateway, 3rd Floor NE, Cubicle 3210-02 <br>
 </p>
-<a class="retro-visitor-counter" href="https://info.flagcounter.com/Y8Lt" data-visitor-count="5850" data-count-endpoint="https://nakulrampal-flagcounter-total.nakulrampal.workers.dev" aria-label="View website visitor map">
+<a class="retro-visitor-counter" href="https://info.flagcounter.com/Y8Lt" data-counter-id="Y8Lt" data-count-endpoint="https://nakulrampal-flagcounter-total.nakulrampal.workers.dev" aria-label="View website visitor map">
     <span class="retro-counter-label">VISITORS</span>
     <span class="retro-counter-screen" aria-hidden="true"></span>
     <span class="sr-only">Visitor count and visitor map are tracked with FlagCounter.</span>
