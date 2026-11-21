@@ -179,9 +179,8 @@ tt {
 
 .job-market-statement {
     margin: 24px 0;
-    padding: 16px 0;
-    border-top: 2px solid #24292f;
-    border-bottom: 1px solid #dce1e6;
+    padding: 16px 18px;
+    background: #f5f6f7;
 }
 
 .job-market-statement strong {
